@@ -7,7 +7,6 @@ export const history = {
   navigate: null,
   /**
    * Navigates to a specified page or goes back in the history stack.
-   *
    * @param {string | -1} page - The target page path as a string, or -1 to go back one page.
    * @param {...any} rest - Additional arguments passed to the navigate function.
    */

@@ -131,8 +131,68 @@ $ npm run dev
 $ npm install <package>
 ```
 
+### Your Page and Branch
+...TODO
+
+**If you provide nothing to the Layout, it will default to the 'default' `orange header` and the `showFooter` prop defaults to true.**
+
+_The Layout Component How to:_
+```JavaScript
+import { Layout } from "../../components/layout";
+
+import s from "./styles.module.css";
+
+const DifferentHeader = () => {
+  return (
+    <header>DifferentHeader</div>
+  )
+}
+
+
+const YourPage = () => {
+  return (
+    <Layout Header={DifferentHeader}>
+      <main className={s.container}>
+        {/* Content */}
+      </main>
+    </Layout>
+  );
+};
+
+export default Home;
+
+//-------------------------------------------------
+// If you have props to give to your header for whatever reason.
+
+const YourPage = () => {
+  return (
+    <Layout Header={() => <DifferentHeader someProp={something} />}>
+      <main className={s.container}>
+        {/* Content */}
+      </main>
+    </Layout>
+  );
+};
+
+//-------------------------------------------------
+// If your page doesn't show a footer or you just don't want to show it.
+
+const YourPage = () => {
+  return (
+    <Layout Header={DifferentHeader} showFooter={false}>
+      <main className={s.container}>
+        {/* Content */}
+      </main>
+    </Layout>
+  );
+};
+```
+
 ### Pushing Code
 You'll always be working in your `page/<page name>` branch. When you have completed a good amount or feel that this part of the code is ready, you can push it to the `develop` branch. The `develop` branch is where all the current code in development is located. **But before you push your code to `develop`**, set up a meeting with me, David Bishop, so I can check it out :)
+
+### Pulling New Changes From Main (Mostly likely if I something)
+First move to the `main branch`, pull the changes. Then go back to your page branch and do `git rebase main`, sometimes you might have to do `git rebase origin/main`(mostly likely when it's your first time doing it) and then you should have all the changes in your page branch.
 
 ## Helpful Recourses
 

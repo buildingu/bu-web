@@ -1,7 +1,7 @@
 import s from "./styles.module.css";
 
 const Contribute = () => {
-  return <div className={s.container}>Contribute</div>;
+  return <Layout className={s.container}>Contribute</Layout>;
 };
 
 export default Contribute;

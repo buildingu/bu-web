@@ -1,7 +1,7 @@
 import s from "./styles.module.css";
 
 const BlogAndBeyond = () => {
-  return <div className={s.container}>BlogAndBeyond</div>;
+  return <Layout className={s.container}>BlogAndBeyond</Layout>;
 };
 
 export default BlogAndBeyond;
