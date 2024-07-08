@@ -41,7 +41,7 @@ export const routes = [
         path: "lets-talk",
         element: <LetsTalk />,
         children: [
-          // Put the sub pages in there and export them from index.js.
+          // Put the sub pages in here and export them from index.js in your page folder.
           // {
           //   path: "about",
           //   element: <About />,
