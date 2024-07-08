@@ -60,8 +60,8 @@ async function setupServer() {
       try {
         const appHtml = await render(req, res),
           html = template.replace("<!--ssr-outlet-->", appHtml)
-          console.log("appHtml", appHtml);
-          console.log("html", html);
+          // console.log("appHtml", appHtml);
+          // console.log("html", html);
 
         return res.status(200).setHeader("Content-Type", "text/html").end(html);
       } catch (error) {
