@@ -64,10 +64,148 @@ Whenever you need to add a package or run a command, you'll work in the `package
 
 You can go to https://www.npmjs.com/, to search for other packages from developers if you're curious.
 
+## react-router-dom and SSR
+Our router is `react-router-dom`, which helps us set up our routes(pages, e.g., /let-talk) and interact with the router. For a better look, here is [the official documentation](https://reactrouter.com/en/main/start/overview).
+
+### Our Custom History Object
+In the `react-router-dom` documentation, you'll find a hook called `useNavigate` used for when you want to navigate to a page **programmatically**. Instead of using this hook, we use our `custom history object`, located [here](https://github.com/buildingu/bu-front/blob/develop/src/utils/History.js). This utility allows us to navigate both `inside and outside of components`. For consistency, use this custom history object in your pages/components and everywhere else.
+
+_How you would normally navigate with `react-router-dom`:_
+```JavaScript
+import { useNavigate } from "react-router-dom";
+
+const Whatever = () => {
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    // Navigates to /error on page load.
+    navigate("/error")
+  }, [])
+  
+  return (
+    <div>Whatever</div>
+  );
+};
+```
+_How we navigate with our custom history object:_
+```JavaScript
+import { history } from "../../utils/History";
+
+const Whatever = () => {
+  useEffect(() => {
+    // Navigates to /error on page load.
+    history.push("/error")
+  }, [])
+  
+  return (
+    <div>Whatever</div>
+  );
+};
+```
+You can find more information about `useNavigate` in the docs, **but you won't be using it**: https://reactrouter.com/en/main/hooks/use-navigate
+
+### Link Component
+When we want to navigate programmatically(with a function), we use the `custom history object` as I mentioned above. For `link-based navigation`, you might think to use the `<a>` tag, but this will refresh the page, as it treats the link as a traditional HTML link(to another HTML file). Instead, we use the `<Link> component` to navigate without causing a refresh!
+
+_We'll use links like this:_
+```JavaScript
+import { Link } from "react-router-dom";
+
+const Whatever = () => {
+  return (
+    <div>
+      <Link to="/error">Example</Link>
+    </div>
+  );
+};
+```
+
+`Link component` in the docs: https://reactrouter.com/en/main/components/link
+
+### Server Side Rendering (SSR)
+In our project, the server, which is `server.js`, `renders the JSX on the server side`, not on the client side. FYI, **you don't need to know all of this**, but you should be familiar with it. So, in a normal React project, they're [single-page applications (SPAs)](https://inoxoft.com/blog/how-to-build-a-single-page-application-with-react/#anchor-what-is-a-single-page-application), where there is just one HTML file, and the entire React project is in a script tag. That isn't ideal for this project, since this is a real-world project on the internet, we should care about [Search Engine optimization (SEO)](https://mailchimp.com/marketing-glossary/seo/). SSR helps improve SEO because the initial HTML rendered by the server is more accessible to search engines, this would make search engines and their bots and crawlers or whatever actually understand our site.
+
+Our project still uses one HTML file like a SPA, but since the server pre-renders the JSX and includes it in the initial HTML (the index.html file), all `pages are shown dynamically in the HTML`.
+
+**The main things you have to worry about** is ensuring that the server-rendered HTML matches the client-rendered HTML on load to prevent differences. If there are discrepancies, it will cause hydration issues, which defeats the purpose of SSR. React will throw an error and tell us it switched to client-side rendering from now on, which is what we want to avoid. All you need to know is below.
+
+_A common example of how a difference between server and client HTML can occur:_
+```JavaScript
+import { useState } from "react";
+
+const Whatever = () => {
+  const [show, setShow] = useState(true)
+
+  return (
+    <div>
+      <button onClick={() => setShow(false)}>Hide</button>
+      {show && <div>Showing</div>}
+    </div>
+  );
+};
+```
+In the example above a **difference error** will happen since `useState` is only a client-side hook. The server doesn't run JavaScript like the `useState`, it just renders the initial HTML. So, the server wouldn't know about the conditional rendering of the `<div>` element based on the show state, since the initial state is true, thus causing a difference in the server-rendered HTML and the client-rendered HTML.
+
+_How to fix this difference:_
+```JavaScript
+import { useState, useEffect } from "react";
+
+const Whatever = () => {
+  const [show, setShow] = useState(false)
+
+  useEffect(() => {
+    setShow(true);
+  }, [])
+  
+  return (
+    <div>
+      <button onClick={() => setShow(false)}>Hide</button>
+      {show && <div>Showing</div>}
+    </div>
+  );
+};
+```
+In the example above, the difference error is fixed by using a `useEffect` with an `empty dependency array []`, the `useEffect` will only run when the client loads. As a result, the `useEffect` runs after the server renders, making the server and client HTML match since the `<div>` is shown only on the client.
+
+_Other important considerations:_<br />
+Since our server is rendering our JSX initially, we have to be cautious when using client-specific things like the document, window, etc, on page load.
+```JavaScript
+const Whatever = () => {
+  const button = document.querySelector("button") // Will cause an error since document is undefined on the server.
+
+  return (
+    <div>
+      <button>Hide</button>
+    </div>
+  );
+};
+```
+
+_How to fix the undefined error:_
+```JavaScript
+import { useRef } from "react";
+
+const Whatever = () => {
+  const buttonRef = useRef(null); // Use a useRef since it is a part of the react life-cycle.
+
+  const someFunc = () => {
+    // You can use it just like a querySelector or getElementById, etc. But you have to use .current...
+    buttonRef.current.style.color = "red";
+  };
+
+  return (
+    <div>
+      <button ref={buttonRef} onClick={someFunc}>Hide</button>
+    </div>
+  );
+};
+```
+By using a `useRef`, you can safely interact with DOM elements without causing errors during server-side rendering.
+
 ## Project Architecture
 In this project, we will be using a `reusable architecture` for all directories/files. This means **creating a new `component` only if it is used in more than one `page directory` or component.** The same rule applies to utils, hooks, constants, and other directories. This approach ensures that everything stays modular and organized.
 
-In your learning lessons, you might not have used `ES Modules (ESM)`; instead, you probably used `CommonJS`, which is the default module format  in `Node.js`. `ESM` is the modern JavaScript module format and has several advantages over `CommonJS`.
+In your learning lessons, you might not have used `ES Modules (ESM)`; instead, you probably used `CommonJS`, which is the default module format in `Node.js`. `ESM` is the modern JavaScript module format and has several advantages over `CommonJS`.
 
 For `components`, `utilities`, etc, that are only used within a single page directory, define them as a file within that page directory or within the page file itself.
 
@@ -102,9 +240,6 @@ logger('Hello, World!');
 ```
 
 ### Directory Structure
-...TODO
-
-## react-router-dom and SSR
 ...TODO
 
 ## Getting Started
@@ -197,6 +332,8 @@ First move to the `main branch`, pull the changes. Then go back to your page bra
 ## Helpful Recourses
 
 https://www.freecodecamp.org/news/intro-to-react-components/ - React vs Static HTML
+
+https://www.semrush.com/blog/semantic-html5-guide/ - How to be Semantic With Your HTML(JSX)
 
 https://www.freecodecamp.org/news/full-guide-to-react-hooks/ - Common Hook Guide (You don't need to use all of them shown there)
 
