@@ -5,6 +5,8 @@ import HistoryProvider from "./utils/History";
 import { Home } from "./pages/home";
 import { BlogAndBeyond } from "./pages/blogAndBeyond";
 import { Contribute } from "./pages/contribute";
+
+// import { LetsTalk, About } from "./pages/letsTalk"; // Like this.
 import { LetsTalk } from "./pages/letsTalk";
 import { Resources } from "./pages/resources";
 import { S4YT } from "./pages/s4yt";
@@ -38,6 +40,13 @@ export const routes = [
       {
         path: "lets-talk",
         element: <LetsTalk />,
+        children: [
+          // Put the sub pages in there and export them from index.js.
+          // {
+          //   path: "about",
+          //   element: <About />,
+          // }
+        ]
       },
       {
         path: "resources",
