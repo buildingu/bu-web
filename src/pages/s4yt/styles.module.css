@@ -1,2 +1,278 @@
-.container {
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+@font-face {
+  font-family: 'NightZone';
+  src: url("/mockups/css/Night Zone.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'corbel';
+  src: url('/mockups/css/corbel.ttf') format('truetype');
+}
+
+.textHeader{
+  font-family: 'NightZone';
+  text-align: 'center';
+  font-size: '35px';
+  color: '#008dd2' 
+}
+
+.bar {
+  display: flex;
+  flex-direction: row;
+  background-color: orange;
+  justify-content: space-between;
+  width: 100%;
+  float: right;
+  height: 15vh;
+  top: 0;
+  left: 0;
+  z-index: 4;
+}
+
+.listbar {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.listbar li {
+  display: inline-flex;
+  margin-right: 2px;
+  height: 20vh;
+  width: auto;
+}
+
+.barBulogo {
+  width: 25vh;
+  height: auto;
+  margin-right: 10vw;
+  margin-top: 1vh;
+  margin-left: 10vw;
+}
+
+.barSmallbaricon {
+  width: 20vh;
+  height: auto;
+}
+
+.barBigbaricon {
+  width: 15vh;
+  height: auto;
+}
+  .talkBulletwrapper {
+    display: inline-block;
+    margin-left: 5vw;
+  }
+
+  .mbar {
+    display: none;
+  }
+
+  .talkBullets {
+    height: 7.5vh;
+    width: auto;
+    margin: 2vh;
+  }
+
+  .talkTalk {
+    height: 20vh;
+    width: auto;
+  }
+
+  .talkBg {
+    border-bottom: 75vh solid #008dd2;
+    border-left: 0px solid transparent;
+    border-right: 50vh solid transparent;
+    height: 0;
+    width: 50vw;
+    position: absolute;
+    z-index: 2;
+  }
+
+  .s4ytsection {
+    display: flex;
+    flex-direction: row;
+    background-color: #68b436;
+    width: 100%;
+    height: 75vh;
+    background-image: url(mockups/assets/dollarpage/background.png);
+    justify-content: flex-start;
+    background-position: -300px;
+  }
+
+  .s4ytInfobuttons {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5vw; /* Adjusted margin for better alignment */
+    margin-top: 8rem;
+    width: 293px;
+    justify-self: first baseline;
+  }
+
+  .pressed,
+  .s4ytWhat,
+  .s4ytAmi,
+  .s4ytWhen,
+  .s4ytHowdo,
+  .s4ytWhatare {
+    width: 150px;
+    height: 50px;
+    margin-left: -4vw;
+    margin-bottom: 2vh;
+  }
+
+  .s4ytWhat:hover {
+    content: url("mockups/assets/01_more-info/btn_01-what-is-hover.png");
+  }
+  
+  .s4ytAmi:hover {
+    content: url("mockups/assets/01_more-info/btn_02-am-i-hover.png");
+  }
+  
+  .s4ytWhen:hover {
+    content: url("mockups/assets/01_more-info/btn_03-when-can-hover.png");
+  }
+  
+  .s4ytHowdo:hover {
+    content: url("mockups/assets/01_more-info/btn_04-how-do-i-hover.png");
+  }
+  
+  .s4ytWhatare:hover {
+    content: url("mockups/assets/01_more-info/btn_05-what-are-hover.png");
+  }
+
+  .textInfo {
+    color: #008dd2;
+    display: none;
+    flex-wrap: wrap;
+    align-content: space-around;
+    margin-left: 0px;
+    z-index: 7;
+  }
+  
+  /* Additional styles to control visibility */
+  .textInfo.active {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    margin-left: 0px;
+    z-index: 7;
+  }
+
+.textInfo h3 {
+  font-family: 'NightZone';
+}
+
+.textInfo ul {
+  font-family: 'corbel';
+}
+
+.s4ytClick {
+  width: auto;
+  height: 100px;
+  margin-left: -4vw;
+  margin-bottom: 2vh;
+}
+
+.s4ytPaper {
+  width: auto;
+  height: 400px;
+  width: 300px; 
+  margin-top: 5vh;
+}
+
+.s4ytLeftsec {
+  display: flex;
+  flex-direction: row;
+  margin-left: 5vw;
+  margin-top: 2vh;
+}
+
+.powerbyt {
+  text-align: left;
+  font-size: 55px;
+  color: white;
+  margin-right: 25px;
+  margin-top: 5px;
+  margin-left: -60px;
+}
+
+.listinfo {
+  padding: 10px;
+  font-size: 20px;
+}
+
+.txt1,
+.txt2,
+.txt3,
+.txt4,
+.txt5 {
+  display: none;
+}
+
+.listbar1 {
+  display: none;
+}
+
+.infoImg{
+    width: 1000px;
+    height: auto;
+    position:fixed;
+    top: 5%;
+    left: 45%;
+    z-index: -3;
+}
+
+.backButton{
+    position: fixed;
+    background-color: orange;
+    color: white;
+    border: none;
+    border-radius: 20%;
+    height: 50px;
+    width: 70px;
+    top: 10%;
+    left: 70%;
+    z-index: 10;
+}
+
+@media (max-width: 1200px) {
+  .s4ytLeftsec{
+    display: none;
+  }
+  .infoImg{
+    width: 900px;
+    height: auto;
+    position:fixed;
+    top: 10%;
+    left: 20%;
+    z-index: -3;
+  }
+}
+
+@media(max-width: 800px){
+    .s4ytInfobuttons{
+        position: absolute;
+        top: 0;
+        left: 30%;
+    }
+    .textInfo{
+        position: fixed;
+        top: 20%;
+        left: 20%;
+    }
+    .infoImg{
+        width: 1000px;
+        height: auto;
+        position:fixed;
+        top: 5%;
+        left: -100px;
+        z-index: -3;
+    }
 }
