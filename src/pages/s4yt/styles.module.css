@@ -251,8 +251,14 @@ body {
     top: 200px;
     left: 40%;
   }
+  .textHeader{
+    font-size: 25px;
+  }
+  .listinfo{
+    font-size: 15px;
+  }
   .infoImg{
-    width: 900px;
+    width: 1000px;
     height: auto;
     position:fixed;
     top: 10%;
@@ -271,6 +277,12 @@ body {
         position: fixed;
         top: 20%;
         left: 20%;
+    }
+    .textHeader{
+      font-size: 20px;
+    }
+    .listinfo{
+      font-size: 12px;
     }
     .infoImg{
         width: 1000px;
