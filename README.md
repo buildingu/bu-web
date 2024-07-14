@@ -205,9 +205,9 @@ By using a `useRef`, you can safely interact with DOM elements without causing e
 ## Project Architecture
 In this project, we will be using a `reusable architecture` for all directories/files. This means **creating a new `component` only if it is used in more than one `page directory` or component.** The same rule applies to utils, hooks, constants, and other directories. This approach ensures that everything stays modular and organized.
 
-In your learning lessons, you might not have used `ES Modules (ESM)`; instead, you probably used `CommonJS`, which is the default module format in `Node.js`. `ESM` is the modern JavaScript module format and has several advantages over `CommonJS`.
+So, for `components`, `utilities`, etc, that are only used within a single page directory, define them as a file within that page directory or within the page file itself.
 
-For `components`, `utilities`, etc, that are only used within a single page directory, define them as a file within that page directory or within the page file itself.
+In your learning lessons, you might not have used `ES Modules (ESM)`; instead, you probably used `CommonJS`, which is the default module format in `Node.js`. `ESM` is the modern JavaScript module format and has several advantages over `CommonJS`.
 
 ### CommonJs vs ESM 
 ```JavaScript
