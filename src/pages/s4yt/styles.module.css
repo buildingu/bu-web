@@ -246,6 +246,11 @@ body {
   .s4ytLeftsec{
     display: none;
   }
+  .textInfo{
+    position: fixed;
+    top: 200px;
+    left: 40%;
+  }
   .infoImg{
     width: 900px;
     height: auto;
