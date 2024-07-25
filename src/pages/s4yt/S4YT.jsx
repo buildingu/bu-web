@@ -100,7 +100,6 @@ const S4YT = () => {
         {(width > 800 || visibleSection==null) ? (
           <div className={s.s4ytInfobuttons} style={{ marginLeft: '5%', marginRight: 0 }}>
             <img
-              width="50px"
               src={getImageSource(0)}
               onClick={() => handleSectionClick(1)}
               alt="What is S4YT"
@@ -134,7 +133,7 @@ const S4YT = () => {
         ) : null}
 
         <div className={`${s.textInfo} ${s.txt1}`} style={{ display: 'none' }}>
-          <h3 className = {s.textHeader} style={{ textAlign: 'center',color: '#008dd2' }}>WHAT IS S4YT ABOUT?</h3>
+          <h3 className = {s.textHeader} style={{ textAlign: 'center', fontSize: '35px', color: '#008dd2' }}>WHAT IS S4YT ABOUT?</h3>
           <hr style={{ margin: 0, height: '3px', opacity: 0.7 }} />
           <br />
           <ul>

@@ -1,8 +1,8 @@
-html,
-body {
+html, body {
   height: 100%;
   width: 100%;
   margin: 0;
+  padding-top: 8vh; /* Adjust this value to match the height of your navbar */
 }
 
 @font-face {
@@ -15,11 +15,11 @@ body {
   src: url('/mockups/css/corbel.ttf') format('truetype');
 }
 
-.textHeader{
+.textHeader {
   font-family: 'NightZone';
-  text-align: 'center';
-  font-size: '35px';
-  color: '#008dd2' 
+  text-align: center;
+  font-size: 35px;
+  color: #008dd2;
 }
 
 .bar {
@@ -28,22 +28,24 @@ body {
   background-color: orange;
   justify-content: space-between;
   width: 100%;
-  float: right;
   height: 15vh;
   top: 0;
   left: 0;
   z-index: 4;
+  position: fixed; /* Fixes the navbar at the top */
 }
 
 .listbar {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }
 
 .listbar li {
   display: inline-flex;
-  margin-right: 2px;
   height: 20vh;
   width: auto;
 }
@@ -65,105 +67,107 @@ body {
   width: 15vh;
   height: auto;
 }
-  .talkBulletwrapper {
-    display: inline-block;
-    margin-left: 5vw;
-  }
 
-  .mbar {
-    display: none;
-  }
+.talkBulletwrapper {
+  display: inline-block;
+  margin-left: 5vw;
+}
 
-  .talkBullets {
-    height: 7.5vh;
-    width: auto;
-    margin: 2vh;
-  }
+.mbar {
+  display: none;
+}
 
-  .talkTalk {
-    height: 20vh;
-    width: auto;
-  }
+.talkBullets {
+  height: 7.5vh;
+  width: auto;
+  margin: 2vh;
+}
 
-  .talkBg {
-    border-bottom: 75vh solid #008dd2;
-    border-left: 0px solid transparent;
-    border-right: 50vh solid transparent;
-    height: 0;
-    width: 50vw;
-    position: absolute;
-    z-index: 2;
-  }
+.talkTalk {
+  height: 20vh;
+  width: auto;
+}
 
-  .s4ytsection {
-    display: flex;
-    flex-direction: row;
-    background-color: #68b436;
-    width: 100%;
-    height: 75vh;
-    background-image: url(mockups/assets/dollarpage/background.png);
-    justify-content: flex-start;
-    background-position: -300px;
-  }
+.talkBg {
+  border-bottom: 75vh solid #008dd2;
+  border-left: 0 solid transparent;
+  border-right: 50vh solid transparent;
+  height: 0;
+  width: 50vw;
+  position: absolute;
+  z-index: 2;
+}
 
-  .s4ytInfobuttons {
-    display: flex;
-    flex-direction: column;
-    margin-left: 5vw; /* Adjusted margin for better alignment */
-    margin-top: 8rem;
-    width: 293px;
-    justify-self: first baseline;
-  }
+.s4ytsection {
+  display: flex;
+  flex-direction: row;
+  background-color: #68b436;
+  width: 100%;
+  height: 75vh;
+  background-image: url(mockups/assets/dollarpage/background.png);
+  justify-content: flex-start;
+  background-position: -300px;
+  height: calc(100vh - 10vh);
+  overflow: auto;
+}
 
-  .pressed,
-  .s4ytWhat,
-  .s4ytAmi,
-  .s4ytWhen,
-  .s4ytHowdo,
-  .s4ytWhatare {
-    width: 150px;
-    height: 50px;
-    margin-left: -4vw;
-    margin-bottom: 2vh;
-  }
+.s4ytInfobuttons {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5vw;
+  margin-top: 8rem;
+  width: 293px;
+  justify-self: first baseline;
+}
 
-  .s4ytWhat:hover {
-    content: url("mockups/assets/01_more-info/btn_01-what-is-hover.png");
-  }
-  
-  .s4ytAmi:hover {
-    content: url("mockups/assets/01_more-info/btn_02-am-i-hover.png");
-  }
-  
-  .s4ytWhen:hover {
-    content: url("mockups/assets/01_more-info/btn_03-when-can-hover.png");
-  }
-  
-  .s4ytHowdo:hover {
-    content: url("mockups/assets/01_more-info/btn_04-how-do-i-hover.png");
-  }
-  
-  .s4ytWhatare:hover {
-    content: url("mockups/assets/01_more-info/btn_05-what-are-hover.png");
-  }
+.pressed,
+.s4ytWhat,
+.s4ytAmi,
+.s4ytWhen,
+.s4ytHowdo,
+.s4ytWhatare {
+  width: 150px;
+  height: 50px;
+  margin-left: -4vw;
+  margin-bottom: 2vh;
+}
 
-  .textInfo {
-    color: #008dd2;
-    display: none;
-    flex-wrap: wrap;
-    align-content: space-around;
-    margin-left: 0px;
-    z-index: 7;
-  }
-  
-  /* Additional styles to control visibility */
-  .textInfo.active {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: space-around;
-    margin-left: 0px;
-    z-index: 7;
-  }
+.s4ytWhat:hover {
+  content: url("mockups/assets/01_more-info/btn_01-what-is-hover.png");
+}
+
+.s4ytAmi:hover {
+  content: url("mockups/assets/01_more-info/btn_02-am-i-hover.png");
+}
+
+.s4ytWhen:hover {
+  content: url("mockups/assets/01_more-info/btn_03-when-can-hover.png");
+}
+
+.s4ytHowdo:hover {
+  content: url("mockups/assets/01_more-info/btn_04-how-do-i-hover.png");
+}
+
+.s4ytWhatare:hover {
+  content: url("mockups/assets/01_more-info/btn_05-what-are-hover.png");
+}
+
+.textInfo {
+  color: #008dd2;
+  display: none;
+  flex-wrap: wrap;
+  align-content: space-around;
+  margin-left: 0;
+  z-index: 7;
+}
+
+.textInfo.active {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  margin-left: 0;
+  z-index: 7;
+}
 
 .textInfo h3 {
   font-family: 'NightZone';
@@ -220,76 +224,76 @@ body {
   display: none;
 }
 
-.infoImg{
-    width: 1000px;
-    height: auto;
-    position:fixed;
-    top: 5%;
-    left: 45%;
-    z-index: -3;
+.infoImg {
+  width: 1000px;
+  height: auto;
+  position: fixed;
+  top: 15%;
+  left: 45%;
+  z-index: -3;
 }
 
-.backButton{
-    position: fixed;
-    background-color: orange;
-    color: white;
-    border: none;
-    border-radius: 20%;
-    height: 50px;
-    width: 70px;
-    top: 10%;
-    left: 70%;
-    z-index: 10;
+.backButton {
+  position: fixed;
+  background-color: orange;
+  color: white;
+  border: none;
+  border-radius: 20%;
+  height: 50px;
+  width: 70px;
+  top: 10%;
+  left: 70%;
+  z-index: 10;
 }
 
 @media (max-width: 1200px) {
-  .s4ytLeftsec{
+  .s4ytLeftsec {
     display: none;
   }
-  .textInfo{
+  .textInfo {
     position: fixed;
     top: 200px;
     left: 40%;
   }
-  .textHeader{
+  .textHeader {
     font-size: 25px;
   }
-  .listinfo{
+  .listinfo {
     font-size: 15px;
   }
-  .infoImg{
+  .infoImg {
     width: 1000px;
     height: auto;
-    position:fixed;
+    position: fixed;
     top: 10%;
     left: 20%;
     z-index: -3;
   }
 }
 
-@media(max-width: 800px){
-    .s4ytInfobuttons{
-        position: absolute;
-        top: 0;
-        left: 30%;
-    }
-    .textInfo{
-        position: fixed;
-        top: 20%;
-        left: 20%;
-    }
-    .textHeader{
-      font-size: 20px;
-    }
-    .listinfo{
-      font-size: 12px;
-    }
-    .infoImg{
-        width: 1000px;
-        height: auto;
-        position:fixed;
-        top: 5%;
-        left: -100px;
-        z-index: -3;
-    }
+@media(max-width: 800px) {
+  .s4ytInfobuttons {
+    position: absolute;
+    top: 0;
+    left: 30%;
+  }
+  .textInfo {
+    position: fixed;
+    top: 20%;
+    left: 20%;
+  }
+  .textHeader {
+    font-size: 20px;
+  }
+  .listinfo {
+    font-size: 12px;
+  }
+  .infoImg {
+    width: 1000px;
+    height: auto;
+    position: fixed;
+    top: 5%;
+    left: -100px;
+    z-index: -3;
+  }
 }
