@@ -1,3 +1,6 @@
+/* TODO: DON'T USE POSITION FIXED IF YOU DON'T HAVE TO */
+
+/* DELETE and use main */
 html, body {
   height: 100%;
   width: 100%;
@@ -5,11 +8,13 @@ html, body {
   padding-top: 8vh; /* Adjust this value to match the height of your navbar */
 }
 
+/* DELETE */
 @font-face {
   font-family: 'NightZone';
   src: url("/mockups/css/Night Zone.ttf") format('truetype');
 }
 
+/* DELETE */
 @font-face {
   font-family: 'corbel';
   src: url('/mockups/css/corbel.ttf') format('truetype');
@@ -22,6 +27,7 @@ html, body {
   color: #008dd2;
 }
 
+/* TODO: Cleanup the styles I think this from the header from the mockups. */
 .bar {
   display: flex;
   flex-direction: row;
@@ -152,6 +158,16 @@ html, body {
   content: url("mockups/assets/01_more-info/btn_05-what-are-hover.png");
 }
 
+/* TODO: for the buttons and the slides, it should be in a container togethere: */
+.containerOfSlides {
+  /* flex or grid */
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 100px;
+  /* content of the slide might need to be in a div and you can do maybe */
+  /* justify-self: flex-start; */
+}
+
 .textInfo {
   color: #008dd2;
   display: none;
@@ -184,6 +200,7 @@ html, body {
   margin-bottom: 2vh;
 }
 
+/* TODO: Left img should scale down? */
 .s4ytPaper {
   width: auto;
   height: 400px;
@@ -191,12 +208,38 @@ html, body {
   margin-top: 5vh;
 }
 
+/* img.s4ytPaper {
+  position: relative;
+  width: 100%;
+  max-width: 300px; 
+  height: 400px;
+}
+img.s4ytPaper::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 16px;
+  right: 100px;
+  width: 100%;
+  max-width: 100px;
+  min-height: 100px;
+  background-image: url(); // speach bubble.
+} */
+
 .s4ytLeftsec {
   display: flex;
   flex-direction: row;
   margin-left: 5vw;
   margin-top: 2vh;
 }
+
+/* TODO: You can format you css better...? */
+/* .s4ytLeftsec .s4ytPaper {
+  width: auto;
+  height: 400px;
+  width: 300px; 
+  margin-top: 5vh;
+} */
 
 .powerbyt {
   text-align: left;
@@ -247,9 +290,11 @@ html, body {
 }
 
 @media (max-width: 1200px) {
+  /* TODO: You're doing this too early. */
   .s4ytLeftsec {
     display: none;
   }
+  /* TODO: No */
   .textInfo {
     position: fixed;
     top: 30%;

@@ -7,6 +7,7 @@ const S4YT = () => {
   const [visibleSection, setVisibleSection] = useState(null);
   const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
 
+  // TODO: Try to get this away. every time the screen is resizing, re-renders happen every second.
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const handleResize = () => {
@@ -21,9 +22,16 @@ const S4YT = () => {
     }
   }, []);
 
+  // useEffect(() => {
+  //   document.documentElement.style.overflow = "hidden"
+  //   return () => document.documentElement.style.overflow = "";
+  // }, []);
+
   useEffect(() => {
     // Initial setup: hide all sections
     handleSectionDisplay(null);
+
+    // TODO: Default button active.
   }, []);
 
   const handleSectionDisplay = (sectionNumber) => {
@@ -72,6 +80,7 @@ const S4YT = () => {
     handleSectionDisplay(null);
   }
 
+  // TODO: why is this here?
   const buttonClassNames = [
     s.s4ytWhat,
     s.s4ytAmi,
@@ -80,8 +89,13 @@ const S4YT = () => {
     s.s4ytWhatare,
   ];
 
+  // header
+  // main
+  // footer
+
   return (
     <Layout>
+      {/* TODO: This is not a section, use main */}
       <section className={s.s4ytsection}>
         <div className={s.s4ytLeftsec} style={{ marginRight: 0 }}>
           <img
@@ -145,7 +159,7 @@ const S4YT = () => {
           <img className={s.infoImg} src={"mockups/assets/dollarpage/background_info.png"} alt="Background Info" />
         </div>
 
-        <div className={`${s.textInfo} ${s.txt2}`} style={{ display: 'none' }}>
+        <div className={`${s.textInfo} ${s.txt2}`} style={{ display: "none" }}>
           <h3 className = {s.textHeader} style={{ textAlign: 'center', fontSize: '35px', color: '#008dd2' }}>AM I ELIGIBLE?</h3>
           <hr style={{ margin: 0, height: '3px', opacity: 0.7 }} />
           <br />
