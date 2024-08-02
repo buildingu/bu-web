@@ -83,6 +83,10 @@
     max-width: 100%; /* Ensures the logo scales with the button */
     height: auto; /* Maintains the aspect ratio */
   }
+
+  .mobileHamburger{
+    display: none;
+  }
   
   .footer {
     background-color: #ea0f81; /* Adjust if needed */
@@ -120,6 +124,59 @@
     display: flex;
   }
   
-  @media only screen and (max-width:500px) {
-
+  .mobile-bar{
+    display: none;
+  }
+  
+  @media (max-width:800px) {
+    .desktopItem{
+      display: none;
+    }
+    .mobileHamburger{
+      display: inline-flex;
+      height: 30vh;
+      width: auto;
+    }
+    .mobileHamburger img{
+      margin-right:15vw;
+    }
+    .mobile-bar{
+      display: flex;
+      position: fixed;
+      top: 15vh;
+      left: 0;
+      right: 0;
+      background-color: orange;
+      z-index: 1000;
+      width: 100%;
+      height: 75vh;
+    }
+    .mobile-bar ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+    .mobileItem{
+      display: flex;
+      align-self: center;
+      justify-content: center;
+      margin: 0;
+    }
+    .barButton{
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+    }
+    .mobileBarImg{
+      margin-left: 20vw;
+      min-width: 10vh;
+      min-height: 10vh;
+    }
   }

@@ -5,22 +5,6 @@ import { Link } from 'react-router-dom';
 
 const S4YT = () => {
   const [visibleSection, setVisibleSection] = useState(null);
-  const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
-
-  // TODO: Try to get this away. every time the screen is resizing, re-renders happen every second.
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const handleResize = () => {
-        setWidth(window.innerWidth);
-      };
-
-      window.addEventListener('resize', handleResize);
-
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }
-  }, []);
 
   // useEffect(() => {
   //   document.documentElement.style.overflow = "hidden"
@@ -30,8 +14,7 @@ const S4YT = () => {
   useEffect(() => {
     // Initial setup: hide all sections
     handleSectionDisplay(null);
-
-    // TODO: Default button active.
+    handleSectionClick(1)
   }, []);
 
   const handleSectionDisplay = (sectionNumber) => {
@@ -80,24 +63,14 @@ const S4YT = () => {
     handleSectionDisplay(null);
   }
 
-  // TODO: why is this here?
-  const buttonClassNames = [
-    s.s4ytWhat,
-    s.s4ytAmi,
-    s.s4ytWhen,
-    s.s4ytHowdo,
-    s.s4ytWhatare,
-  ];
-
   // header
   // main
   // footer
 
   return (
     <Layout>
-      {/* TODO: This is not a section, use main */}
-      <section className={s.s4ytsection}>
-        <div className={s.s4ytLeftsec} style={{ marginRight: 0 }}>
+      <main className={s.s4ytsection}>
+        <section className={s.s4ytLeftsec} style={{ marginRight: 0 }}>
           <img
             src="mockups/assets/dollarpage/logo_dollars.png"
             alt="S4YT Logo"
@@ -108,46 +81,78 @@ const S4YT = () => {
             alt="Click Me"
             className={s.s4ytClick}sizes=''
           />
-        </div>
-        {(width > 800 || visibleSection==null) ?"" : <button className = {s.backButton} onClick={handleBackClick}> Back </button>
+        </section>
+        {(visibleSection==null) ?"" : <button className = {s.backButton} onClick={handleBackClick}> Back </button>
         }
-        {(width > 800 || visibleSection==null) ? (
-          <div className={s.s4ytInfobuttons} style={{ marginLeft: '5%', marginRight: 0 }}>
+        <div className={s.s4ytInfobuttons1}>
             <img
               src={getImageSource(0)}
               onClick={() => handleSectionClick(1)}
               alt="What is S4YT"
-              className={visibleSection === 1 ? s.pressed : buttonClassNames[0]}
+              className={visibleSection === 1 ? s.pressed : s.s4ytWhat}
             />
             <img
               src={getImageSource(1)}
               onClick={() => handleSectionClick(2)}
               alt="Am I Eligible"
-              className={visibleSection === 2 ? s.pressed : buttonClassNames[1]}
+              className={visibleSection === 2 ? s.pressed : s.s4ytAmi}
             />
             <img
               src={getImageSource(2)}
               onClick={() => handleSectionClick(3)}
               alt="When can I submit"
-              className={visibleSection === 3 ? s.pressed : buttonClassNames[2]}
+              className={visibleSection === 3 ? s.pressed : s.s4ytWhen}
             />
             <img
               src={getImageSource(3)}
               onClick={() => handleSectionClick(4)}
               alt="How do I submit"
-              className={visibleSection === 4 ? s.pressed : buttonClassNames[3]}
+              className={visibleSection === 4 ? s.pressed : s.s4ytHowdo}
             />
             <img
               src={getImageSource(4)}
               onClick={() => handleSectionClick(5)}
               alt="What are the prizes"
-              className={visibleSection === 5 ? s.pressed : buttonClassNames[4]}
+              className={visibleSection === 5 ? s.pressed : s.s4ytWhatare}
+            />
+          </div>
+        {(visibleSection==null) ? (
+          <div className={s.s4ytInfobuttons}>
+            <img
+              src={getImageSource(0)}
+              onClick={() => handleSectionClick(1)}
+              alt="What is S4YT"
+              className={visibleSection === 1 ? s.pressed : s.s4ytWhat}
+            />
+            <img
+              src={getImageSource(1)}
+              onClick={() => handleSectionClick(2)}
+              alt="Am I Eligible"
+              className={visibleSection === 2 ? s.pressed : s.s4ytAmi}
+            />
+            <img
+              src={getImageSource(2)}
+              onClick={() => handleSectionClick(3)}
+              alt="When can I submit"
+              className={visibleSection === 3 ? s.pressed : s.s4ytWhen}
+            />
+            <img
+              src={getImageSource(3)}
+              onClick={() => handleSectionClick(4)}
+              alt="How do I submit"
+              className={visibleSection === 4 ? s.pressed : s.s4ytHowdo}
+            />
+            <img
+              src={getImageSource(4)}
+              onClick={() => handleSectionClick(5)}
+              alt="What are the prizes"
+              className={visibleSection === 5 ? s.pressed : s.s4ytWhatare}
             />
           </div>
         ) : null}
 
         <div className={`${s.textInfo} ${s.txt1}`} style={{ display: 'none' }}>
-          <h3 className = {s.textHeader} style={{ textAlign: 'center', fontSize: '35px', color: '#008dd2' }}>WHAT IS S4YT ABOUT?</h3>
+          <h3 className = {s.textHeader} style={{ textAlign: 'center',color: '#008dd2' }}>WHAT IS S4YT ABOUT?</h3>
           <hr style={{ margin: 0, height: '3px', opacity: 0.7 }} />
           <br />
           <ul>
@@ -160,7 +165,7 @@ const S4YT = () => {
         </div>
 
         <div className={`${s.textInfo} ${s.txt2}`} style={{ display: "none" }}>
-          <h3 className = {s.textHeader} style={{ textAlign: 'center', fontSize: '35px', color: '#008dd2' }}>AM I ELIGIBLE?</h3>
+          <h3 className = {s.textHeader} style={{ textAlign: 'center',color: '#008dd2' }}>AM I ELIGIBLE?</h3>
           <hr style={{ margin: 0, height: '3px', opacity: 0.7 }} />
           <br />
           <ul>
@@ -174,7 +179,7 @@ const S4YT = () => {
         </div>
 
         <div className={`${s.textInfo} ${s.txt3}`} style={{ display: 'none' }}>
-          <h3 className = {s.textHeader} style={{ textAlign: 'center', fontSize: '35px', color: '#008dd2' }}>WHEN CAN I ATTEND?</h3>
+          <h3 className = {s.textHeader} style={{ textAlign: 'center',color: '#008dd2' }}>WHEN CAN I ATTEND?</h3>
           <hr style={{ margin: 0, height: '3px', opacity: 0.7 }} />
           <br />
           <ul>
@@ -184,7 +189,7 @@ const S4YT = () => {
         </div>
 
         <div className={`${s.textInfo} ${s.txt4}`} style={{ display: 'none' }}>
-          <h3 className = {s.textHeader} style={{ textAlign: 'center', fontSize: '35px', color: '#008dd2' }}>HOW DO I WIN $$?</h3>
+          <h3 className = {s.textHeader} style={{ textAlign: 'center',color: '#008dd2' }}>HOW DO I WIN $$?</h3>
           <hr style={{ margin: 0, height: '3px', opacity: 0.7 }} />
           <br />
           <ul>
@@ -197,7 +202,7 @@ const S4YT = () => {
         </div>
 
         <div className={`${s.textInfo} ${s.txt5}`} style={{ display: 'none' }}>
-          <h3 className = {s.textHeader} style={{ textAlign: 'center', fontSize: '35px', color: '#008dd2' }}>WHAT ARE DULB-U-NES?</h3>
+          <h3 className = {s.textHeader} style={{ textAlign: 'center',color: '#008dd2' }}>WHAT ARE DULB-U-NES?</h3>
           <hr style={{ margin: 0, height: '3px', opacity: 0.7 }} />
           <br />
           <ul>
@@ -209,7 +214,7 @@ const S4YT = () => {
           </ul>
           <img className={s.infoImg} src={"mockups/assets/dollarpage/background_info.png"} alt="Background Info" />
         </div>
-      </section>
+      </main>
     </Layout>
   );
 };
