@@ -1,3 +1,5 @@
+/* TODO: Stop spamming VH nad VW. (max-width: <fixed value>; width: 100%) */
+
 /* DELETE and use main */
 main {
   height: 100%;
@@ -127,21 +129,43 @@ main {
   content: url("mockups/assets/01_more-info/btn_05-what-are-hover.png");
 }
 
-
+/* .contentContainer {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 100px;
+} */
 .textInfo {
   position: relative;
   z-index: 2; 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* display: flex; */
+  /* flex-direction: column;
+  justify-content: center; */
   color: #008dd2;
-  width: 100%;
-  height: 100%;
+  /* width: 100%; */
+  /* height: 100%; */
   margin-right: 5vw; 
 }
-
-.infoImg {
+.textInfo hgroup {
+  width: 100%;
+  height: 3px;
+  opacity: 0.7
+}
+.textInfo .textHeader {
+  font-family: var(--heading-font2);
+  /* Stop vw */
+  font-size: 3vw;
+  color: #008dd2;
+  margin-top: 20%;
+  margin-left: 20%;
+  z-index: 3;
+  position: relative;
+}
+.textInfo hgroup div.line {
+  width: 100%;
+  height: 3px;
+  opacity: 0.7
+}
+.textInfo .infoImg {
   position: absolute;
   top: 0;
   left: 0;
@@ -150,29 +174,17 @@ main {
   z-index: 1;
   margin: 0 auto;
 }
-
-.textHeader {
-  font-family: 'NightZone';
-  font-size: 3vw;
-  color: #008dd2;
-  margin-top: 20%;
-  margin-left: 20%;
+.textInfo ul {
+  padding: 0;
+  margin: 0;
   z-index: 3;
-  position: relative;
 }
-
-.listinfo {
+.textInfo ul .listinfo {
   font-size: 1.5vw;
   margin: 0.5em 0;
   z-index: 3;
   margin-left: 30%;
   position: relative;
-}
-
-.textInfo ul {
-  padding: 0;
-  margin: 0;
-  z-index: 3;
 }
 
 .backButton {
@@ -223,13 +235,13 @@ main {
   margin-left: -60px;
 }
 
-.txt1,
+/* .txt1,
 .txt2,
 .txt3,
 .txt4,
 .txt5 {
   display: none;
-}
+} */
 
 .listbar1 {
   display: none;
