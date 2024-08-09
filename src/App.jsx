@@ -10,7 +10,10 @@ import { Resources } from "./pages/resources";
 import { S4YT } from "./pages/s4yt";
 import { Error404, Error500 } from "./pages/errors";
 
+import { Blog as AdminBlog } from "./adminPanel/pages/blog";
+
 import "./index.css";
+import "./adminPanel/index.css";
 
 export const routes = [
   {
@@ -64,6 +67,16 @@ export const routes = [
           path: "*",
           element: <Navigate to="/error-404" replace />,
         }),
+      },
+
+      {
+        path: "admin",
+        children: [
+          {
+            path: "blog",
+            element: <AdminBlog />,
+          },
+        ]
       },
     ],
   },
