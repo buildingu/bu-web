@@ -29,6 +29,11 @@ const Blog = () => {
   //     }
   //   }, [blogData]);
 
+  // Add title
+  // Add author
+  // Add body
+  // On submission send a new Date timestamp in the request just because.
+
   return (
     <main className={s.container}>
       {loading ? <p>loading...</p> : <Table data={blogData} />}
