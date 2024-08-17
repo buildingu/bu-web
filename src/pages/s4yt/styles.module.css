@@ -22,69 +22,6 @@ main {
   position: fixed;
 } */
 
-.listbar {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-}
-
-.listbar li {
-  display: inline-flex;
-  height: 20vh;
-  width: auto;
-}
-
-.barBulogo {
-  width: 25vh;
-  height: auto;
-  margin-right: 10vw;
-  margin-top: 1vh;
-  margin-left: 10vw;
-}
-
-.barSmallbaricon {
-  width: 20vh;
-  height: auto;
-}
-
-.barBigbaricon {
-  width: 15vh;
-  height: auto;
-}
-
-.talkBulletwrapper {
-  display: inline-block;
-  margin-left: 5vw;
-}
-
-.mbar {
-  display: none;
-}
-
-.talkBullets {
-  height: 7.5vh;
-  width: auto;
-  margin: 2vh;
-}
-
-.talkTalk {
-  height: 20vh;
-  width: auto;
-}
-
-.talkBg {
-  border-bottom: 75vh solid #008dd2;
-  border-left: 0 solid transparent;
-  border-right: 50vh solid transparent;
-  height: 0;
-  width: 50vw;
-  position: absolute;
-  z-index: 2;
-}
-
 .s4ytsection {
   display: flex;
   flex-direction: row;
