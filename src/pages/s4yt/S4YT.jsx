@@ -27,7 +27,6 @@ const S4YT = () => {
   //   });
   // }, [visibleSection])
   
-
   const handleSectionClick = (sectionNumber) => setVisibleSection(sectionNumber);
 
   const buttonImages = [
@@ -62,6 +61,8 @@ const S4YT = () => {
   return (
     <Layout>
       <main className={s.s4ytsection}>
+        {/* <div> */}
+        {/* TODO: Not section */}
         <section className={s.s4ytLeftsec}>
           <img
             src="mockups/assets/dollarpage/logo_dollars.png"
@@ -71,7 +72,7 @@ const S4YT = () => {
           <img
             src="mockups/assets/dollarpage/click-me.png"
             alt="Click Me"
-            className={s.s4ytClick}sizes=''
+            className={s.s4ytClick}
           />
         </section>
         {!visibleSection ? null : <button className = {s.backButton} onClick={handleBackClick}> Back </button>}
@@ -228,6 +229,7 @@ const S4YT = () => {
           )}
         
         </div>
+        {/* </div> */}
         {/* </div> */}
       </main>
     </Layout>

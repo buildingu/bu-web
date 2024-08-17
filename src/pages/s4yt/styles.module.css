@@ -34,6 +34,7 @@ main {
   overflow: hidden; /* Hide scrollbars */
 }
 
+/* TODO: Content and images (left and right containers) should be in a another container together with space-between. */
 .contentContainer{
   display: flex;
   flex-direction: row;
@@ -162,6 +163,7 @@ main {
   margin-bottom: 2vh;
 }
 
+/* TODO: Make bigger; (use design tool like figma) and buttons in the content would be bigger to as a result. */
 .s4ytPaper {
   height: auto;
   width: auto;
