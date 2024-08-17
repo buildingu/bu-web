@@ -9,7 +9,7 @@ main {
 }
 
 /*TODO: Create mobile navbar*/
-.bar {
+/* .bar {
   display: flex;
   flex-direction: row;
   background-color: orange;
@@ -20,7 +20,7 @@ main {
   left: 0;
   z-index: 4;
   position: fixed;
-}
+} */
 
 .listbar {
   list-style: none;
@@ -97,16 +97,24 @@ main {
   overflow: hidden; /* Hide scrollbars */
 }
 
+.contentContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: first baseline;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+}
+
 .pressed,
 .s4ytWhat,
 .s4ytAmi,
 .s4ytWhen,
 .s4ytHowdo,
 .s4ytWhatare {
-  width: 10vw;
-  height: 3.3vw;
-  margin-left: 5vw;
-  margin-bottom: 2vh;
+  width: 150px;
+  height: 50px;
+  margin-bottom: 10px;
 }
 
 .s4ytWhat:hover {
@@ -136,40 +144,50 @@ main {
 } */
 .textInfo {
   position: relative;
-  z-index: 2; 
-  /* display: flex; */
-  /* flex-direction: column;
-  justify-content: center; */
+  z-index: 2;
+  display: flex;
   color: #008dd2;
   /* width: 100%; */
   /* height: 100%; */
-  margin-right: 5vw; 
+  width: 100%;
+  max-width: 500px;
+  margin-left: 0;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .textInfo hgroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  height: 3px;
-  opacity: 0.7
+  max-width: 500px;
+  height: auto;
+  margin-top: 50px;
 }
 .textInfo .textHeader {
   font-family: var(--heading-font2);
   /* Stop vw */
-  font-size: 3vw;
+  font-size: 30px;
   color: #008dd2;
-  margin-top: 20%;
-  margin-left: 20%;
   z-index: 3;
   position: relative;
+  text-align: center;
 }
 .textInfo hgroup div.line {
-  width: 100%;
+  position: relative;
+  width: 80%;
+  max-width: 500px;
   height: 3px;
-  opacity: 0.7
+  z-index: 3;
+  background-color: #008dd2;
 }
 .textInfo .infoImg {
   position: absolute;
   top: 0;
   left: 0;
-  width: 80vw;
+  width: 100%;
+  max-width: 800px;
+  min-width: 600px;
   height: auto;
   z-index: 1;
   margin: 0 auto;
@@ -180,10 +198,10 @@ main {
   z-index: 3;
 }
 .textInfo ul .listinfo {
-  font-size: 1.5vw;
+  font-size: 15px;
   margin: 0.5em 0;
   z-index: 3;
-  margin-left: 30%;
+  margin-left: 10%;
   position: relative;
 }
 
@@ -194,9 +212,9 @@ main {
 .s4ytLeftsec {
   display: flex;
   flex-direction: row;
-  margin-left: 5vw;
-  margin-top: 2vh;
-  width: 293px;
+  margin-left: 10px;
+  width: 100%;
+  max-width: 300px;
   height: auto;
 }
 
@@ -208,12 +226,14 @@ main {
 }
 
 .s4ytPaper {
-  width: 20vw;
-  height: 30vw;
+  height: auto;
+  width: auto;
+  max-width: 300px;
+  max-height: 400px;
   margin-top: 5vh;
 }
 
-.s4ytInfobuttons1 {
+.s4ytInfobuttonsDesktop {
   display: flex;
   flex-direction: column;
   margin-left: 5vw;
@@ -222,7 +242,7 @@ main {
   z-index: 3;
 }
 
-.s4ytInfobuttons {
+.s4ytInfobuttonsMobile {
   display: none;
 }
 
@@ -276,10 +296,10 @@ main {
   .s4ytLeftsec {
     display: none;
   }
-  .s4ytInfobuttons1 {
+  .s4ytInfobuttonsDesktop {
     display: none !important;
   }
-  .s4ytInfobuttons {
+  .s4ytInfobuttonsMobile {
     display: flex;
     flex-direction: column;
     margin-left: 5vw;
@@ -296,9 +316,9 @@ main {
   }
   .textHeader {
     font-size: 20px;
-    margin-top: 20%;
     margin-left: 0;
     margin-left: 10%;
+    text-align: center;
   }
   .listinfo {
     font-size: 12px;

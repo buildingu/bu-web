@@ -4,7 +4,7 @@ import { Layout } from '../../components/layout';
 import { Link } from 'react-router-dom';
 
 const S4YT = () => {
-  const [visibleSection, setVisibleSection] = useState(0);
+  const [visibleSection, setVisibleSection] = useState(1);
 
   // useEffect(() => {
   //   document.documentElement.style.overflow = "hidden"
@@ -62,7 +62,7 @@ const S4YT = () => {
   return (
     <Layout>
       <main className={s.s4ytsection}>
-        <section className={s.s4ytLeftsec} style={{ marginRight: 0 }}>
+        <section className={s.s4ytLeftsec}>
           <img
             src="mockups/assets/dollarpage/logo_dollars.png"
             alt="S4YT Logo"
@@ -77,8 +77,9 @@ const S4YT = () => {
         {!visibleSection ? null : <button className = {s.backButton} onClick={handleBackClick}> Back </button>}
         
         {/* <div className="contentContainer"> */}
+        <div className={s.contentContainer}>
           {/* TODO: Get rid and just change the buttons with media query(ies). */}
-          <div className={s.s4ytInfobuttons1}>
+          <div className={s.s4ytInfobuttonsDesktop}>
             <img
               src={getImageSource(0)}
               onClick={() => handleSectionClick(1)}
@@ -110,9 +111,8 @@ const S4YT = () => {
               className={visibleSection === 5 ? s.pressed : s.s4ytWhatare}
             />
           </div>
-
           {(visibleSection == null) ? (
-            <div className={s.s4ytInfobuttons}>
+            <div className={s.s4ytInfobuttonsMobile}>
               <img
                 src={getImageSource(0)}
                 onClick={() => handleSectionClick(1)}
@@ -147,14 +147,13 @@ const S4YT = () => {
           ) : null}
 
           {/* TODO: Inline styles are confusing when trying to figure out css if you come back or there is a new dev or something. */}
-          {visibleSection === 0 && (
+          {visibleSection === 1 && (
             <div className={`${s.textInfo} ${s.txt1}`}>
               <hgroup>
-                <h3 className={s.textHeader} style={{ textAlign: "center", color: "#008dd2" }}>WHAT IS S4YT ABOUT?</h3>
+                <h3 className={s.textHeader}>WHAT IS S4YT ABOUT?</h3>
                 {/* TODO: This is not showing? */}
                 <div className={s.line} />
               </hgroup>
-              <br />
               <ul>
                 <li className={s.listinfo}>Explore fun questions posed by businesses to win $$$</li>
                 <li className={s.listinfo}>Earn Dubl-U-nes to win prizes</li>
@@ -164,11 +163,13 @@ const S4YT = () => {
               <img className={s.infoImg} src={"mockups/assets/dollarpage/background_info.png"} alt="Background Info" />
             </div>
           )}
-          {visibleSection === 1 && (
+          {visibleSection === 2 && (
             <div className={`${s.textInfo} ${s.txt2}`}>
-              <h3 className = {s.textHeader} style={{ textAlign: 'center',color: "#008dd2" }}>AM I ELIGIBLE?</h3>
-              <hr style={{ margin: 0, height: "3px", opacity: 0.7 }} />
-              <br />
+              <hgroup>
+                <h3 className={s.textHeader}>AM I ELIGIBLE?</h3>
+                {/* TODO: This is not showing? */}
+                <div className={s.line} />
+              </hgroup>
               <ul>
                 <li className={s.listinfo}>Yes, if you are in grades 9-12 at the time of the contest!</li>
                 <li className={s.listinfo}>
@@ -179,22 +180,26 @@ const S4YT = () => {
               <img className={s.infoImg} src={"mockups/assets/dollarpage/background_info.png"} alt="Background Info" />
             </div>
           )}
-          {visibleSection === 2 && (
+          {visibleSection === 3 && (
             <div className={`${s.textInfo} ${s.txt3}`}>
-              <h3 className = {s.textHeader} style={{ textAlign: 'center',color: '#008dd2' }}>WHEN CAN I ATTEND?</h3>
-              <hr style={{ margin: 0, height: '3px', opacity: 0.7 }} />
-              <br />
+              <hgroup>
+                <h3 className={s.textHeader}>WHEN CAN I ATTEND?</h3>
+                {/* TODO: This is not showing? */}
+                <div className={s.line} />
+              </hgroup>
               <ul>
                 <li className={s.listinfo}>The event takes place in February 2025 but registration starts in September 2024!</li>
               </ul>
               <img className={s.infoImg} src={"mockups/assets/dollarpage/background_info.png"} alt="Background Info" />
             </div>
           )}
-          {visibleSection === 3 && (
+          {visibleSection === 4 && (
             <div className={`${s.textInfo} ${s.txt4}`}>
-              <h3 className = {s.textHeader} style={{ textAlign: 'center',color: '#008dd2' }}>HOW DO I WIN $$?</h3>
-              <hr style={{ margin: 0, height: '3px', opacity: 0.7 }} />
-              <br />
+              <hgroup>
+                <h3 className={s.textHeader}>HOW DO I WIN $$?</h3>
+                {/* TODO: This is not showing? */}
+                <div className={s.line} />
+              </hgroup>
               <ul>
                 <li className={s.listinfo}>{`Students may submit 1 (and only 1) answer to each business question, but may win multiple $$$ awards`}</li>
                 <li className={s.listinfo}>All student identity info and submission remain anonymous until prizes are awarded</li>
@@ -204,11 +209,13 @@ const S4YT = () => {
               <img className={s.infoImg} src={"mockups/assets/dollarpage/background_info.png"} alt="Background Info" />
             </div>
           )}
-          {visibleSection === 4 && (
+          {visibleSection === 5 && (
             <div className={`${s.textInfo} ${s.txt5}`}>
-              <h3 className = {s.textHeader} style={{ textAlign: 'center',color: '#008dd2' }}>WHAT ARE DULB-U-NES?</h3>
-              <hr style={{ margin: 0, height: '3px', opacity: 0.7 }} />
-              <br />
+              <hgroup>
+                <h3 className={s.textHeader}>WHAT ARE DUBL-U-NES?</h3>
+                {/* TODO: This is not showing? */}
+                <div className={s.line} />
+              </hgroup>
               <ul>
                 <li className={s.listinfo}>Dubl-U-nes can be used to win prizes donated by our Raffle Partners</li>
                 <li className={s.listinfo}>All registered students receive 3 free Dubl-U-nes</li>
@@ -219,6 +226,8 @@ const S4YT = () => {
               <img className={s.infoImg} src={"mockups/assets/dollarpage/background_info.png"} alt="Background Info" />
             </div>
           )}
+        
+        </div>
         {/* </div> */}
       </main>
     </Layout>
