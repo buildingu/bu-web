@@ -329,8 +329,7 @@ You'll always be working in your `page/<page name>` branch. When you have comple
 ### Pulling New Changes From Main (Mostly likely if I something)
 First move to the `main branch`, pull the changes. Then go back to your page branch and do `git rebase main`, sometimes you might have to do `git rebase origin/main`(mostly likely when it's your first time doing it) and then you should have all the changes in your page branch.
 
-## Helpful Recourses
-
+## Helpful Resources
 https://www.freecodecamp.org/news/intro-to-react-components/ - React vs Static HTML
 
 https://www.semrush.com/blog/semantic-html5-guide/ - How to be Semantic With Your HTML(JSX)
