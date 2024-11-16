@@ -61,8 +61,6 @@ const S4YT = () => {
   return (
     <Layout>
       <main className={s.s4ytsection}>
-        {/* <div> */}
-        {/* TODO: Not section */}
         <div className={s.leftRightContainer}>
           <div className={s.s4ytLeftsec}>
             <img
@@ -77,10 +75,8 @@ const S4YT = () => {
             />
           </div>
           {!visibleSection ? null : <button className = {s.backButton} onClick={handleBackClick}> Back </button>}
-          
-          {/* <div className="contentContainer"> */}
+
           <div className={s.contentContainer}>
-            {/* TODO: Get rid and just change the buttons with media query(ies). */}
             <div className={s.s4ytInfobuttonsDesktop}>
               <img
                 src={getImageSource(0)}
@@ -152,7 +148,6 @@ const S4YT = () => {
               <div className={`${s.textInfo} ${s.txt1}`}>
                 <hgroup>
                   <h3 className={s.textHeader}>WHAT IS S4YT ABOUT?</h3>
-                  {/* TODO: This is not showing? */}
                   <div className={s.line} />
                 </hgroup>
                 <ul>
