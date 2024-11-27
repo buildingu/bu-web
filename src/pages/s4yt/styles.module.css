@@ -1,8 +1,22 @@
 main {
+  /* TODO: Make more padding left and right and change it with media queries. And padding on the bottom too maybe becasue the img should not be touching the footer. */
   height: 100%;
   width: 100%;
   margin: 0;
-  padding-top: 17vh;
+  padding-top: 17vh; // You can make this fix because you'll be changing the inline anyways.
+}
+
+/* The varibles are not a thing btw */
+/* @media (--medium-viewport) {
+  main {
+    padding-inline: 2rem;
+  }
+}
+
+@media (--small-viewport) {
+  main {
+    padding-inline: 1rem;
+  }
 }
 
 /*TODO: Create mobile navbar*/
@@ -41,11 +55,16 @@ main {
   overflow: hidden; /* Hide scrollbars */
 } 
 
+/* TODO: Always 100% to put content inside in the middle. */
 .contentContainer{
   display: flex;
+  justify-content: center;
+  align-items: center;
+  /* TODO: flex-direction row is the default you don't need it */
   flex-direction: row;
+  width: 100%;
   height: 100%;
-  width: auto;
+  /* TODO: do min width 0 you have to let it go smaller. */
   min-width: 900px;
   margin-right: 50px;
   margin-left: 100px;
@@ -150,9 +169,14 @@ main {
 
 .s4ytLeftsec {
   display: flex;
+  /* TODO: row is not need again. */
   flex-direction: row;
+  /* TODO: Get rid of this and make the main padding left and right more. */
   margin-left: 10px;
   width: 100%;
+  /* TODO: You have a max width on the image and this and that's why you do margin right 500px in that media query.
+     you can just set the max width or whatever you want here and then on the img do width 100%.
+  */
   max-width: 300px;
   height: auto;
 }
@@ -208,6 +232,7 @@ main {
     height: 100%;
   }
   .s4ytLeftsec{
+    /* TODO: Don't ever do this we are trying to make it responsive. */
     margin-right: 500px;
   }
   .s4ytClick{
@@ -221,6 +246,7 @@ main {
     max-height: 1200px;
   }
   .contentContainer{
+    /* TODO: Should always be 100% because we want the content in this to be in the middle. */
     width: 100%;
   }
   .textInfo {
