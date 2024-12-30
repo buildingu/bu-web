@@ -3,7 +3,9 @@ main {
   height: 100%;
   width: 100%;
   margin: 0;
-  padding-top: 17vh; // You can make this fix because you'll be changing the inline anyways.
+  padding-top: 110px;
+  padding-bottom: 30px;
+  padding-left: 60px;
 }
 
 /* The varibles are not a thing btw */
@@ -33,10 +35,10 @@ main {
   position: fixed;
 } */
 
-.leftRightContainer{
+.leftRightContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 100%;
   height: 100%;
 }
@@ -52,22 +54,16 @@ main {
   background-position: center;
   background-size: cover;
   justify-content: flex-start;
-  overflow: hidden; /* Hide scrollbars */
+  overflow: hidden;
 } 
 
-/* TODO: Always 100% to put content inside in the middle. */
 .contentContainer{
   display: flex;
   justify-content: center;
   align-items: center;
-  /* TODO: flex-direction row is the default you don't need it */
-  flex-direction: row;
   width: 100%;
   height: 100%;
-  /* TODO: do min width 0 you have to let it go smaller. */
-  min-width: 900px;
-  margin-right: 50px;
-  margin-left: 100px;
+  margin: auto; /* Center within its whitespace */
 }
 
 .pressed,
@@ -76,8 +72,8 @@ main {
 .s4ytWhen,
 .s4ytHowdo,
 .s4ytWhatare {
-  width: 150px;
-  height: 50px;
+  width: 100%;
+  height: auto;
   margin-bottom: 10px;
 }
 
@@ -108,23 +104,25 @@ main {
   display: flex;
   color: #008dd2;
   width: 100%;
-  max-width: 500px;
+  max-width: 1200px;
   margin-left: 0;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center; /* Center contents on the y-axis */
+  justify-content: center; /* Center contents on the y-axis */
+  height: 100%; /* Set a fixed height to prevent movement */
 }
 .textInfo hgroup {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 500px;
+  max-width: 1200px;
   height: auto;
   margin-top: 50px;
 }
 .textInfo .textHeader {
   font-family: var(--heading-font2);
-  font-size: 30px;
+  font-size: 50px;
   color: #008dd2;
   z-index: 3;
   position: relative;
@@ -133,18 +131,19 @@ main {
 .textInfo hgroup div.line {
   position: relative;
   width: 80%;
-  max-width: 500px;
+  max-width: 1200px;
   height: 3px;
   z-index: 3;
   background-color: #008dd2;
 }
 .textInfo .infoImg {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust for centering */
   width: 100%;
-  max-width: 800px;
-  min-width: 600px;
+  max-width: 1200px;
+  min-width: 800px;
   height: auto;
   z-index: 1;
   margin: 0 auto;
@@ -156,7 +155,7 @@ main {
   width: 100%;
 }
 .textInfo ul .listinfo {
-  font-size: 15px;
+  font-size: 30px;
   margin: 0.5em 0;
   z-index: 3;
   margin-left: 10%;
@@ -169,32 +168,23 @@ main {
 
 .s4ytLeftsec {
   display: flex;
-  /* TODO: row is not need again. */
-  flex-direction: row;
-  /* TODO: Get rid of this and make the main padding left and right more. */
-  margin-left: 10px;
-  width: 100%;
-  /* TODO: You have a max width on the image and this and that's why you do margin right 500px in that media query.
-     you can just set the max width or whatever you want here and then on the img do width 100%.
-  */
-  max-width: 300px;
   height: auto;
+  align-items: center; /* Center contents on the y-axis */
 }
 
 .s4ytClick {
-  width: auto;
-  height: 100px;
-  margin-left: -4vw;
-  margin-bottom: 2vh;
+  width: 150px;
+  height: 150px;
+  margin-left: -3em;
 }
 
-/* TODO: Make bigger; (use design tool like figma) and buttons in the content would be bigger to as a result. */
 .s4ytPaper {
   height: auto;
   width: auto;
-  max-width: 400px;
-  max-height: 550px;
+  max-width: 500px;
   margin-top: 20px;
+  max-height: 70vh; /* Ensure it does not exceed 80% of the viewport height */
+  overflow: auto; /* Add scroll if content overflows */
 }
 
 .s4ytInfobuttonsDesktop {
@@ -223,117 +213,6 @@ main {
   display: none;
 }
 
-@media(min-width: 1600px){
-  .leftRightContainer{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 100%;
-    height: 100%;
-  }
-  .s4ytLeftsec{
-    /* TODO: Don't ever do this we are trying to make it responsive. */
-    margin-right: 500px;
-  }
-  .s4ytClick{
-    width: 150px;
-    height: 150px;
-    margin-left: 0;
-    margin-bottom: 2vh;
-  }
-  .s4ytPaper{
-    max-width: 800px;
-    max-height: 1200px;
-  }
-  .contentContainer{
-    /* TODO: Should always be 100% because we want the content in this to be in the middle. */
-    width: 100%;
-  }
-  .textInfo {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    color: #008dd2;
-    width: 100%;
-    max-width: 1200px;
-    margin-left: 0;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .textInfo hgroup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    height: auto;
-    margin-top: 50px;
-  }
-  .textInfo .textHeader {
-    font-family: var(--heading-font2);
-    font-size: 50px;
-    color: #008dd2;
-    z-index: 3;
-    position: relative;
-    text-align: center;
-  }
-  .textInfo hgroup div.line {
-    position: relative;
-    width: 80%;
-    max-width: 1200px;
-    height: 3px;
-    z-index: 3;
-    background-color: #008dd2;
-  }
-  .textInfo .infoImg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    max-width: 1200px;
-    min-width: 800px;
-    height: auto;
-    z-index: 1;
-    margin: 0 auto;
-  }
-  .textInfo ul {
-    padding: 0;
-    margin: 0;
-    z-index: 3;
-    width: 100%;
-  }
-  .textInfo ul .listinfo {
-    font-size: 30px;
-    margin: 0.5em 0;
-    z-index: 3;
-    margin-left: 10%;
-    position: relative;
-  }
-  .pressed,
-  .s4ytWhat,
-  .s4ytAmi,
-  .s4ytWhen,
-  .s4ytHowdo,
-  .s4ytWhatare {
-    width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-  }
-}
-
-@media(max-width: 1200px){
-  .s4ytPaper{
-    max-width: 300px;
-    max-height: 400px;
-  }
-  .contentContainer{
-    margin-left: 0;
-  }
-  .s4ytInfobuttonsDesktop{
-    width: 200px;
-  }
-}
-
 @media(max-width: 800px) {
   .s4ytLeftsec {
     display: none;
@@ -344,13 +223,23 @@ main {
   .s4ytInfobuttonsMobile {
     display: flex;
     flex-direction: column;
-    margin-left: 5vw;
-    margin-top: 8rem; 
-    width: 293px;
-    justify-self: first baseline;
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+    margin-top: 4rem; /* Reduced from 8rem */
+    width: 60%; /* Reduced from 70% */
+    max-width: 250px; /* Reduced from 293px */
     position: absolute;
     top: 15vh;
-    left: 30%;
+    left: 0;
+    right: 0;
+    height: 60vh; /* Fixed height */
+    max-height: 450px;
+    overflow-y: auto; /* Enable scrolling if needed */
+  }
+  .s4ytInfobuttonsMobile img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
   }
   .textInfo {
     display: flex;
@@ -380,10 +269,69 @@ main {
     color: white;
     border: none;
     border-radius: 20%;
-    height: 50px;
-    width: 70px;
+    height: 70px; /* Increased height */
+    width: 100px; /* Increased width */
+    font-size: 18px; /* Added font size */
     top: 70%;
     left: 70%;
     z-index: 10;
+  }
+  .pressed,
+  .s4ytWhat,
+  .s4ytAmi,
+  .s4ytWhen,
+  .s4ytHowdo,
+  .s4ytWhatare {
+    width: 100%;
+    height: 35px; /* Fixed height for buttons */
+    margin-bottom: 8px;
+    min-height: 0; /* Prevent growth */
+  }
+}
+
+@media (max-width: 1600px) {
+  .s4ytPaper{
+    max-width: 300px;
+  }
+  .s4ytClick{
+    width: 100px;
+    height: 100px;
+  }
+  .s4ytInfobuttonsDesktop {
+    width: 250px;
+  }
+  .textInfo .textHeader {
+    font-size: 45px;
+  }
+  .textInfo ul .listinfo {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .s4ytPaper{
+    max-width: 200px;
+  }
+  .s4ytClick{
+    width: 75px;
+    height: 75px;
+  }
+  .s4ytInfobuttonsDesktop {
+    width: 200px;
+  }
+  .textInfo .textHeader {
+    font-size: 40px;
+  }
+  .textInfo ul .listinfo {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .textInfo .textHeader {
+    font-size: 35px;
+  }
+  .textInfo ul .listinfo {
+    font-size: 10px;
   }
 }
