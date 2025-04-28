@@ -2,6 +2,7 @@ import { Navigate, Outlet } from "react-router-dom";
 
 import HistoryProvider from "./utils/History";
 
+import { SigninSignup, Signin, Signup } from "./pages/signinSignup";
 import { Home } from "./pages/home";
 import { BlogAndBeyond } from "./pages/blogAndBeyond";
 import { Contribute } from "./pages/contribute";
@@ -29,6 +30,19 @@ export const routes = [
         index: true,
         path: "home",
         element: <Home />,
+      },
+      {
+        path: "signin-signup",
+        element: <SigninSignup />,
+      },
+      {
+        // TODO: We should make a redirect if they go to this page on desktop when we figure what the exact breakpoint would be for this page (All pages should break around the same px (e.g. 500px, but might be too small for some pages)).
+        path: "signin", // Mobile
+        element: <Signin />,
+      },
+      {
+        path: "signup", // Mobile
+        element: <Signup />,
       },
       {
         path: "blog",
