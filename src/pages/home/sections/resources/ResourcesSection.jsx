@@ -1,4 +1,3 @@
-import React from "react";
 import s from "./section.module.css";
 import lizardImage from "../../../../assets/images/resourcespage/lizard_glass.png";
 import squareImage from "../../../../assets/images/resourcespage/orng_square.png";

@@ -1,4 +1,3 @@
-import React from "react";
 import s from "./section.module.css";
 
 import logoDollars from "../../../../assets/images/dollarpage/logo_dollars.png";

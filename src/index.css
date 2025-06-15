@@ -86,6 +86,8 @@ html {
   --heading-font1: "Coolvetica", sans-serif;
   --heading-font2: "Night Zone", serif;
 
+  /* --font-s-sm: clamp(...); */
+
   color-scheme: light;
   /* background-color: var(--c-green); */
 }
