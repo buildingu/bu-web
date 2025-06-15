@@ -1,0 +1,629 @@
+.conSection {
+  display: flex;
+  flex-direction: row;
+  background-color: #008dd2;
+  width: 100%;
+  min-height: 69vh; 
+  background-image: url(../../../../assets/images/homepage/bg_mobile.png);
+  justify-content: space-between;
+  position: relative;
+  overflow: visible; 
+}
+
+.activeButton {
+  background-color: #ff6c04 !important;
+  color: white !important;
+  border-color: #ff6c04 !important;
+}
+
+@media only screen and (min-width: 769px) {
+  .conDesktop {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .conMobile {
+    display: none;
+  }
+
+  .conPhoto {
+    margin-top: 10vh;
+    margin-left: 5vw;
+    z-index: 3;
+  }
+
+  .conPictures {
+    width: 25vw;
+    height: auto;
+    display: block;
+    margin-bottom: 2vh;
+  }
+
+  .conButton {
+    width: 105%;
+    height: 8vh;
+    border-radius: 2vh;
+    margin-bottom: 1vh;
+    background-color: transparent;
+    border: 3px solid #fafafa;
+    color: #fafafa;
+    border-width: 0.5vh;
+    font-family: 'coolvetica', Arial, serif;
+    font-size: 3vh;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .conButton:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .conChoose {
+    display: flex;
+    flex-direction: row;
+    margin-right: 5vw;
+    z-index: 3;
+    transform: translate(20%);
+  }
+
+  .conButtons {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0vw;
+    margin-top: 7.5vh;
+  }
+
+  .conParagraph {
+    margin-left: 8vw;
+    border-radius: 1vh;
+    background-color: #68b436;
+    width: 40vw;
+    height: 60vh;
+    margin-top: 7.5vh;
+    margin-left: 2vw;
+    overflow-y: auto;
+  }
+
+  @media screen and (max-width: 1200px) {
+    .conParagraph {
+      min-width: 32rem;
+      width: auto;
+    }
+  }
+
+  .paragraph1 {
+    width: 30vw;
+    margin-left: 5vw;
+    margin-top: 5vh;
+    padding-bottom: 3vh;
+  }
+
+  .conInfoTitle {
+    font-family: 'coolvetica', Arial, serif;
+    color: #fafafa;
+    font-size: 2.5vh;
+    margin-bottom: 2vh;
+    font-weight: bold;
+  }
+
+  .conInfoText {
+    color: #fafafa;
+    font-size: 2vh;
+    line-height: 1.5;
+    margin-bottom: 1vh;
+  }
+
+  .paragraph2 {
+    width: 30vw;
+    margin-left: 5vw;
+    margin-top: 5vh;
+    padding-bottom: 3vh;
+  }
+
+  .conCTitle {
+    color: #fafafa;
+    font-size: 2.5vh;
+    text-align: center;
+    margin-bottom: 3vh;
+    font-weight: bold;
+  }
+
+  .conCForm {
+    display: flex;
+    flex-direction: row;
+    height: 20vh;
+    margin-bottom: 2vh;
+  }
+
+  .conCFT {
+    font-size: 2vh;
+    margin: 0;
+    padding-top: 0.2vh;
+    padding-bottom: 0.2vh;
+    margin-bottom: 2vh;
+    color: #fafafa;
+  }
+
+  .conCFormInputs {
+    margin-left: 3vw;
+    height: 10vh;
+  }
+
+  .conCFF {
+    width: 20vw;
+    background-color: #68b436;
+    border-radius: 0.5vh;
+    border-color: #fafafa;
+    height: 4vh;
+    margin-top: 0;
+    margin-bottom: 2vh;
+    border: 2px solid #fafafa;
+    padding: 0 1vh;
+    color: #fafafa;
+  }
+
+  .conCFF::placeholder {
+    color: #ccc;
+  }
+
+  .conCSupport {
+    margin-bottom: 3vh;
+  }
+
+  .conCSupport input[type='radio'] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+  }
+
+  .conCSupport label {
+    display: inline-block;
+    background-color: transparent;
+    padding: 10px 20px;
+    font-family: Arial, sans-serif;
+    font-size: 2.5vh;
+    border: 2px solid #fafafa;
+    border-radius: 1vh;
+    cursor: pointer;
+    margin-right: 1vh;
+    margin-bottom: 1vh;
+    transition: all 0.3s ease;
+  }
+
+  .conCSupport input[type='radio']:checked + label {
+    background-color: #ff6c04;
+    border-color: #ff6c04;
+  }
+
+  .conCSU,
+  .conCSD {
+    width: 10vw;
+    margin-left: 2vw;
+  }
+
+  .conCSUD {
+    color: #fafafa;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .conCNext {
+    background-color: #ea0f81;
+    color: #fafafa;
+    margin-top: 2vh;
+    border: 0px;
+    border-radius: 1vh;
+    width: 8vw;
+    height: 5vh;
+    font-family: 'coolvetica', Arial, serif;
+    font-size: 2.5vh;
+    cursor: pointer;
+  }
+
+  .conBg {
+    border-bottom: 75vh solid #ea0f81;
+    border-left: 0px solid transparent;
+    border-right: 50vh solid transparent;
+    height: 0;
+    width: 50vw;
+    position: absolute;
+    z-index: 2;
+  }
+
+  .paragraph3 {
+    width: auto;
+    margin-left: 2.5vw;
+    margin-top: 3vh;
+    padding-bottom: 3vh;
+    padding: 2%;
+  }
+
+  .conMUp {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 2vh;
+    margin-bottom: 3vh;
+    column-gap: 5%;
+  }
+
+  .conMULogo {
+    width: 15vw;
+    height: auto;
+  }
+
+  .conMUGiftSec {
+    width: 20vw;
+    height: 7vw;
+    background-color: #72c13d;
+    border-radius: 2vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1vw;
+  }
+
+  .conMUGift {
+    width: 4vw;
+    height: 4vw;
+    margin-right: 1vw;
+  }
+
+  .conMUText {
+    color: #fafafa;
+    font-family: 'coolvetica', Arial, serif;
+    font-size: 1.3vw;
+    margin: 0;
+  }
+
+  .conMBottom {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2vh;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .conMBAllWord {
+    width: 12vw;
+  }
+
+  .conMBLeftTitle {
+    text-align: center;
+    margin-bottom: 2vh;
+  }
+
+  .conMBWord {
+    color: #fff;
+    margin: 0.5vh 0;
+  }
+
+  .conMBBigWord {
+    font-size: 1.5vw;
+    font-weight: bold;
+  }
+
+  .conMBSmallWord {
+    font-size: 1.8vh;
+    line-height: 1.4;
+  }
+
+  .conMBPhoto {
+    width: 8vw;
+    height: auto;
+    margin: 0 1vw;
+  }
+
+  .conMBRightSec {
+    width: 12vw;
+  }
+
+  .conMBRightTitle {
+    text-align: center;
+    margin-bottom: 2vh;
+  }
+
+  .conShopButton {
+    background-color: #ea0f81;
+    color: #fafafa;
+    font-family: 'coolvetica', Arial, serif;
+    border-radius: 1vh;
+    border: 0;
+    width: 8vw;
+    height: 5vh;
+    font-size: 2.5vh;
+    cursor: pointer;
+    float: right;
+    margin-top: 2vh;
+  }
+}
+
+@media only screen and (max-width: 769px) {
+  .conDesktop {
+    display: none;
+  }
+
+  .conSection {
+    height: auto !important; 
+    min-height: auto; 
+    flex-direction: column;
+  }
+
+  .conMobile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh; 
+    position: static;
+  }
+
+  .conPhoneBar {
+    width: 100%;
+    height: auto;
+    min-height: 11vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #ef7f1a;
+    position: static;
+  }
+
+  .conBarLogo {
+    height: auto;
+    width: 90%;
+  }
+
+  .conFirstPage {
+    background-color: #008dd2;
+    background-image: url(../../../../assets/images/homepage/bg_mobile.png);
+    min-height: calc(100vh - 11vh); 
+    display: flex;
+    flex-direction: column;
+    padding: 2vh;
+    position: static; 
+    flex-grow: 1;
+  }
+
+  .conButtonsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3vh;
+    flex-shrink: 0; 
+  }
+
+  .conMButtons {
+    width: 60vw;
+    height: 8vh;
+    border-radius: 2vh;
+    margin-bottom: 2vh;
+    background-color: transparent;
+    border: 3px solid #fafafa;
+    color: #fafafa;
+    font-family: 'coolvetica', Arial, serif;
+    font-size: 4vh;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .conMobileContent {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+    width: 100%;
+  }
+
+  .conInfoPage,
+  .conConPage,
+  .conMerchPage {
+    background-color: #68b436;
+    border-radius: 3vh;
+    padding: 4vh 3vh;
+    width: 100%;
+    margin-bottom: 3vh; 
+    position: static; 
+    box-sizing: border-box; 
+  }
+
+  .conMobileTitle {
+    color: #fff;
+    font-size: 4vh;
+    font-family: 'coolvetica', Arial, serif;
+    text-align: center;
+    margin-bottom: 3vh;
+    font-weight: bold;
+  }
+
+  .mobileList {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 3vh;
+  }
+
+  .mobileList li {
+    margin-bottom: 2vh;
+  }
+
+  .conMobileText {
+    color: #fafafa;
+    font-size: 3vh;
+    line-height: 1.5;
+    margin: 1vh 0;
+  }
+
+  /* Mobile Form Styles */
+  .conMobileForm {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3vh;
+  }
+
+  .conMobileInput {
+    width: 100%;
+    height: 6vh;
+    border-radius: 1vh;
+    border: 2px solid #fafafa;
+    background-color: #68b436;
+    color: #fafafa;
+    font-size: 3vh;
+    padding: 0 2vh;
+    margin-bottom: 2vh;
+    box-sizing: border-box;
+  }
+
+  .conMobileInput::placeholder {
+    color: #ccc;
+  }
+
+  .conMobileSupport {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2vh;
+    margin-bottom: 3vh;
+  }
+
+  .conMobileSupportBtn {
+    background-color: transparent;
+    border: 2px solid #fafafa;
+    color: #fafafa;
+    border-radius: 1vh;
+    padding: 2vh;
+    font-size: 3vh;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .selectedAmount {
+    background-color: #ff6c04 !important;
+    border-color: #ff6c04 !important;
+  }
+
+  .conMobileNext {
+    background-color: #ea0f81;
+    color: #fafafa;
+    border: 0;
+    border-radius: 1vh;
+    height: 6vh;
+    font-size: 3vh;
+    font-family: 'coolvetica', Arial, serif;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  /* Mobile Merch Styles */
+  .conMobileUshop {
+    margin-bottom: 3vh;
+  }
+
+  .ushopTitle {
+    color: white;
+    font-size: 5vh;
+    text-align: center;
+    margin-bottom: 3vh;
+    font-weight: bold;
+    font-family: 'coolvetica', Arial, serif;
+  }
+
+  .conMobileGiftSec {
+    background-color: #72c13d;
+    border-radius: 2vh;
+    padding: 3vh 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .giftIcon {
+    font-size: 6vh;
+    margin-right: 2vh;
+  }
+
+  .conMobileGiftText {
+    color: #fafafa;
+    font-size: 3vh;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    flex: 1;
+  }
+
+  .conMobileMerchContent {
+    margin-bottom: 3vh;
+  }
+
+  .conMobileMerchSection {
+    margin-bottom: 3vh;
+  }
+
+  .conMobileMerchTitle {
+    color: white;
+    font-size: 3.5vh;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2vh;
+    font-family: 'coolvetica', Arial, serif;
+  }
+
+  .conMobileMerchList {
+    margin-bottom: 3vh;
+  }
+
+  .conMobileShopButton {
+    background-color: #ea0f81;
+    color: #fafafa;
+    font-family: 'coolvetica', Arial, serif;
+    border-radius: 1vh;
+    border: 0;
+    width: 100%;
+    height: 6vh;
+    font-size: 3vh;
+    cursor: pointer;
+    margin-top: 2vh;
+  }
+
+  @media only screen and (max-width: 480px) {
+    .conMButtons {
+      width: 80vw;
+      font-size: 3.5vh;
+    }
+
+    .conMobileTitle {
+      font-size: 3.5vh;
+    }
+
+    .conMobileText {
+      font-size: 2.5vh;
+    }
+
+    .conMobileSupport {
+      grid-template-columns: repeat(1, 1fr);
+      margin-bottom: 3vh;
+    }
+
+    .conMobileSupportBtn {
+      font-size: 2.5vh;
+      padding: 1.5vh;
+    }
+
+    .ushopTitle {
+      font-size: 4vh;
+    }
+
+    .conMobileMerchTitle {
+      font-size: 3vh;
+    }
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  position: relative; 
+  z-index: auto; 
+}
