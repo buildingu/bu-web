@@ -1,0 +1,38 @@
+/* .navbar {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--c-orange);
+  height: 90px;
+  padding: 0 4px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar .logoImage {
+  height: 70px;
+  margin: 9px 8px;
+  pointer-events: none;
+}
+
+.navbar .signInUpContainer {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.navbar .toggleButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  transition: transform 0.3s ease;
+}
+
+.navbar .signInUpImage {
+  height: 100px;
+  width: auto;
+} */

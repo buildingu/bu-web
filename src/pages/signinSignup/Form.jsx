@@ -3,6 +3,15 @@ import { useState } from "react";
 import { history } from "../../utils/History";
 import s from "./styles.module.css";
 
+// // You could just have one validate for both and loop through the form values
+// const validate = (felids) => {
+//   felids.foreach((felid) => {
+//     if (felid.name === "email") {
+//       // do whatever for the email.
+//     }
+//   })
+// };
+
 export const SignupForm = ({ onSwitch }) => {
   const [formData, setFormData] = useState({
     firstName: "",

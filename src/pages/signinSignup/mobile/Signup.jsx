@@ -2,6 +2,7 @@ import { SignupForm } from "../Form";
 import { Layout } from "../../../components/layout";
 import s from "../styles.module.css";
 
+// TODO: Is different page.
 const Signup = () => {
   return (
     <Layout>
