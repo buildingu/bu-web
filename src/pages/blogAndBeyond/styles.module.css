@@ -1,2 +1,103 @@
 .container {
+  background-color: #ff3399;
+  font-family: sans-serif;
+  min-height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: orange;
+  color: white;
+  padding: 1rem 2rem;
+  font-weight: bold;
+  height: 16vh;
+  margin: 0;
+  justify-content: space-between;
+}
+
+.navLinks {
+  display: flex;
+  align-items: stretch; 
+  gap: 0.5rem; 
+  height: 16vh;
+}
+
+.navLinks_2 {
+  display: flex;
+  align-items: stretch; 
+  gap: 0.5rem; 
+  height: 16vh;
+}
+
+
+.navLinks span {
+  margin: 0 1rem;
+  cursor: pointer;
+}
+
+.navLinks_2 span {
+  margin: 0 1rem;
+  cursor: pointer;
+}
+
+.logo {
+  width: 16vw;
+  height: 16vh;
+  object-fit: contain;
+  margin-right: 0px;
+}
+
+.beyond {
+  width: 50vh;
+  height: auto;
+  margin: 30px;
+  margin-bottom: 10px;
+}
+
+.resources {
+  width: 13vh;
+}
+
+.blog {
+  width: 13vh;
+}
+
+.let {
+  width: 13vh;
+}
+
+.dollars {
+  width: 13vh;
+}
+
+.contribute {
+  width: 13vh;
+}
+
+.signUp {
+  width: 13vh;
+}
+
+.imageWithColor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 16vh;
+}
+
+.coloredBlock {
+  background-color: grey;
+  height: 16vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.line {
+  border: none;
+  height: 10px;
+  background-color: white;
+  width: 48%;
+  margin-left: 150px;
 }
