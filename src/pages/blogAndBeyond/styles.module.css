@@ -340,11 +340,12 @@
   justify-content: flex-end;
   align-items: flex-end;
   padding: 2rem;
-  padding-bottom: 0;
 }
 
 .moleImage {
+  position: absolute;
   width: 15vw;
   height: auto;
+  bottom: 20px;
 }
 
