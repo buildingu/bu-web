@@ -3,6 +3,7 @@ import { Layout } from "../../components/layout";
 import Header from "./Header";
 import Content from "./Content";
 
+
 const BlogAndBeyond = () => {
   return (
     <Layout className={s.container}>
