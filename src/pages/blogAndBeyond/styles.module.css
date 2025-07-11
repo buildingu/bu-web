@@ -42,17 +42,18 @@
 }
 
 .logo {
-  width: 16vw;
+  width: 20vw;
   height: 16vh;
   object-fit: contain;
   margin-right: 0px;
+  margin-left: 30px;
 }
 
 .beyond {
   width: 50vh;
   height: auto;
   margin: 30px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 
 .resources {
@@ -71,7 +72,7 @@
   width: 13vh;
 }
 
-.contribute {
+.goBack {
   width: 13vh;
 }
 
@@ -87,17 +88,224 @@
 }
 
 .coloredBlock {
-  background-color: grey;
+  background-color: transparent;
   height: 16vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+
+.blogImage {
+  height: 22vh;
+}
+
+.youtubeImage {
+  height: 22vh;
+}
+
+.spotifyImage {
+  height: 25vh;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 0vh 10vh;
+  margin-top: 13vh;
+  gap: 5rem;
+}
+
+.sectionWrapper {
+  background-color: #ff3399;
+  padding: 2rem;
+  font-family: sans-serif;
+  color: white;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
 .line {
   border: none;
   height: 10px;
   background-color: white;
-  width: 48%;
-  margin-left: 150px;
+  width: 100%;
+  margin: 0.5rem 0;
+  margin-left: 6rem;
 }
+
+.contentRow {
+  display: flex;
+  justify-content: space-around;
+  margin: 0px 50px;
+  gap: 0rem;
+  margin-top: 0rem;
+}
+
+.leftColumn_content {
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+  align-items: center;
+  flex: 1;
+  margin-right: 10vh;
+  margin-top: 2rem;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  
+}
+
+.goatImage {
+  height: 50vh;
+  object-fit: contain;
+  display: block;
+}
+
+.goatWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.goatText {
+  position: absolute;
+  top: 56%;         /* adjust vertical position */
+  left: 5%;        /* adjust horizontal position */
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 4vh
+}
+
+.downtou {
+  position: absolute;
+  height: 25vh;
+  top: 30px;
+  left: 50px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+}
+
+.content_left {
+  display: flex;
+  flex-direction: column;
+  margin-top: 170px;
+  margin-left: 70px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  gap: 1rem;
+}
+
+.content_right {
+  margin-left: 200px;
+  margin-top: 30px;
+}
+
+/* .articleCard {
+  background-color: white;
+  height: 40vh;
+  width: 40vw;
+  border-radius: 1rem;
+  color: black;
+} */
+
+.articleCard {
+  position: relative;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  min-height: 300px;
+  margin: 20px;
+  background-color: #fff;
+  color: black;
+  max-width: 500px;
+}
+
+
+.title {
+  display: flex;
+  flex-direction: row;
+}
+
+.titleName {
+  padding-left: 30px;
+  padding-top: 20px;
+  color: black;
+  font-size: 25px;
+  padding-right: 10px;
+  padding-bottom: 0px;
+}
+
+.verticalLine {
+  width: 3px;               
+  height: 60px;           
+  background-color: black;  
+  margin: 15px 15px;     
+  margin-bottom: 0px;     
+}
+
+.titleDate {
+  font-size: small;
+  margin: 60px 0px;
+  color: black;
+  font-weight: 500;
+  margin-bottom: 0px;
+}
+
+.author {
+  margin: 0px 20px;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-left: 30px;
+}
+
+.clampParagraph {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;        
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0px 20px;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+/* .readMore {
+  position: relative;
+  margin-top: 15px;
+  margin-left: 480px;
+  text-decoration: underline;
+} */
+
+.readMore {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  text-decoration: underline;
+  color: #0070f3;
+  cursor: pointer;
+}
+
+.readMore:hover {
+  color: #0051c2;
+}
+
+
