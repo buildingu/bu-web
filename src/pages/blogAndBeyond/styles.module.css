@@ -1,351 +1,241 @@
-.container {
-  background-color: #ff3399;
-  font-family: sans-serif;
-  min-height: 100vh;
-}
-
-.navbar {
-  display: flex;
-  align-items: center;
-  background-color: orange;
-  color: white;
-  padding: 1rem 2rem;
-  font-weight: bold;
-  height: 16vh;
+/* Reset and base styles */
+body,
+html {
   margin: 0;
-  justify-content: space-between;
-}
-
-.navLinks {
-  display: flex;
-  align-items: stretch; 
-  gap: 0.5rem; 
-  height: 16vh;
-}
-
-.navLinks_2 {
-  display: flex;
-  align-items: stretch; 
-  gap: 0.5rem; 
-  height: 16vh;
-}
-
-
-.navLinks span {
-  margin: 0 1rem;
-  cursor: pointer;
-}
-
-.navLinks_2 span {
-  margin: 0 1rem;
-  cursor: pointer;
-}
-
-.logo {
-  width: 20vw;
-  height: 16vh;
-  object-fit: contain;
-  margin-right: 0px;
-  margin-left: 30px;
-}
-
-.beyond {
-  width: 50vh;
-  height: auto;
-  margin: 30px;
-  margin-bottom: 0px;
-}
-
-.resources {
-  width: 13vh;
-}
-
-.blog {
-  width: 13vh;
-}
-
-.let {
-  width: 13vh;
-}
-
-.dollars {
-  width: 13vh;
-}
-
-.goBack {
-  width: 13vh;
-}
-
-.signUp {
-  width: 13vh;
-}
-
-.imageWithColor {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 16vh;
-}
-
-.coloredBlock {
-  background-color: transparent;
-  height: 16vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-.blogImage {
-  height: 22vh;
-}
-
-.youtubeImage {
-  height: 22vh;
-}
-
-.spotifyImage {
-  height: 25vh;
-}
-
-.mainContent {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  margin: 0vh 10vh;
-  margin-top: 13vh;
-  gap: 5rem;
-}
-
-.sectionWrapper {
-  background-color: #ff3399;
-  padding: 2rem;
-  font-family: sans-serif;
-  color: white;
-}
-
-.title {
-  font-size: 3rem;
-  font-weight: bold;
-}
-
-.line {
-  border: none;
-  height: 10px;
-  background-color: white;
+  font-family: Arial, sans-serif;
   width: 100%;
-  margin: 0.5rem 0;
-  margin-left: 6rem;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url("./assets/background.png");
+  background-size: cover;
+  background-repeat: repeat-y;
+  background-position: center center;
+  background-color: #008dd2;
 }
 
-.contentRow {
-  display: flex;
-  justify-content: space-around;
-  margin: 0px 50px;
-  gap: 0rem;
-  margin-top: 0rem;
+@font-face {
+  font-family: "Coolvetica V2";
+  src: url("https://db.onlinewebfonts.com/t/06594b8e23c284f33b51e05d8145f62d.eot");
+  src: url("https://db.onlinewebfonts.com/t/06594b8e23c284f33b51e05d8145f62d.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/06594b8e23c284f33b51e05d8145f62d.woff2")
+      format("woff2"),
+    url("https://db.onlinewebfonts.com/t/06594b8e23c284f33b51e05d8145f62d.woff")
+      format("woff"),
+    url("https://db.onlinewebfonts.com/t/06594b8e23c284f33b51e05d8145f62d.ttf")
+      format("truetype"),
+    url("https://db.onlinewebfonts.com/t/06594b8e23c284f33b51e05d8145f62d.svg#Coolvetica V2")
+      format("svg");
 }
 
-.leftColumn_content {
-  display: flex;
-  flex-direction: row;
-  gap: 4rem;
-  align-items: center;
-  flex: 1;
-  margin-right: 10vh;
-  margin-top: 2rem;
-}
-
-.leftColumn {
-  display: flex;
-  flex-direction: column;
-}
-
-
-.rightColumn {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  flex: 1;
-  
-}
-
-.goatImage {
-  height: 50vh;
-  object-fit: contain;
-  display: block;
-}
-
-.goatWrapper {
+/* Header */
+.header {
   position: relative;
-  display: inline-block;
-}
-
-.goatText {
-  position: absolute;
-  top: 56%;         /* adjust vertical position */
-  left: 5%;        /* adjust horizontal position */
+  background-color: #ea0f81;
+  height: 20vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
+  font-size: 2vw;
   font-weight: bold;
-  font-size: 4vh
+  padding: 0 2vw;
+  box-sizing: border-box;
 }
 
-.downtou {
+.header-title {
+  color: white;
+  font-size: 2vw;
+  font-weight: bold;
+  font-family: "Coolvetica";
+  margin-left: auto;
+  margin-top: 1vh;
+  flex-grow: 1;
+  z-index: 0;
+}
+
+.logo1,
+.logo2,
+.logo3,
+.logo4,
+.logo5 {
   position: absolute;
-  height: 25vh;
-  top: 30px;
-  left: 50px;
+  transform: translateY(-50%);
+  z-index: 1;
+  max-width: 100%;
 }
 
-.content {
-  display: flex;
-  flex-direction: row;
-  margin: 20px;
+.logo1 {
+  margin-left: 5vw;
+  margin-top: 45vh;
+  width: 20%;
+  max-width: 100%;
+  height: auto;
 }
 
-/* .content_left {
-  display: flex;
-  flex-direction: column;
-  margin-top: 170px;
-  margin-left: 70px;
-  font-size: 1.8rem;
-  font-weight: bold;
-  gap: 1rem;
-  margin-right: 0px;
-} */
-
-
-.content_left {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  font-size: 1.8rem;
-  font-weight: bold;
-  gap: 1rem;
-  margin-left: 30px;
-  margin-top: 170px;
+.logo2 {
+  margin-left: 75vw;
+  margin-top: 8vh;
+  height: 12vh;
+  width: auto;
 }
 
+.logo3 {
+  left: 85vw;
+  top: 9vh;
+  height: 17vh;
+  width: auto;
+}
 
-/* .content_right {
-  margin-left: 100px;
-  margin-top: 30px;
-} */
+.logo4 {
+  left: 30vw;
+  top: 50%;
+  height: 12vh;
+  width: auto;
+}
 
-.content_right {
-  flex: 3;
-  display: flex;
-  justify-content: center;
+.logo5 {
+  
+  position: absolute;
+  margin-top: 60%;
+  margin-left: 80%;
+  height: 32vh;
+  width: auto;
+}
 
-  margin-left: 100px;
+/* Trapezoid */
+.trapezoid {
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+    width:35vw;
+    height: 0;
+    border-top: 80vh solid #EF7F1A;
+    border-right: 10vw solid transparent;
+}
+
+/* Side text */
+.sideTextSmall {
+  position: absolute;
+  font-size: 2vw;
+  top: 45vh;
+  left: 2vw;
+  transform: translateY(-50%);
+  color: white;
+  padding: 0 2vw;
+  font-family: "Coolvetica V2";
+  line-height: 1;
+}
+
+.sideTextLarge {
+  position: absolute;
+  top: 65vh;
+  left: 2vw;
+  font-size: 3vw;
+  transform: translateY(-50%);
+  color: white;
+  padding: 0 2vw;
+  font-family: "Coolvetica V2";
+  line-height: 0.9;
+}
+
+hr {
+  border: none;
+  border-top: 0.2vw solid white;
+  width: 25vw;
+  margin: 20px 0;
   margin-top: 0;
 }
 
+/* Custom scrollbar for WebKit browsers (Chrome, Safari) */
+.scrollArea::-webkit-scrollbar {
+  width: 20px; /* Total width of the scrollbar track */
+}
 
-/* .articleCard {
-  background-color: white;
-  height: 40vh;
-  width: 40vw;
-  border-radius: 1rem;
-  color: black;
-} */
+.scrollArea::-webkit-scrollbar-track {
+  background: transparent; /* Transparent track background */
+}
 
-.articleCard {
-  position: relative;
-  padding: 20px;
-  border: 1px solid #ccc;
+.scrollArea::-webkit-scrollbar-thumb {
+  background-color: white; /* White scrollbar handle */
+  border-radius: 50px; /* Rounded edges */
+  border: 4px solid transparent; /* Creates the gap between the scrollbar and the track */
+  background-clip: content-box; /* Ensures the scrollbar handle retains its width */
+  width: 12px; /* Width of the scrollbar handle */
+  height: 40px; /* Fixed height of the scrollbar handle */
+}
+
+/* Add vertical white line behind the scrollbar */
+.scrollArea::before {
+  content: "";
+  position: absolute;
+  margin-left: 98.7%;
+  width: 2px;
+  background: white;
+  z-index: 0; /* Place the line behind the scrollbar */
+}
+
+/* Scrollable area adjustments */
+.scrollArea {
+  position: absolute;
+  left: 40vw; /* Shift the scroll area more to the left */
+  top: calc(20vh + 10px); /* Close to the header but not touching it */
+  width: 40vw; /* Make the scroll area wider */
+  bottom: 2%; /* Leave space from the bottom */
+  padding-right: 22px; /* Separate the scrollbar from the content and make space for the line */
+  background: transparent; /* Keep the background transparent */
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* overflow: hidden; Hide default scrollbars */
+  overflow-y: auto; /* ✅ Scrolls vertically */
+  overflow-x: hidden;
+  border: none; /* Remove the border outline */
+}
+
+/* Content blocks */
+.scrollArea .content {
+  padding: 10px;
+  margin-right: 10px; /* Shift content blocks to the left */
+}
+
+.scrollArea .content .contentBlock {
+  height: 150px;
+  background: white; /* White background for content blocks */
+  border: none; /* Remove border if needed */
+  margin: 10px 0;
   border-radius: 10px;
-  min-height: 300px;
-  max-height: 300px;
-  margin: 20px;
-  background-color: #fff;
-  color: black;
-  max-width: 500px;
-}
-
-
-.title {
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-sizing: border-box;
 }
 
-.titleName {
-  padding-left: 30px;
-  padding-top: 20px;
-  color: black;
-  font-size: 25px;
-  padding-right: 10px;
-  padding-bottom: 0px;
+@media (min-width: 600px) {
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
 }
 
-.verticalLine {
-  width: 3px;               
-  height: 60px;           
-  background-color: black;  
-  margin: 15px 15px;     
-  margin-bottom: 0px;     
+/* Styles for large desktops */
+@media (min-width: 1200px) {
+  .container {
+    width: 60%;
+  }
 }
 
-.titleDate {
-  font-size: small;
-  margin: 60px 0px;
-  color: black;
-  font-weight: 500;
-  margin-bottom: 0px;
+/* Styles for mobile devices */
+@media (max-width: 599px) {
+  .container {
+    width: 100%;
+    padding: 0 10px;
+  }
 }
 
-.author {
-  margin: 0px 20px;
-  font-size: 15px;
-  margin-top: 10px;
-  margin-left: 30px;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-
-.clampParagraph {
-  display: -webkit-box;
-  -webkit-line-clamp: 5;        
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin: 0px 20px;
-  margin-left: 30px;
-  margin-top: 20px;
-}
-
-/* .readMore {
-  position: relative;
-  margin-top: 15px;
-  margin-left: 480px;
-  text-decoration: underline;
-} */
-
-.readMore {
-  position: absolute;
-  bottom: 10px;
-  right: 20px;
-  text-decoration: underline;
-  color: #0070f3;
-  cursor: pointer;
-}
-
-.readMore:hover {
-  color: #0051c2;
-}
-
-.moleWrapper {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  padding: 2rem;
-}
-
-.moleImage {
-  position: absolute;
-  width: 15vw;
-  height: auto;
-  bottom: 20px;
-}
-
