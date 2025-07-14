@@ -83,12 +83,14 @@ export default function Blog() {
   const scrollableRef = useRef(null);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const filteredData =
+  const filteredData = (
     selectedCategory === "All"
       ? mockData
       : mockData.filter((item) =>
           item.categories.toLowerCase().includes(selectedCategory.toLowerCase())
-        );
+        )
+  ).sort((a, b) => new Date(b.datePublished) - new Date(a.datePublished));
+
 
 
   useCustomScrollbar(scrollableRef, contentRef);
@@ -114,7 +116,7 @@ export default function Blog() {
       if (scrollTop + clientHeight >= scrollHeight - 10) {
         setPagesLoaded((prevPages) => {
           if (prevPages < 10) {
-            setBlocks((prev) => [...prev, ...Array.from({ length: 10 })]); // each page = 10 blocks
+            setBlocks((prev) => [...prev, ...Array.from({ length: filteredData.length })]);
             return prevPages + 1;
           }
           return prevPages;
