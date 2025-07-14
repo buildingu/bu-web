@@ -45,7 +45,13 @@ export default function Blog() {
       const clientHeight = scrollable.clientHeight;
 
       if (scrollTop + clientHeight >= scrollHeight - 10) {
-        setBlocks((prev) => [...prev, ...Array.from({ length: 5 })]);
+        setPagesLoaded((prevPages) => {
+          if (prevPages < 10) {
+            setBlocks((prev) => [...prev, ...Array.from({ length: 10 })]); // each page = 10 blocks
+            return prevPages + 1;
+          }
+          return prevPages; // no change, already at 10 pages
+        });
       }
     };
 
