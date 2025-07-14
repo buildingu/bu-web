@@ -5,13 +5,13 @@ export function useCustomScrollbar(scrollAreaRef, contentRef) {
     const scrollArea = scrollAreaRef.current;
     const content = contentRef.current;
 
-    if (!scrollArea || !content) return; // <-- guard here
+    if (!scrollArea || !content) return; 
 
     const scrollbar = scrollArea.querySelector(".scrollbar");
-    if (!scrollbar) return; // <-- guard
+    if (!scrollbar) return; 
 
     const thumb = scrollbar.querySelector(".thumb");
-    if (!thumb) return; // <-- guard
+    if (!thumb) return; 
 
     let isDragging = false,
       startY,

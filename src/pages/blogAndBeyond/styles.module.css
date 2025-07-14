@@ -129,6 +129,7 @@ html {
 }
 
 .sideTextLarge {
+  margin-top: 20px;
   position: absolute;
   top: 65vh;
   left: 2vw;
@@ -238,4 +239,54 @@ hr {
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+.blogCard {
+  background-color: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  font-family: 'Inter', sans-serif;
+}
+
+.blogHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.blogTitle {
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin: 0;
+  color: #222;
+}
+
+.blogDate {
+  font-size: 0.95rem;
+  color: #555;
+  font-family: 'Georgia', serif;
+}
+
+.blogAuthor {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 12px;
+}
+
+.blogExcerpt {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.readMore {
+  font-weight: 500;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
 }
