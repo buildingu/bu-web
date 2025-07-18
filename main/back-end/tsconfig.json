@@ -1,0 +1,32 @@
+{
+  "exclude": ["node_modules", "**/*.js", "**/*.cjs", "**/*.jsx"],
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "target": "ESNext",
+    "outDir": "build",
+    "noEmit": true,
+
+    "allowJs": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+
+    "strict": true,
+
+    "paths": {
+      "@constants/*": ["./src/constants/*"],
+      "@middleware/*": ["./src/middleware/*"],
+      "@model/*": ["./src/model/*"],
+      "@utils/*": ["./src/utils/*"],
+
+      "@authFeat/*": ["./src/features/auth/*"],
+
+      "@blogFeat/*": ["./src/features/blog/*"],
+
+      "@partnerFeat/*": ["./src/features/partner/*"]
+    }
+  }
+}
