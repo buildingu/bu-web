@@ -25,6 +25,8 @@ import errorHandler from "@middleware/errorHandler";
 import authRouter from "@authFeat/routes/authRoute";
 import blogRouter from "@blogFeat/routes/blogRoute";
 import partnerRouter from "@partnerFeat/routes/partnerRoute";
+import resourcesRouter from "@resourcesFeat/routes/resourcesRoute";
+import shopRouter from "@shopFeat/routes/shopRoute";
 
 const { PROTOCOL, HOST, PORT: ENV_PORT } = process.env,
   PORT = Number(ENV_PORT) || 4000;
@@ -68,7 +70,9 @@ async function setupServer() {
   // *Routers*
   app.use(`${baseUrl}/auth`, authRouter);
   app.use(`${baseUrl}/blog`, blogRouter);
-  app.use(`${baseUrl}/part`, partnerRouter);
+  app.use(`${baseUrl}/partner`, partnerRouter);
+  app.use(`${baseUrl}/resources`, resourcesRouter);
+  app.use(`${baseUrl}/shop`, shopRouter);
 
   await initSrr(app); // Server side rendering middleware for React front-end.
 

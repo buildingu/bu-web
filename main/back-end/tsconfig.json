@@ -26,7 +26,11 @@
 
       "@blogFeat/*": ["./src/features/blog/*"],
 
-      "@partnerFeat/*": ["./src/features/partner/*"]
+      "@partnerFeat/*": ["./src/features/partner/*"],
+
+      "@resourcesFeat/*": ["./src/features/resources/*"],
+
+      "@shopFeat/*": ["./src/features/shop/*"]
     }
   }
 }

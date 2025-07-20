@@ -20,6 +20,8 @@ router.post("/login", authController.login);
 // router.patch("/user/reset-password", authController.resetPassword);
 // router.post("/user/reset-password/forgot", authController.sendForgotPasswordEmail);
 
+// router.get("/users/crew", authController.getCrew);
+
 // router.post("/user/logout", authController.logout);
 
 export default router;

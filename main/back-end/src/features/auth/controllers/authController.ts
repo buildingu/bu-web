@@ -33,11 +33,6 @@ export async function register(
   }
 }
 
-/**
- * Initializes the current user session.
- * @controller
- * @response `success` with the client formatted user, `not found`, or `HttpError`.
- */
 export async function login(
   req: LoginRequestDto,
   res: Response,
