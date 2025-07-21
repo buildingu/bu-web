@@ -68,8 +68,12 @@ export function handleSsr(app: Express, vite?: ViteDevServer) {
         throw error;
       }
     } catch (error: any) {
-      process.env.NODE_ENV === "development" && vite!.ssrFixStacktrace(error);
-      next(error);
+      if (process.env.NODE_ENV === "development") {
+        vite!.ssrFixStacktrace(error);
+        if (!res.headersSent) next(error);
+      } else {
+        next(error);
+      }
     }
   });
 
