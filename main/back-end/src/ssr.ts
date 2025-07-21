@@ -9,7 +9,7 @@ import sirv from "sirv";
 
 import SRC_DIRECTORY from "@constants/SRC_DIRECTORY";
 
-export default async function initSrr(app: Express) {
+export async function initSsr(app: Express) {
   let vite: ViteDevServer | undefined;
 
   if (process.env.NODE_ENV === "development") {
@@ -27,8 +27,14 @@ export default async function initSrr(app: Express) {
     );
   }
 
-  app.get("/*", async (req, res, next) => {
+  return vite;
+}
+
+export function handleSsr(app: Express, vite?: ViteDevServer) {
+  app.get(/^\/(?!api\/).*/, async (req, res, next) => {
     const url = req.originalUrl;
+
+    if (!req.accepts("html")) return next();
 
     try {
       let template, render;
@@ -39,7 +45,7 @@ export default async function initSrr(app: Express) {
           readFileSync(path.join(SRC_DIRECTORY, "../../front-end/index.html"), "utf-8")
         );
         // console.log("template", template);
-        render = (await vite!.ssrLoadModule("/src/entry-server")).render;
+        render = (await vite!.ssrLoadModule("./src/entry-server")).render;
       } else {
         const [indexHTML, entry] = await Promise.all([
           readFile(path.join(SRC_DIRECTORY, "./public/index.html"), "utf-8"),
@@ -66,21 +72,21 @@ export default async function initSrr(app: Express) {
       next(error);
     }
   });
-}
 
-function redirect(res: EResponse, error: any) {
-  if ("statusCode" in error && "location" in error) {
-    if (error.statusCode === 404) return res.redirect("/error-404");
-    else if (error.location.pathname === "/") return res.redirect("/home");
-    
-  } else if (
-    error instanceof Response &&
-    error.status >= 300 &&
-    error.status <= 399
-  ) {
-    return res.redirect(
-      error.status,
-      error.headers.get("Location") || ""
-    );
+  const redirect = (res: EResponse, error: any) => {
+    if ("statusCode" in error && "location" in error) {
+      if (error.statusCode === 404) return res.redirect("/error-404");
+      else if (error.location.pathname === "/") return res.redirect("/home");
+      
+    } else if (
+      error instanceof Response &&
+      error.status >= 300 &&
+      error.status <= 399
+    ) {
+      return res.redirect(
+        error.status,
+        error.headers.get("Location") || ""
+      );
+    }
   }
 }

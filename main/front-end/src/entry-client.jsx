@@ -3,6 +3,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { routes } from "./App";
 
+import "./index.css";
+import "./adminPanel/index.css";
+
 function hydrate() {
   const router = createBrowserRouter(routes);
 

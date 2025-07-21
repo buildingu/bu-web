@@ -23,9 +23,6 @@ import { Error404, Error500 } from "./pages/errors";
 
 import { Blog as AdminBlog } from "./adminPanel/pages/blog";
 
-import "./index.css";
-import "./adminPanel/index.css";
-
 export const routes = [
   {
     path: "/",
