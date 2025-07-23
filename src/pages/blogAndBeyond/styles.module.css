@@ -1,72 +1,38 @@
-/* Reset and base styles */
-body,
-html {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  background-image: url("./assets/background.png");
+.container {
+  background-image: url("/images/background.png");
   background-size: cover;
-  background-repeat: repeat-y;
   background-position: center center;
   background-color: #008dd2;
-}
-
-@font-face {
-  font-family: "Coolvetica V2";
-  src: url("https://db.onlinewebfonts.com/t/06594b8e23c284f33b51e05d8145f62d.eot");
-  src: url("https://db.onlinewebfonts.com/t/06594b8e23c284f33b51e05d8145f62d.eot?#iefix")
-      format("embedded-opentype"),
-    url("https://db.onlinewebfonts.com/t/06594b8e23c284f33b51e05d8145f62d.woff2")
-      format("woff2"),
-    url("https://db.onlinewebfonts.com/t/06594b8e23c284f33b51e05d8145f62d.woff")
-      format("woff"),
-    url("https://db.onlinewebfonts.com/t/06594b8e23c284f33b51e05d8145f62d.ttf")
-      format("truetype"),
-    url("https://db.onlinewebfonts.com/t/06594b8e23c284f33b51e05d8145f62d.svg#Coolvetica V2")
-      format("svg");
+  min-height: 100vh;
 }
 
 /* Header */
-.header {
+.container .header {
   position: relative;
-  background-color: #ea0f81;
+  background-color: var(--c-magenta);
   height: 20vh;
-  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: white;
+  color: var(--c-heading-w);
   font-size: 2vw;
   font-weight: bold;
   padding: 0 2vw;
   box-sizing: border-box;
 }
 
-.header-title {
-  color: white;
-  font-size: 2vw;
-  font-weight: bold;
-  font-family: "Coolvetica";
-  margin-left: auto;
-  margin-top: 1vh;
-  flex-grow: 1;
-  z-index: 0;
-}
-
-.logo1,
-.logo2,
-.logo3,
-.logo4,
-.logo5 {
+.container .header .logo1,
+.container .header .logo2,
+.container .header .logo3,
+.container .header .logo4,
+.container .header .logo5 {
   position: absolute;
   transform: translateY(-50%);
   z-index: 1;
   max-width: 100%;
 }
 
-.logo1 {
+.container .header .logo1 {
   margin-left: 5vw;
   margin-top: 45vh;
   width: 20%;
@@ -74,45 +40,48 @@ html {
   height: auto;
 }
 
-.logo2 {
+.container .header .logo2 {
   margin-left: 75vw;
   margin-top: 8vh;
   height: 12vh;
   width: auto;
 }
 
-.logo3 {
+.container .header .logo3 {
   left: 85vw;
   top: 9vh;
   height: 17vh;
   width: auto;
 }
 
-.logo4 {
+.container .header .logo4 {
   left: 30vw;
   top: 50%;
   height: 12vh;
   width: auto;
 }
 
-.logo5 {
-  
+.container main {
+  padding-inline: 2rem;
+}
+
+.container main .logo5 {
   position: absolute;
-  margin-top: 60%;
-  margin-left: 80%;
+  right: 2rem;
+  bottom: 32px;
   height: 32vh;
   width: auto;
 }
 
 /* Trapezoid */
-.trapezoid {
-    position: absolute;
-    bottom: 0;
-    left: 0%;
-    width:35vw;
-    height: 0;
-    border-top: 80vh solid #EF7F1A;
-    border-right: 10vw solid transparent;
+.container main .trapezoid {
+  position: absolute;
+  bottom: 0;
+  left: 0%;
+  width:35vw;
+  height: 0;
+  border-top: 80vh solid #EF7F1A;
+  border-right: 10vw solid transparent;
 }
 
 /* Side text */
@@ -124,7 +93,7 @@ html {
   transform: translateY(-50%);
   color: white;
   padding: 0 2vw;
-  font-family: "Coolvetica V2";
+  font-family: var(--heading-font1);
   line-height: 1;
 }
 
@@ -137,34 +106,16 @@ html {
   transform: translateY(-50%);
   color: white;
   padding: 0 2vw;
-  font-family: "Coolvetica V2";
+  font-family: var(--heading-font1);
   line-height: 0.9;
 }
 
-hr {
+.container hr {
   border: none;
   border-top: 0.2vw solid white;
   width: 25vw;
   margin: 20px 0;
   margin-top: 0;
-}
-
-/* Custom scrollbar for WebKit browsers (Chrome, Safari) */
-.scrollArea::-webkit-scrollbar {
-  width: 20px; /* Total width of the scrollbar track */
-}
-
-.scrollArea::-webkit-scrollbar-track {
-  background: transparent; /* Transparent track background */
-}
-
-.scrollArea::-webkit-scrollbar-thumb {
-  background-color: white; /* White scrollbar handle */
-  border-radius: 50px; /* Rounded edges */
-  border: 4px solid transparent; /* Creates the gap between the scrollbar and the track */
-  background-clip: content-box; /* Ensures the scrollbar handle retains its width */
-  width: 12px; /* Width of the scrollbar handle */
-  height: 40px; /* Fixed height of the scrollbar handle */
 }
 
 /* Add vertical white line behind the scrollbar */
@@ -178,28 +129,21 @@ hr {
 }
 
 /* Scrollable area adjustments */
-.scrollArea {
+.container main :global(.scrollArea) {
   position: absolute;
-  left: 40vw; /* Shift the scroll area more to the left */
-  top: calc(20vh + 10px); /* Close to the header but not touching it */
-  width: 40vw; /* Make the scroll area wider */
-  bottom: 2%; /* Leave space from the bottom */
-  padding-right: 22px; /* Separate the scrollbar from the content and make space for the line */
-  background: transparent; /* Keep the background transparent */
+  left: 40vw;
+  top: calc(20vh + 10px);
+  width: 40vw;
+  bottom: 2%;
   border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* overflow: hidden; Hide default scrollbars */
-  overflow-y: auto; /* ✅ Scrolls vertically */
-  overflow-x: hidden;
-  border: none; /* Remove the border outline */
 }
 
 /* Content blocks */
-.scrollArea .content {
-  padding: 10px;
-  margin-right: 10px; /* Shift content blocks to the left */
+.container main :global(.scrollArea) .content {
+  padding-bottom: 10px;
 }
 
+/* TODO: Change the whites to one of the varibles. */
 .scrollArea .content .contentBlock {
   height: 150px;
   background: white; /* White background for content blocks */
@@ -210,34 +154,6 @@ hr {
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  box-sizing: border-box;
-}
-
-@media (min-width: 600px) {
-  .container {
-    width: 80%;
-    margin: 0 auto;
-  }
-}
-
-/* Styles for large desktops */
-@media (min-width: 1200px) {
-  .container {
-    width: 60%;
-  }
-}
-
-/* Styles for mobile devices */
-@media (max-width: 599px) {
-  .container {
-    width: 100%;
-    padding: 0 10px;
-  }
-}
-
-*,
-*::before,
-*::after {
   box-sizing: border-box;
 }
 
@@ -286,6 +202,7 @@ hr {
 
 .readMore {
   font-weight: 500;
+  /* FIXME: */
   color: blue;
   text-decoration: underline;
   cursor: pointer;

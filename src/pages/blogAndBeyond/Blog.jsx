@@ -1,28 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useCustomScrollbar } from "./scrollbar.jsx"; // adjust path if needed
+import { useEffect, useState } from "react";
+import { ScrollArea } from "../../components/ScrollArea/ScrollArea";
+
+// import beyondImage from "/images/beyond.png";
+// import resourcesImage from "/images/btn_01-resources.png";
+// import blogImage from "/images/btn_02-blog.png";
+// import letImage from "/images/btn_03-lets.png";
+// import dollarsImage from "/images/btn_04-dollars.png";
+// import contributeImage from "/images/btn_05-contrib.png";
+
 import s from "./styles.module.css";
-import youtubeImage from "./assets/youtube.png";
-import spotifyImage from "./assets/spotify.png";
-import goatImage from "./assets/goat.png";
-import logoImage from "./assets/logo.png";
-import beyondImage from "./assets/beyond.png";
-import resourcesImage from "./assets/btn_01-resources.png";
-import blogImage from "./assets/btn_02-blog.png";
-import letImage from "./assets/btn_03-lets.png";
-import dollarsImage from "./assets/btn_04-dollars.png";
-import contributeImage from "./assets/btn_05-contrib.png";
-import signUpImage from "./assets/btn_06-signup.png";
-import weAreLogoImage from "./assets/weare-logo.png";
-import goBackImage from "./assets/btn_go-back.png";
-import downtouImage from "./assets/downtou-logo.png";
-import backgroundImage from "./assets/background.png";
-import moleImage from "./assets/mole.png"
 
 function formatDate(dateStr) {
   const options = { year: "numeric", month: "long", day: "2-digit" };
   return new Date(dateStr).toLocaleDateString("en-US", options);
 }
-
 
 const mockData = [
   {
@@ -75,118 +66,122 @@ const mockData = [
     datePublished: "2024-09-22",
     link: "https://www.instagram.com/",
   },
+  {
+    id: "3b28abd8-aaec-45e1-a666-d01af6f7ec26",
+    title: "The Future of Renewable Energy",
+    author: "Emma Brown",
+    categories: "climate change, Energy",
+    tags: "Renewable, Sustainability",
+    comments: "5",
+    datePublished: "2024-09-22",
+    link: "https://www.instagram.com/",
+  },
+    {
+    id: "3b28abd8-aaec-45e1-a666-d01af6f7ec25",
+    title: "The Future of Renewable Energy",
+    author: "Emma Brown",
+    categories: "climate change, Energy",
+    tags: "Renewable, Sustainability",
+    comments: "5",
+    datePublished: "2024-09-22",
+    link: "https://www.instagram.com/",
+  },
+    {
+    id: "3b28abd8-aaec-45e1-a666-d01af6f7ec29",
+    title: "The Future of Renewable Energy",
+    author: "Emma Brown",
+    categories: "climate change, Energy",
+    tags: "Renewable, Sustainability",
+    comments: "5",
+    datePublished: "2024-09-22",
+    link: "https://www.instagram.com/",
+  },
+    {
+    id: "3b28abd8-aaec-45e1-a666-d01af6f7ec23",
+    title: "The Future of Renewable Energy",
+    author: "Emma Brown",
+    categories: "climate change, Energy",
+    tags: "Renewable, Sustainability",
+    comments: "5",
+    datePublished: "2024-09-22",
+    link: "https://www.instagram.com/",
+  },
+    {
+    id: "3b28abd8-aaec-45e1-a666-d01af6f7ec22",
+    title: "The Future of Renewable Energy",
+    author: "Emma Brown",
+    categories: "climate change, Energy",
+    tags: "Renewable, Sustainability",
+    comments: "5",
+    datePublished: "2024-09-22",
+    link: "https://www.instagram.com/",
+  },
+    {
+    id: "3b28abd8-aaec-45e1-a666-d01af6f7ec21",
+    title: "The Future of Renewable Energy",
+    author: "Emma Brown",
+    categories: "climate change, Energy",
+    tags: "Renewable, Sustainability",
+    comments: "5",
+    datePublished: "2024-09-22",
+    link: "https://www.instagram.com/",
+  },
 ];
 
-
 export default function Blog() {
-  const contentRef = useRef(null);
-  const scrollableRef = useRef(null);
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const filterData = (setData, category) => {
+    console.log("category", category);
 
-  const filteredData = (
-    selectedCategory === "All"
-      ? mockData
-      : mockData.filter((item) =>
-          item.categories.toLowerCase().includes(selectedCategory.toLowerCase())
-        )
-  ).sort((a, b) => new Date(b.datePublished) - new Date(a.datePublished));
+    setData((prev) => ({
+      ...prev,
+      blogs:
+        category === "All"
+          ? mockData
+          : mockData.filter((item) => {
+              console.log("item", item, item.categories.toLowerCase().includes(category.toLowerCase()));
+              return item.categories.toLowerCase().includes(category.toLowerCase());
+            }),
+    }));
+  };
 
-
-
-  useCustomScrollbar(scrollableRef, contentRef);
+  const [data, setData] = useState({ blogs: mockData, category: "All" });
 
   useEffect(() => {
-    if (window.innerWidth < 600) {
-      window.location.href = "blogmob.html";
-    }
-
-    const onResize = () => {
-      if (window.innerWidth < 600) {
-        window.location.href = "blogmob.html";
-      }
-    };
-    window.addEventListener("resize", onResize);
-
-    const scrollable = scrollableRef.current;
-    const onScroll = () => {
-      const scrollTop = scrollable.scrollTop;
-      const scrollHeight = scrollable.scrollHeight;
-      const clientHeight = scrollable.clientHeight;
-
-      if (scrollTop + clientHeight >= scrollHeight - 10) {
-        setPagesLoaded((prevPages) => {
-          if (prevPages < 10) {
-            setBlocks((prev) => [...prev, ...Array.from({ length: filteredData.length })]);
-            return prevPages + 1;
-          }
-          return prevPages;
-        });
-      }
-    };
-
-    scrollable.addEventListener("scroll", onScroll);
-
-    return () => {
-      scrollable.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onResize);
-    };
-  }, []);
+    console.log("data.blogs", data.blogs);
+  }, [data.blogs]);
 
   return (
-    <section id="bandbsection">
-      <div className={s.header}>
-        <img src={downtouImage} alt="down to u logo" className={s.logo1} />
-        <img
-          src={weAreLogoImage}
-          alt="we are a building-u blog"
-          className={s.logo4}
-        />
-        <img src={goBackImage} alt="blog and beyond" className={s.logo2} />
-        <img src={signUpImage} alt="sign in" className={s.logo3} />
-        <img src={moleImage} alt="mole" className={s.logo5} />
-      </div>
+    <main>
+      <img src="/images/mole.png" alt="mole" className={s.logo5} />
 
-      <div className={s.scrollArea} id="scrollable" ref={scrollableRef}>
-        <div className={s.content} id="content" ref={contentRef}>
-          {filteredData.map((item) => (
-            <div key={item.id} className={s.blogCard}>
-              <div className={s.blogHeader}>
-                <h2 className={s.blogTitle}>{item.title.toUpperCase()}</h2>
-                <span className={s.blogDate}>
-                  {formatDate(item.datePublished)}
-                </span>
-              </div>
-              <p className={s.blogAuthor}>By {item.author}</p>
-              <p className={s.blogExcerpt}>
-                {/* customize this with real preview content later */}
-                We do our best to do our part. We haul our compost bins to the
-                town recycling centre, we clear our email inboxes so they take
-                up less space, and we wash plastic containers before recycling
-                them. We understand that there are wildfires and melting ice and
-                dying animals, which is why we alter our […]
-              </p>
-              <a
-                href={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={s.readMore}
-              >
-                Read More
-              </a>
+      <ScrollArea className={s.content}>
+        {data.blogs.map((item) => (
+          <div key={item.id} className={s.blogCard}>
+            <div className={s.blogHeader}>
+              <h2 className={s.blogTitle}>{item.title.toUpperCase()}</h2>
+              <span className={s.blogDate}>
+                {formatDate(item.datePublished)}
+              </span>
             </div>
-          ))}
-        </div>
-      </div>
-
-      <div className={s.backgroundContainer}>
-        <div className="overlay">
-          <img
-            src={backgroundImage}
-            alt="background shapes"
-            className={s.backgroundShapes}
-          />
-        </div>
-      </div>
+            <p className={s.blogAuthor}>By {item.author}</p>
+            <p className={s.blogExcerpt}>
+              We do our best to do our part. We haul our compost bins to the
+              town recycling centre, we clear our email inboxes so they take
+              up less space, and we wash plastic containers before recycling
+              them. We understand that there are wildfires and melting ice and
+              dying animals, which is why we alter our […]
+            </p>
+            <a
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={s.readMore}
+            >
+              Read More
+            </a>
+          </div>
+        ))}
+      </ScrollArea>
 
       <div className={s.trapezoid}></div>
       <div className={s.sideTextSmall}>
@@ -205,10 +200,10 @@ export default function Blog() {
         ].map((cat) => (
           <div
             key={cat}
-            onClick={() => setSelectedCategory(cat)}
+            onClick={() => filterData(setData, cat)}
             style={{
               cursor: "pointer",
-              fontWeight: selectedCategory === cat ? "bold" : "normal",
+              fontWeight: data.category === cat ? "bold" : "normal",
               marginBottom: "0.5rem",
             }}
           >
@@ -216,6 +211,6 @@ export default function Blog() {
           </div>
         ))}
       </div>
-    </section>
+    </main>
   );
 }

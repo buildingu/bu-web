@@ -1,9 +1,15 @@
-import { useEffect } from "react";
+import { forwardRef, useRef, useLayoutEffect } from "react";
 
-export function useCustomScrollbar(scrollAreaRef, contentRef) {
-  useEffect(() => {
-    const scrollArea = scrollAreaRef.current;
-    const content = contentRef.current;
+import s from "./styles.module.css";
+
+export const ScrollArea = forwardRef(({ children, ...props }, ref) => {
+  const contentRef = useRef(null);
+  const scrollAreaRef = useRef(null);
+
+  // TODO:
+  useLayoutEffect(() => {
+    const scrollArea = scrollAreaRef?.current;
+    const content = contentRef?.current;
 
     if (!scrollArea || !content) return; 
 
@@ -97,5 +103,25 @@ export function useCustomScrollbar(scrollAreaRef, contentRef) {
         debounce(initializeThumbHeight, 500)
       );
     };
-  }, [scrollAreaRef, contentRef]);
-}
+  }, []);
+
+  return (
+    <div
+      ref={(node) => {
+        scrollAreaRef.current = node;
+
+        if (typeof ref === "function") ref(node);
+        else if (ref) ref.current = node;
+      }}
+      className="scrollArea"
+    >
+      <div className={`${s.content}${props.className ? " " + props.className: ""}`} { ...props }>
+        {children}
+
+        <div class="scrollbar">
+          <button class="thumb"></button>
+        </div>
+      </div>
+    </div>
+  );
+});
