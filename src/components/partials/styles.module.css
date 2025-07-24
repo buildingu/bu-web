@@ -257,6 +257,7 @@
   width: 100%;
   min-height: 10vh;
   margin: 0;
+  /* TODO: Just put the footer at the bottom and keep it there. */
   position: fixed;
   bottom: 0;
   left: 0;

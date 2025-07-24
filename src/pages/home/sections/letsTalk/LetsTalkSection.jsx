@@ -1,4 +1,3 @@
-import React from "react";
 import s from "./section.module.css";
 
 import aboutUsIcon from "../../../../assets/images/talkpage/01_aboutus.png";
