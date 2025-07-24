@@ -26,6 +26,21 @@ const Footer = () => {
             alt="sponsor"
             className={s.sponsor}
           />
+                    <img
+            src={sponsor}
+            alt="sponsor"
+            className={s.sponsor}
+          />
+          <img
+            src={sponsor}
+            alt="sponsor"
+            className={s.sponsor}
+          />
+          <img
+            src={sponsor}
+            alt="sponsor"
+            className={s.sponsor}
+          />
         </div>
       </div>
     </footer>

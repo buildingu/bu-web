@@ -14,11 +14,28 @@ const Home = () => {
     <Layout>
       <main className={s.container}>
         <LandingSection />
+
+        <div className={`${s.geometricDivider} ${s.landingToResources}`}></div>
+
         <Resources />
-        <Blog />
-        <LetsTalkSection />
-        <S4YTSection />
+
+        <div
+          className={`${s.geometricDivider} ${s.resourcesToContribute}`}
+        ></div>
+
         <Contribute />
+
+        <div className={`${s.geometricDivider} ${s.contributeToS4YT}`}></div>
+
+        <S4YTSection />
+
+        <div className={`${s.geometricDivider} ${s.s4ytToBlog}`}></div>
+
+        <Blog />
+
+        <div className={`${s.geometricDivider} ${s.blogToLetsTalk}`}></div>
+
+        <LetsTalkSection />
       </main>
     </Layout>
   );

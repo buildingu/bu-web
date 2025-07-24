@@ -8,6 +8,7 @@
   justify-content: space-between;
   position: relative;
   overflow: visible; 
+  z-index: 0;
 }
 
 .activeButton {
@@ -233,98 +234,143 @@
 
   .paragraph3 {
     width: auto;
-    margin-left: 2.5vw;
-    margin-top: 3vh;
-    padding-bottom: 3vh;
-    padding: 2%;
-  }
-
-  .conMUp {
+    height: 100%;
+    padding: 2vh 3vw;
+    box-sizing: border-box;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-top: 2vh;
-    margin-bottom: 3vh;
-    column-gap: 5%;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
-  .conMULogo {
-    width: 15vw;
-    height: auto;
-  }
-
-  .conMUGiftSec {
-    width: 20vw;
-    height: 7vw;
-    background-color: #72c13d;
-    border-radius: 2vh;
+  .merchHeader {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    padding: 1vw;
+    gap: 3vw;
+    margin-bottom: 3vh;
+    padding-top: 1vh;
   }
 
-  .conMUGift {
-    width: 4vw;
-    height: 4vw;
-    margin-right: 1vw;
+  .ushopLogoContainer {
+    flex-shrink: 0;
   }
 
-  .conMUText {
+  .ushopLogo {
+    width: 12vw;
+    height: auto;
+    max-width: 180px;
+  }
+
+  .giftSection {
+    display: flex;
+    align-items: center;
+    background-color: #72c13d;
+    border-radius: 1.5vh;
+    padding: 1.5vh 2vw;
+    gap: 1vw;
+    max-width: 20vw;
+  }
+
+  .giftIcon {
+    width: 3vw;
+    height: 3vw;
+    flex-shrink: 0;
+    max-width: 45px;
+    max-height: 45px;
+  }
+
+  .giftText {
     color: #fafafa;
     font-family: 'coolvetica', Arial, serif;
-    font-size: 1.3vw;
-    margin: 0;
-  }
-
-  .conMBottom {
-    display: flex;
-    flex-direction: row;
-    margin-top: 2vh;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .conMBAllWord {
-    width: 12vw;
-  }
-
-  .conMBLeftTitle {
-    text-align: center;
-    margin-bottom: 2vh;
-  }
-
-  .conMBWord {
-    color: #fff;
-    margin: 0.5vh 0;
-  }
-
-  .conMBBigWord {
-    font-size: 1.5vw;
+    font-size: 1.4vw;
     font-weight: bold;
+    margin: 0;
+    line-height: 1.3;
   }
 
-  .conMBSmallWord {
-    font-size: 1.8vh;
-    line-height: 1.4;
+  /* Main content area with 3 columns */
+  .merchContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2vw;
+    flex-grow: 1;
+    margin-bottom: 2vh;
   }
 
-  .conMBPhoto {
+  .leftColumn,
+  .rightColumn {
+    flex: 1;
+    max-width: 30%;
+  }
+
+  .centerColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2vh;
+    flex-shrink: 0;
     width: 8vw;
+  }
+
+  .iconImage {
+    width: 6vw;
     height: auto;
-    margin: 0 1vw;
+    max-width: 80px;
   }
 
-  .conMBRightSec {
-    width: 12vw;
-  }
-
-  .conMBRightTitle {
+  /* Left column styles */
+  .leftHeader {
     text-align: center;
     margin-bottom: 2vh;
   }
 
-  .conShopButton {
+  .merchSubtext {
+    color: #fafafa;
+    font-size: 1.6vh;
+    margin: 0 0 1vh 0;
+    font-weight: normal;
+  }
+
+  .merchMainText {
+    color: #fafafa;
+    font-family: 'coolvetica', Arial, serif;
+    font-size: 2vh;
+    font-weight: bold;
+    margin: 0.3vh 0;
+    line-height: 1.2;
+  }
+
+  .leftBullets {
+    text-align: left;
+  }
+
+  .bulletPoint {
+    color: #fafafa;
+    font-size: 1.5vh;
+    line-height: 1.4;
+    margin: 0.8vh 0;
+  }
+
+  /* Right column styles */
+  .rightHeader {
+    text-align: center;
+    margin-bottom: 2vh;
+  }
+
+  .rightBullets {
+    text-align: left;
+  }
+
+  /* Shop button */
+  .shopButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: auto;
+  }
+
+  .shopButton {
     background-color: #ea0f81;
     color: #fafafa;
     font-family: 'coolvetica', Arial, serif;
@@ -334,8 +380,30 @@
     height: 5vh;
     font-size: 2.5vh;
     cursor: pointer;
-    float: right;
-    margin-top: 2vh;
+    transition: all 0.3s ease;
+  }
+
+  .shopButton:hover {
+    background-color: #d10874;
+  }
+
+  /* Responsive adjustments for smaller desktop screens */
+  @media screen and (max-width: 1200px) {
+    .giftText {
+      font-size: 16px;
+    }
+    
+    .merchSubtext {
+      font-size: 14px;
+    }
+    
+    .merchMainText {
+      font-size: 18px;
+    }
+    
+    .bulletPoint {
+      font-size: 13px;
+    }
   }
 }
 

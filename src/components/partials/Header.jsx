@@ -16,7 +16,6 @@ import blogMobile from "../../assets/images/menupage/03-btn-blogandbeyond (1).pn
 import talkMobile from "../../assets/images/menupage/04-btn-letstalk (1).png";
 import contributeMobile from "../../assets/images/menupage/06-btn-contrib (1).png";
 
-
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -61,15 +60,9 @@ const Header = () => {
           </button>
           <button
             className={s.headerButton}
-            onClick={() => scrollToSection("blogSection")}
+            onClick={() => scrollToSection("contributeSection")}
           >
-            <img src={blog} alt="blog" />
-          </button>
-          <button
-            className={s.headerButton}
-            onClick={() => scrollToSection("talkSection")}
-          >
-            <img src={talk} alt="talk" />
+            <img src={contribute} alt="contribute" />
           </button>
           <button
             className={s.headerButton}
@@ -79,9 +72,15 @@ const Header = () => {
           </button>
           <button
             className={s.headerButton}
-            onClick={() => scrollToSection("contributeSection")}
+            onClick={() => scrollToSection("blogSection")}
           >
-            <img src={contribute} alt="contribute" />
+            <img src={blog} alt="blog" />
+          </button>
+          <button
+            className={s.headerButton}
+            onClick={() => scrollToSection("talkSection")}
+          >
+            <img src={talk} alt="talk" />
           </button>
           <button
             className={s.headerButton}
@@ -98,22 +97,32 @@ const Header = () => {
       </nav>
 
       {/* Mobile Offcanvas Menu */}
-      <div className={`${s.mobileOffcanvas} ${isMobileMenuOpen ? s.offcanvasOpen : ''}`}>
+      <div
+        className={`${s.mobileOffcanvas} ${
+          isMobileMenuOpen ? s.offcanvasOpen : ""
+        }`}
+      >
         {/* Backdrop */}
-        <div 
-          className={`${s.offcanvasBackdrop} ${isMobileMenuOpen ? s.backdropShow : ''}`}
+        <div
+          className={`${s.offcanvasBackdrop} ${
+            isMobileMenuOpen ? s.backdropShow : ""
+          }`}
           onClick={closeMobileMenu}
         ></div>
-        
+
         {/* Offcanvas Panel */}
-        <div className={`${s.offcanvasPanel} ${isMobileMenuOpen ? s.panelShow : ''}`}>
+        <div
+          className={`${s.offcanvasPanel} ${
+            isMobileMenuOpen ? s.panelShow : ""
+          }`}
+        >
           <div className={s.offcanvasHeader}>
             <h3 className={s.offcanvasTitle}>Menu</h3>
             <button className={s.closeButton} onClick={closeMobileMenu}>
               <span>&times;</span>
             </button>
           </div>
-          
+
           <div className={s.offcanvasBody}>
             <div className={s.mobileNavLinks}>
               <button

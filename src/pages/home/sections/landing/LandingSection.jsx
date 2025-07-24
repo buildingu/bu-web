@@ -26,7 +26,7 @@ const LandingSection = () => {
               className={`${s.homeSbar} ${s.desktop}`}
             />
             <p className={`${s.homeSbar} ${s.desktop} ${s.homeSbarWord}`}>
-              <cite>Gobble, Gobble, Gobble, Gobble...</cite>Mr. Turkey
+              <cite>Gobble, Gobble, Gobble, Gobble...</cite> <br />Mr. Turkey
             </p>
           </div>
         </div>
@@ -41,7 +41,7 @@ const LandingSection = () => {
               className={s.homeSectionLine}
             />
             <h1 className={s.homeSectionText}>
-              We need to write here a little explanation.
+              We need to write here a little explanation of what building u is.
             </h1>
             <img
               src={knowMoreDesktop}

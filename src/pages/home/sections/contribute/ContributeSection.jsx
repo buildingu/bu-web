@@ -167,72 +167,71 @@ const ContributeSection = () => {
               </div>
             )}
 
-            {/* Merch Section */}
             {activeSection === "merch" && (
               <div className={s.paragraph3}>
-                <div className={s.conMUp}>
-                  <img
-                    src={ushopLogo}
-                    alt="U-Shop Logo"
-                    className={s.conMULogo}
-                  />
-                  <div className={s.conMUGiftSec}>
-                    <img src={giftImage} alt="Gift" className={s.conMUGift} />
-                    <p className={s.conMUText}>
+                <div className={s.merchHeader}>
+                  <div className={s.ushopLogoContainer}>
+                    <img
+                      src={ushopLogo}
+                      alt="U-Shop Logo"
+                      className={s.ushopLogo}
+                    />
+                  </div>
+                  <div className={s.giftSection}>
+                    <img src={giftImage} alt="Gift" className={s.giftIcon} />
+                    <p className={s.giftText}>
                       Gifts-U-Can-Choose designed by the Student U-Crew
                     </p>
                   </div>
                 </div>
-                <div className={s.conMBottom}>
-                  <div className={s.conMBAllWord}>
-                    <div className={s.conMBLeftTitle}>
-                      <p className={s.conMBWord}>A different way to:</p>
-                      <p className={`${s.conMBWord} ${s.conMBBigWord}`}>
-                        Shop with U-Pointz
-                      </p>
-                      <p className={`${s.conMBWord} ${s.conMBBigWord}`}>&</p>
-                      <p className={`${s.conMBWord} ${s.conMBBigWord}`}>
-                        Support what you like
-                      </p>
+
+                {/* Main Content Area */}
+                <div className={s.merchContent}>
+                  {/* Left Column */}
+                  <div className={s.leftColumn}>
+                    <div className={s.leftHeader}>
+                      <p className={s.merchSubtext}>A different way to:</p>
+                      <h2 className={s.merchMainText}>Shop with U-Pointz</h2>
+                      <h2 className={s.merchMainText}>&</h2>
+                      <h2 className={s.merchMainText}>Support what you like</h2>
                     </div>
-                    <p className={`${s.conMBWord} ${s.conMBSmallWord}`}>
-                      ·Our high school internship programs!
-                    </p>
-                    <p className={`${s.conMBWord} ${s.conMBSmallWord}`}>
-                      ·More resources to more students!
-                    </p>
-                    <p className={`${s.conMBWord} ${s.conMBSmallWord}`}>
-                      ·$4YT scholarship for students
-                    </p>
+                    <div className={s.leftBullets}>
+                      <p className={s.bulletPoint}>• Our high school internship programs!</p>
+                      <p className={s.bulletPoint}>• More resources to more students!</p>
+                      <p className={s.bulletPoint}>• $4YT scholarship for students</p>
+                    </div>
                   </div>
-                  <div>
+
+                  {/* Center Column - Icons */}
+                  <div className={s.centerColumn}>
                     <img
                       src={handMouseImage}
                       alt="Hand Mouse"
-                      className={s.conMBPhoto}
+                      className={s.iconImage}
                     />
                     <img
                       src={heartImage}
                       alt="Heart"
-                      className={s.conMBPhoto}
+                      className={s.iconImage}
                     />
                   </div>
-                  <div className={s.conMBRightSec}>
-                    <div className={s.conMBRightTitle}>
-                      <p className={`${s.conMBWord} ${s.conMBBigWord}`}>
-                        Sharing U-Pointz
-                      </p>
+
+                  {/* Right Column */}
+                  <div className={s.rightColumn}>
+                    <div className={s.rightHeader}>
+                      <h2 className={s.merchMainText}>Sharing U-Pointz</h2>
                     </div>
-                    <p className={`${s.conMBWord} ${s.conMBSmallWord}`}>
-                      ·Use these yourself or share them with friends
-                    </p>
-                    <p className={`${s.conMBWord} ${s.conMBSmallWord}`}>
-                      ·Just click on the heart to make a free account and spread
-                      the love
-                    </p>
+                    <div className={s.rightBullets}>
+                      <p className={s.bulletPoint}>• Use these yourself or share them with friends</p>
+                      <p className={s.bulletPoint}>• Just click on the heart to make a free account and spread the love</p>
+                    </div>
                   </div>
                 </div>
-                <button className={s.conShopButton}>Shop</button>
+
+                {/* Shop Button */}
+                <div className={s.shopButtonContainer}>
+                  <button className={s.shopButton}>Shop</button>
+                </div>
               </div>
             )}
           </div>
