@@ -4,6 +4,9 @@ import LandingSection from "./sections/landing/LandingSection";
 import s from "./styles.module.css";
 
 const Home = () => {
+
+  // Here we use destructure sections to allow for easier styling for borders. 
+  // We could have used sections directly, but I found this easier to style.
   const Blog = sections[0];
   const Contribute = sections[1];
   const LetsTalkSection = sections[2];
