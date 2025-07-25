@@ -1,152 +1,207 @@
-import { forwardRef, useRef, useLayoutEffect } from "react";
-import s from "./styles.module.css";
+ import React, { forwardRef, useRef, useLayoutEffect, useEffect } from "react";
+ import s from "./styles.module.css";
 
-export const ScrollArea = forwardRef(({ children, className = "", ...props }, ref) => {
-    const contentRef = useRef(null);
-    const scrollAreaRef = useRef(null);
-    const scrollbarRef = useRef(null);
+ // Simple debounce helper
+ function debounce(func, delay = 200) {
+   let timeoutId;
+   return (...args) => {
+     clearTimeout(timeoutId);
+     timeoutId = setTimeout(() => func(...args), delay);
+   };
+ }
 
-    const isDragging = useRef(false);
-    const startY = useRef(0);
-    const startThumbY = useRef(0);
-    const scrollOffset = useRef(0);
+ /**
+  * React conversion of your vanilla JS custom scrollbar logic.
+  * - Thumb height scales with visible/total content (like native scrollbars)
+  * - Wheel + drag supported
+  * - Resizes/reflows handled (window + ResizeObserver)
+  */
+ const ScrollArea = forwardRef(
+   ({ children, className = "", ...props }, ref) => {
+     const scrollAreaRef = useRef(null);
+     const contentRef = useRef(null);
+     const scrollbarRef = useRef(null);
+     const thumbRef = useRef(null);
 
-    useLayoutEffect(() => {
-      const scrollArea = scrollAreaRef.current;
-      const content = contentRef.current;
-      if (!scrollArea || !content) return;
+     // dragging state
+     const isDragging = useRef(false);
+     const startY = useRef(0);
+     const startThumbY = useRef(0);
 
-      const scrollbar = scrollbarRef.current;
-      const thumb = scrollbar?.querySelector(`.${s.thumb}`);
-      if (!scrollbar || !thumb) return;
+     // virtual scroll state (we don't rely on native scrollTop)
+     const scrollOffset = useRef(0);
 
-      const debounce = (func, delay) => {
-        let timeoutId;
-        return (...args) => {
-          clearTimeout(timeoutId);
-          timeoutId = setTimeout(() => func(...args), delay);
-        };
-      };
+     const initializeThumbHeight = () => {
+       const scrollArea = scrollAreaRef.current;
+       const content = contentRef.current;
+       const scrollbar = scrollbarRef.current;
+       const thumb = thumbRef.current;
+       if (!scrollArea || !content || !scrollbar || !thumb) return;
 
-      // TODO: When there is a lot of content overflowing the wrapper, the thumb gets smaller.
-      // When the content overflowing is just a bit, the thumb is bigger. Just like the default 
-      // browser scrollbar and every other scrollbar.
-      // NOTE: WAIT, I think it might be working somewhat, just render less blog data and see if it changes.
-      const initializeThumbHeight = () => {
-        const overflow = content.scrollHeight - scrollArea.clientHeight;
-        if (overflow <= 0) {
-          thumb.style.height = `${scrollArea.clientHeight}px`;
-        } else {
-          const ratio = scrollArea.clientHeight / content.scrollHeight;
-          // const thumbHeight = Math.max(10, ratio * scrollArea.clientHeight);
-          thumb.style.height = `${50}px`;
-        }
-      };
+       const visible = scrollArea.clientHeight;
+       const total = content.scrollHeight;
+       const trackHeight = scrollbar.clientHeight;
 
-      const calculateDimensions = () => {
-        const contentScrollHeight = content.scrollHeight - scrollArea.clientHeight; 
-        const maxThumbY = scrollbar.clientHeight - thumb.clientHeight;
-        const scrollRatio = maxThumbY > 0 ? contentScrollHeight / maxThumbY : 0;
+       if (total <= visible) {
+         thumb.style.height = `${trackHeight}px`;
+       } else {
+         const ratio = visible / total;
+         const minHeight = 20; 
+         const thumbPx = Math.max(minHeight, ratio * trackHeight);
+         thumb.style.height = `${thumbPx}px`;
+       }
+     };
 
-        return { contentScrollHeight, maxThumbY, scrollRatio };
-      };
 
-      const updateContentPosition = (delta) => {
-        const { contentScrollHeight, scrollRatio } = calculateDimensions();
+     const calculateDimensions = () => {
+       const scrollArea = scrollAreaRef.current;
+       const content = contentRef.current;
+       const scrollbar = scrollbarRef.current;
+       const thumb = thumbRef.current;
+       if (!scrollArea || !content || !scrollbar || !thumb) {
+         return { contentScrollHeight: 0, maxThumbY: 0, scrollRatio: 0 };
+       }
 
-        let newScrollTop = scrollOffset.current + delta;
-        newScrollTop = Math.max(0, Math.min(newScrollTop, contentScrollHeight));
-        scrollOffset.current = newScrollTop;
+       const contentScrollHeight = Math.max(
+         content.scrollHeight - scrollArea.clientHeight,
+         0
+       );
+       const maxThumbY = Math.max(
+         scrollbar.clientHeight - thumb.clientHeight,
+         0
+       );
+       const scrollRatio = maxThumbY > 0 ? contentScrollHeight / maxThumbY : 0;
 
-        const newThumbY = scrollRatio !== 0 ? newScrollTop / scrollRatio : 0;
-        thumb.style.transform = `translateX(-50%) translateY(${newThumbY}px)`;
-        content.style.transform = `translateY(${-newScrollTop}px)`;
-      };
+       return { contentScrollHeight, maxThumbY, scrollRatio };
+     };
 
-      const handleWheel = (e) => {
-        updateContentPosition(e.deltaY);
-        e.preventDefault();
-      };
+     const syncFromScrollTop = (newScrollTop) => {
+       const content = contentRef.current;
+       const thumb = thumbRef.current;
+       if (!content || !thumb) return;
 
-      const handleMouseDown = (e) => {
-        isDragging.current = true;
-        startY.current = e.clientY;
-        startThumbY.current = thumb.offsetTop;
-        thumb.style.cursor = "grabbing";
-      };
+       const { contentScrollHeight, scrollRatio } = calculateDimensions();
+       const clamped = Math.max(0, Math.min(newScrollTop, contentScrollHeight));
 
-      const handleMouseMove = (e) => {
-        if (!isDragging.current) return;
-        
-        const dy = e.clientY - startY.current;
-        const { maxThumbY, scrollRatio } = calculateDimensions();
-        let newThumbY = Math.max(
-          0,
-          Math.min(startThumbY.current + dy, maxThumbY)
-        );
-        scrollOffset.current = scrollRatio !== 0 ? newThumbY * scrollRatio : 0;
-        thumb.style.transform = `translateX(-50%) translateY(${newThumbY}px)`;
-        content.style.transform = `translateY(${-scrollOffset.current}px)`;
-      };
+       const newThumbY = scrollRatio ? clamped / scrollRatio : 0;
 
-      const handleMouseUp = () => {
-        isDragging.current = false;
-        thumb.style.cursor = "grab";
-      };
+       thumb.style.transform = `translateY(${newThumbY}px)`;
+       content.style.transform = `translateY(${-clamped}px)`;
 
-      initializeThumbHeight();
-      const debouncedResize = debounce(initializeThumbHeight, 500);
+       scrollOffset.current = clamped;
+     };
 
-      window.addEventListener("resize", debouncedResize);
-      scrollArea.addEventListener("wheel", handleWheel);
-      // FIXME: Holding and clicking is not working right, it jumps if you move it down, then click it again.
-      thumb.addEventListener("mousedown", handleMouseDown);
-      document.addEventListener("mousemove", handleMouseMove);
-      document.addEventListener("mouseup", handleMouseUp);
+     const handleWheel = (e) => {
+       // prevent native scroll so we stay in control
+       e.preventDefault();
+       const step = e.deltaY; // you can scale this if desired
+       syncFromScrollTop(scrollOffset.current + step);
+     };
 
-      return () => {
-        scrollArea.removeEventListener("wheel", handleWheel);
-        document.removeEventListener("mousemove", handleMouseMove);
-        document.removeEventListener("mouseup", handleMouseUp);
-        window.removeEventListener("resize", debouncedResize);
-        thumb.removeEventListener("mousedown", handleMouseDown);
-      };
-    }, []);
+     const handleThumbDown = (e) => {
+       isDragging.current = true;
+       startY.current = e.clientY;
+       startThumbY.current = thumbRef.current.offsetTop;
+       document.body.style.userSelect = "none"; // avoid text selection while dragging
+     };
 
-    useLayoutEffect(() => {
-      const scrollArea = scrollAreaRef.current;
-      const content = contentRef.current;
-      const scrollbar = scrollbarRef.current;
-      const thumb = scrollbar?.querySelector(`.${s.thumb}`);
-      if (!scrollArea || !content || !thumb) return;
-      scrollOffset.current = 0;
-      content.style.transform = `translateY(0px)`;
-      thumb.style.transform = `translateX(-50%) translateY(0px)`;
-    }, []);
+     const handleMouseMove = (e) => {
+       if (!isDragging.current) return;
 
-    return (
-      <div
-        ref={(node) => {
-          scrollAreaRef.current = node;
-          if (typeof ref === "function") ref(node);
-          else if (ref) ref.current = node;
-        }}
-        className={`${s.scrollAreaWrapper} scrollArea`}
-      >
-        <div
-          tabIndex={0}
-          ref={contentRef}
-          className={`${s.content} ${className}`}
-          {...props}
-        >
-          {children}
-        </div>
+       const { maxThumbY, scrollRatio } = calculateDimensions();
+       let newThumbY = startThumbY.current + (e.clientY - startY.current);
+       newThumbY = Math.max(0, Math.min(newThumbY, maxThumbY));
 
-        <div ref={scrollbarRef} className="scrollbar">
-          <div className={s.scrollbarTrack}></div>
-          <button className={s.thumb}></button>
-        </div>
-      </div>
-    );
-  }
-);
+       const newScrollTop = scrollRatio ? newThumbY * scrollRatio : 0;
+       syncFromScrollTop(newScrollTop);
+     };
+
+     const handleMouseUp = () => {
+       if (!isDragging.current) return;
+       isDragging.current = false;
+       document.body.style.userSelect = "";
+     };
+
+     useLayoutEffect(() => {
+       const scrollArea = scrollAreaRef.current;
+       const content = contentRef.current;
+       const thumb = thumbRef.current;
+
+       if (!scrollArea || !content || !thumb) return;
+
+       // Initial layout
+       initializeThumbHeight();
+       syncFromScrollTop(0);
+
+       const debouncedRecalc = debounce(() => {
+         initializeThumbHeight();
+         // keep visual position consistent after resize/reflow
+         syncFromScrollTop(scrollOffset.current);
+       }, 150);
+
+       // Listeners
+       scrollArea.addEventListener("wheel", handleWheel, { passive: false });
+       thumb.addEventListener("mousedown", handleThumbDown);
+       document.addEventListener("mousemove", handleMouseMove);
+       document.addEventListener("mouseup", handleMouseUp);
+       window.addEventListener("resize", debouncedRecalc);
+
+       // Observe content/area size changes as well
+       let roContent, roArea;
+       if (typeof ResizeObserver !== "undefined") {
+         roContent = new ResizeObserver(debouncedRecalc);
+         roArea = new ResizeObserver(debouncedRecalc);
+         roContent.observe(content);
+         roArea.observe(scrollArea);
+       }
+
+       return () => {
+         scrollArea.removeEventListener("wheel", handleWheel);
+         thumb.removeEventListener("mousedown", handleThumbDown);
+         document.removeEventListener("mousemove", handleMouseMove);
+         document.removeEventListener("mouseup", handleMouseUp);
+         window.removeEventListener("resize", debouncedRecalc);
+         if (roContent) roContent.disconnect();
+         if (roArea) roArea.disconnect();
+       };
+     }, []);
+
+     // Reset when children change (optional, keeps behavior predictable when content swaps)
+     useEffect(() => {
+       const content = contentRef.current;
+       const thumb = thumbRef.current;
+       if (!content || !thumb) return;
+       scrollOffset.current = 0;
+       content.style.transform = `translateY(0px)`;
+       thumb.style.transform = `translateY(0px)`;
+       initializeThumbHeight();
+     }, [children]);
+
+     return (
+       <div
+         ref={(node) => {
+           scrollAreaRef.current = node;
+           if (typeof ref === "function") ref(node);
+           else if (ref) ref.current = node;
+         }}
+         className={`${s?.scrollAreaWrapper ?? ""} scrollArea`}
+       >
+         <div
+           tabIndex={0}
+           ref={contentRef}
+           className={`${s?.content ?? ""} content ${className}`}
+           {...props}
+         >
+           {children}
+         </div>
+
+         <div ref={scrollbarRef} className={`${s?.scrollbar ?? ""} scrollbar`}>
+           <div className={`${s?.scrollbarTrack ?? ""} scrollbarTrack`} />
+           <button ref={thumbRef} className={`${s?.thumb ?? ""} thumb`} />
+         </div>
+       </div>
+     );
+   }
+ );
+
+ export default ScrollArea;

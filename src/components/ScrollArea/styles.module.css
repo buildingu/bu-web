@@ -30,7 +30,7 @@
 
 .scrollAreaWrapper :global(.scrollbar) .scrollbarTrack {
   position: absolute;
-  left: 50%;
+  left: 45%;
   top: 0;
   width: 4px;
   height: 100%;
@@ -41,7 +41,7 @@
 
 .scrollAreaWrapper :global(.scrollbar) .thumb {
   position: absolute;
-  left: 50%;
+  left: 0%;
   transform: translateX(-50%);
   width: 21px;
   height: 40px;

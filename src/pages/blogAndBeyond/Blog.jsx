@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ScrollArea } from "../../components/ScrollArea/ScrollArea";
+import ScrollArea from "../../components/ScrollArea/ScrollArea";
 
 // import beyondImage from "/images/beyond.png";
 // import resourcesImage from "/images/btn_01-resources.png";
@@ -154,7 +154,7 @@ export default function Blog() {
   }, [data.blogs]);
 
   return (
-    <main>
+    <main className={s.main}>
       <aside className={s.aside}>
         <div className={s.trapezoid}></div>
         <div className={s.sideTextSmall}>
@@ -187,8 +187,6 @@ export default function Blog() {
       </aside>
 
       <div className={s.mainContent}>
-        <img src="/images/mole.png" alt="mole" className={s.mole} />
-
         <ScrollArea className={s.content}>
           {data.blogs.map((item) => (
             <div key={item.id} className={s.blogCard}>
@@ -201,10 +199,10 @@ export default function Blog() {
               <p className={s.blogAuthor}>By {item.author}</p>
               <p className={s.blogExcerpt}>
                 We do our best to do our part. We haul our compost bins to the
-                town recycling centre, we clear our email inboxes so they take up
-                less space, and we wash plastic containers before recycling them.
-                We understand that there are wildfires and melting ice and dying
-                animals, which is why we alter our […]
+                town recycling centre, we clear our email inboxes so they take
+                up less space, and we wash plastic containers before recycling
+                them. We understand that there are wildfires and melting ice and
+                dying animals, which is why we alter our […]
               </p>
               <a
                 href={item.link}
@@ -217,6 +215,10 @@ export default function Blog() {
             </div>
           ))}
         </ScrollArea>
+      </div>
+
+      <div className={s.moleContainer}>
+        <img src="/images/mole.png" alt="mole" className={s.mole} />
       </div>
     </main>
   );
