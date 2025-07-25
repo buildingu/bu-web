@@ -6,7 +6,6 @@ export const ScrollArea = forwardRef(
     const contentRef = useRef(null);
     const scrollAreaRef = useRef(null);
 
-    // 這些用 useRef 存狀態，跨事件共用
     const isDragging = useRef(false);
     const startY = useRef(0);
     const startThumbY = useRef(0);
@@ -44,7 +43,6 @@ export const ScrollArea = forwardRef(
         const contentScrollHeight =
           content.scrollHeight - scrollArea.clientHeight;
         const maxThumbY = scrollbar.clientHeight - thumb.clientHeight;
-        // 避免除零
         const scrollRatio = maxThumbY > 0 ? contentScrollHeight / maxThumbY : 0;
         return { contentScrollHeight, maxThumbY, scrollRatio };
       };
@@ -107,6 +105,17 @@ export const ScrollArea = forwardRef(
         thumb.removeEventListener("mousedown", handleMouseDown);
       };
     }, []);
+
+    useLayoutEffect(() => {
+      const scrollArea = scrollAreaRef.current;
+      const content = contentRef.current;
+      const scrollbar = scrollArea?.querySelector(`.${s.scrollbar}`);
+      const thumb = scrollbar?.querySelector(`.${s.thumb}`);
+      if (!scrollArea || !content || !thumb) return;
+      scrollOffset.current = 0;
+      content.style.transform = `translateY(0px)`;
+      thumb.style.transform = `translateX(-50%) translateY(0px)`;
+    }, [children]);
 
     return (
       <div

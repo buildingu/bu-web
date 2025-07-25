@@ -15,24 +15,24 @@
   position: absolute;
   top: 0;
   left: 0;
-  right: 40px; /* reserve space for scrollbar */
+  right: 40px;
   bottom: 0;
   overflow: visible;
-  padding-bottom: 16px; /* avoids cutoff */
+  padding-bottom: 16px; 
 }
 
 .scrollbar {
   position: absolute;
   top: 0;
   right: 0;
-  width: 24px; /* same as thumb width */
+  width: 24px; 
   height: 100%;
   background: transparent;
   pointer-events: none;
   z-index: 10;
   border: none;
   box-sizing: border-box;
-  border-radius: 0; /* square ends */
+  border-radius: 0; 
 }
 
 .scrollbarTrack {
@@ -42,7 +42,7 @@
   width: 2px;
   height: 100%;
   background: white;
-  border-radius: 0; /* square ends */
+  border-radius: 0; 
   transform: translateX(-50%);
 }
 
