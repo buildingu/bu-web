@@ -4,6 +4,7 @@
   background-position: center center;
   background-color: #008dd2;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 /* Header */
@@ -207,3 +208,8 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
+.scrollAreaFixedHeight {
+  height: 60vh; /* or 400px, or whatever works */
+}
+

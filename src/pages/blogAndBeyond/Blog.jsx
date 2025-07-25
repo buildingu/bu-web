@@ -147,14 +147,17 @@ export default function Blog() {
   const [data, setData] = useState({ blogs: mockData, category: "All" });
 
   useEffect(() => {
-    console.log("data.blogs", data.blogs);
+    if (typeof window !== "undefined") {
+      console.log("data.blogs", data.blogs);
+    }
+    
   }, [data.blogs]);
 
   return (
     <main>
       <img src="/images/mole.png" alt="mole" className={s.logo5} />
 
-      <ScrollArea className={s.content}>
+      <ScrollArea className={`${s.content} ${s.scrollAreaFixedHeight}`}>
         {data.blogs.map((item) => (
           <div key={item.id} className={s.blogCard}>
             <div className={s.blogHeader}>
@@ -166,10 +169,10 @@ export default function Blog() {
             <p className={s.blogAuthor}>By {item.author}</p>
             <p className={s.blogExcerpt}>
               We do our best to do our part. We haul our compost bins to the
-              town recycling centre, we clear our email inboxes so they take
-              up less space, and we wash plastic containers before recycling
-              them. We understand that there are wildfires and melting ice and
-              dying animals, which is why we alter our […]
+              town recycling centre, we clear our email inboxes so they take up
+              less space, and we wash plastic containers before recycling them.
+              We understand that there are wildfires and melting ice and dying
+              animals, which is why we alter our […]
             </p>
             <a
               href={item.link}

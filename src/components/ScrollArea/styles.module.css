@@ -1,3 +1,61 @@
 :global(.scrollArea) {
   overflow: hidden;
 }
+
+.scrollAreaWrapper {
+  height: 75%;
+  position: relative;
+
+  display: flex;
+}
+
+.content {
+  will-change: transform;
+  transition: transform 0.1s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 40px; /* reserve space for scrollbar */
+  bottom: 0;
+  overflow: visible;
+  padding-bottom: 16px; /* avoids cutoff */
+}
+
+.scrollbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24px; /* same as thumb width */
+  height: 100%;
+  background: transparent;
+  pointer-events: none;
+  z-index: 10;
+  border: none;
+  box-sizing: border-box;
+  border-radius: 0; /* square ends */
+}
+
+.scrollbarTrack {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: white;
+  border-radius: 0; /* square ends */
+  transform: translateX(-50%);
+}
+
+.thumb {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 24px;
+  background: white;
+  border-radius: 32px;
+  cursor: grab;
+  pointer-events: auto;
+  border: none;
+  box-shadow: none;
+}
