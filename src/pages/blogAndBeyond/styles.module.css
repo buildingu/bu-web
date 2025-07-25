@@ -11,7 +11,7 @@
 .container .header {
   position: relative;
   background-color: var(--c-magenta);
-  height: 20vh;
+  height: 16vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -34,31 +34,34 @@
 }
 
 .container .header .logo1 {
-  margin-left: 5vw;
+  margin-left: 1vw;
   margin-top: 45vh;
   width: 20%;
   max-width: 100%;
   height: auto;
 }
 
+/* go back */
 .container .header .logo2 {
-  margin-left: 75vw;
-  margin-top: 8vh;
-  height: 12vh;
+  left: 82vw;
+  top: 8.5vh;
+  height: 11vh;
   width: auto;
 }
 
+/* sign up */
 .container .header .logo3 {
-  left: 85vw;
-  top: 9vh;
-  height: 17vh;
+  left: 91vw;
+  top: 8vh;
+  height: 16vh;
   width: auto;
 }
 
+/* we are */
 .container .header .logo4 {
-  left: 30vw;
+  left: 25vw;
   top: 50%;
-  height: 12vh;
+  height: 10.5vh;
   width: auto;
 }
 
@@ -81,7 +84,7 @@
   left: 0%;
   width:35vw;
   height: 0;
-  border-top: 80vh solid #EF7F1A;
+  border-top: 84.1vh solid #EF7F1A;
   border-right: 10vw solid transparent;
 }
 
