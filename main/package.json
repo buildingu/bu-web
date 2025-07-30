@@ -24,7 +24,7 @@
     "build": "npm run build:front && npm run build:back",
     "build:front": "npm run build --workspace front",
     "build:back": "npm run build --workspace back",
-    "start": "dotenv -e .env.production node build/server.mjs",
+    "serve": "dotenv -e .env.production node build/server.mjs",
 
     "lint": "npm run lint:front && npm run lint:back",
     "lint:front": "npm run lint --workspace front",

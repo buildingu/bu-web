@@ -9,6 +9,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon",
+    "start": "dotenv -e ../.env.development tsx ./src/index.ts",
     "build": "shx rm -rf build/server.mjs build/assets && vite build --ssr ./src/index.js",
     "lint": "eslint . --ext js --report-unused-disable-directives --max-warnings 0",
     "clean": "shx rm -rf node_modules"
