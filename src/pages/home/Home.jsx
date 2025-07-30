@@ -5,7 +5,7 @@ import s from "./styles.module.css";
 
 const Home = () => {
 
-  // Here we use destructure sections to allow for easier styling for borders. 
+  // Here we use destructure sections to allow for easier styling for separating borders between sections. 
   // We could have used sections directly, but I found this easier to style.
   const Blog = sections[0];
   const Contribute = sections[1];
