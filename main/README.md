@@ -68,7 +68,7 @@ You can go to https://www.npmjs.com/, to search for other packages from develope
 Our router is `react-router-dom`, which helps us set up our routes(pages, e.g., /let-talk) and interact with the router. For a better look, here is [the official documentation](https://reactrouter.com/en/main/start/overview).
 
 ### Our Custom History Object
-In the `react-router-dom` documentation, you'll find a hook called `useNavigate` used for when you want to navigate to a page **programmatically**. Instead of using this hook, we use our `custom history object`, located [here](https://github.com/buildingu/bu-front/blob/develop/src/utils/History.js). This utility allows us to navigate both `inside and outside of components`. For consistency, use this custom history object in your pages/components and everywhere else.
+In the `react-router-dom` documentation, you'll find a hook called `useNavigate` used for when you want to navigate to a page **programmatically**. Instead of using this hook, we use our `custom history object`, located [here](https://github.com/buildingu/bu-web/blob/main/main/front-end/src/utils/History.js). This utility allows us to navigate both `inside and outside of components`. For consistency, use this custom history object in your pages/components and everywhere else.
 
 _How you would normally navigate with `react-router-dom`:_
 ```JavaScript
@@ -123,7 +123,7 @@ const Whatever = () => {
 `Link component` in the docs: https://reactrouter.com/en/main/components/link
 
 ### Server Side Rendering (SSR)
-In our project, the server, which is `server.js`, `renders the JSX on the server side`, not on the client side. FYI, **you don't need to know all of this**, but you should be familiar with it. So, in a normal React project, they're [single-page applications (SPAs)](https://inoxoft.com/blog/how-to-build-a-single-page-application-with-react/#anchor-what-is-a-single-page-application), where there is just one HTML file, and the entire React project is in a script tag. That isn't ideal for this project, since this is a real-world project on the internet, we should care about [Search Engine optimization (SEO)](https://mailchimp.com/marketing-glossary/seo/). SSR helps improve SEO because the initial HTML rendered by the server is more accessible to search engines, this would make search engines and their bots and crawlers or whatever actually understand our site.
+In our project, the server, which is in the `back-end` directory, `renders the JSX on the server side`, not on the client side. FYI, **you don't need to know all of this**, but you should be familiar with it. So, in a normal React project, they're [single-page applications (SPAs)](https://inoxoft.com/blog/how-to-build-a-single-page-application-with-react/#anchor-what-is-a-single-page-application), where there is just one HTML file, and the entire React project is in a script tag. That isn't ideal for this project, since this is a real-world project on the internet, we should care about [Search Engine optimization (SEO)](https://mailchimp.com/marketing-glossary/seo/). SSR helps improve SEO because the initial HTML rendered by the server is more accessible to search engines, this would make search engines and their bots and crawlers or whatever actually understand our site.
 
 Our project still uses one HTML file like a SPA, but since the server pre-renders the JSX and includes it in the initial HTML (the index.html file), all `pages are shown dynamically in the HTML`.
 
@@ -144,7 +144,7 @@ const Whatever = () => {
   );
 };
 ```
-In the example above a **difference error** will happen since `useState` is only a client-side hook. The server doesn't run JavaScript like the `useState`, it just renders the initial HTML. So, the server wouldn't know about the conditional rendering of the `<div>` element based on the show state, since the initial state is true, thus causing a difference in the server-rendered HTML and the client-rendered HTML.
+In the example above, a **difference error** will happen since `useState` is only a client-side hook. The server doesn't run JavaScript like the `useState`, it just renders the initial HTML. So, the server wouldn't know about the conditional rendering of the `<div>` element based on the show state, since the initial state is true, thus causing a difference in the server-rendered HTML and the client-rendered HTML.
 
 _How to fix this difference:_
 ```JavaScript
@@ -209,7 +209,7 @@ So, for `components`, `utilities`, etc, that are only used within a single page 
 
 In your learning lessons, you might not have used `ES Modules (ESM)`; instead, you probably used `CommonJS`, which is the default module format in `Node.js`. `ESM` is the modern JavaScript module format and has several advantages over `CommonJS`.
 
-### CommonJs vs ESM 
+### CommonJS vs ESM 
 ```JavaScript
 // logger.js (CommonJS)
 const logger = (message) => {
@@ -240,30 +240,35 @@ logger('Hello, World!');
 ```
 
 ### Directory Structure
+First thing to get out of the way is technically the project is a [monorepo](https://monorepo.tools/#understanding-monorepos). A monorepo (short for "monolithic repository") means that multiple parts of the project, in this case, our front-end and back-end, live together in the same repository. This is different from a microservices-style architecture (polyrepo), where each service or project is completely separate, often stored in its own repository and deployed independently. If you look inside the base `package.json`, you’ll see a workspaces field, which is `npm workspaces`, a feature that helps manage multiple projects within a single repository. We're using it to keep the front-end and back-end organized, while still making it easy to install and share dependencies across them (like sharing React, since our server does SSR). The names of the workspaces are as follows: `front` for the front-end, and `back` for the back-end.
+
 ...TODO
 
 ## Getting Started
 
 ### Prerequisites
-- `Nodejs` version 20 or greater.
+- `Nodejs` version 22 or greater.
 - `NPM` version 10 or greater.
 
 ### Steps
-1. To first get started, install all the packages listed in the `package.json` by doing an `npm install`.
-2. While still in the main branch, create a file called `.env.development` at the base of the project(the same level as package.json). We need this file because our SSR server depends on certain environment variables, like `NODE_ENV` to determine the environment mode. For development, we'll use .env.development. So, there is an `example.env.development` file to show you what variables to set. Just copy and paste the contents in the `example.env.development` and put that in the `.env.development` you created. The variable `PORT=`, after the equals, set it to 3000 and there you go!
+1. To first get started, install all the packages listed in the `package.json` by doing an `npm ci`. You might be wondering what `ci` is and why we're not using `npm install`. `ci` means Continuous Integration; people use this command in build pipelines to ensure consistency. Unlike `npm install`, which can update your dependencies and potentially cause issues, `npm ci` installs the exact package versions that are listed in the `package-lock.json`. So, we're using it to be safe, I like everyone having the same thing installed and `npm ci` does that.
+2. While still in the main branch, create a file called `.env.development` at the base of the project(the same level as package.json, so the base of the `main` directory). We need this file because our SSR server depends on certain environment variables, like `NODE_ENV` to determine the environment mode. For development, we'll use .env.development. So, there is an `example.env.development` file to show you what variables to set. Just copy and paste the contents in the `example.env.development` and put that in the `.env.development` you created. The variable `PORT=`, after the equals, set it to 3000 and there you go!
 3. Now you'll have to create your team's branch. Since we are working by pages, you'll create your `branch by page`, for example, `page/home`. When you create your branch, make sure you're on your branch. Then run the dev command to start the development environment.
 
 ```
-$ npm install
-$ npm run dev
+$ npm ci
 ```
-Running `npm run dev` would run the project in development mode.
+Running the front-end in development mode:
 ```
-$ npm run dev
+$ npm run dev:front
 ```
-`installing a package` (you most likely don't have to do this):
+`installing a package` (you most likely don't have to do this), installing globally (both front-end and back-end):
 ```
 $ npm install <package>
+```
+`installing a package` for the front-end only:
+```
+$ npm install <package> --workspace web
 ```
 
 ### Your Page and Branch
@@ -326,8 +331,8 @@ const YourPage = () => {
 ### Pushing Code
 You'll always be working in your `page/<page name>` branch. When you have completed a good amount or feel that this part of the code is ready, you can push it to the `develop` branch. The `develop` branch is where all the current code in development is located. **But before you push your code to `develop`**, set up a meeting with me, David Bishop, so I can check it out :)
 
-### Pulling New Changes From Main (Mostly likely if I something)
-First move to the `main branch`, pull the changes. Then go back to your page branch and do `git rebase origin/main` and then you should have all the changes in your page branch.
+### Pulling New Changes From Main (Most likely if I change something)
+First move to the `main branch`, pull the changes. Then go back to your page branch and do `git rebase main` and then you should have all the changes in your page branch. Or you can just do `git rebase origin/main` straight from your branch, but having your main up to date is also nice.
 
 ## Helpful Resources
 https://www.freecodecamp.org/news/intro-to-react-components/ - React vs Static HTML
