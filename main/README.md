@@ -1,5 +1,5 @@
 # bu-front (front-end)
-Here I'll explain the `guidelines` you'll be following to ensure our front-end stays organized and consistent across the project.
+Here I'll explain the project and the `guidelines` you'll be following to ensure our front-end stays organized and consistent across the project.
 
 ## Technologies
 This is a `React` application built using `Vite` and utilizes `CSS modules` for styling. `NPM` is our package manager, and `react-router-dom` is also used for routing.
