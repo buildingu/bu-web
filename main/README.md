@@ -1,5 +1,5 @@
 # bu-front (front-end)
-Welcome interns! This is the official repository for building-U's new website(web app), here I'll explain the `guidelines` you'll be following to ensure we stay organized and consistent across the project.
+Here I'll explain the `guidelines` you'll be following to ensure our front-end stays organized and consistent across the project.
 
 ## Technologies
 This is a `React` application built using `Vite` and utilizes `CSS modules` for styling. `NPM` is our package manager, and `react-router-dom` is also used for routing.
