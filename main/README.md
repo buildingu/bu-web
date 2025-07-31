@@ -1,4 +1,4 @@
-# bu-front (front-end)
+# bu-web (front-end)
 Here I'll explain the project and the `guidelines` you'll be following to ensure our front-end stays organized and consistent across the project.
 
 ## Technologies
