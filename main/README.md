@@ -1,4 +1,4 @@
-# bu-front
+# bu-front (front-end)
 Welcome interns! This is the official repository for building-U's new website(web app), here I'll explain the `guidelines` you'll be following to ensure we stay organized and consistent across the project.
 
 ## Technologies
