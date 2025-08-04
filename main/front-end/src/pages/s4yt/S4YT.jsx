@@ -1,6 +1,7 @@
 /* ===== Imports ===== */
 import React, { useState } from 'react';
 import s from './styles.module.css';
+import "../../index.css";
 import { Layout } from '../../components/layout';
 import { Link } from 'react-router-dom';
 
@@ -38,7 +39,7 @@ const SECTION_CONTENT = [
   {
     title: "WHAT IS S4YT ABOUT?",
     items: [
-      "Explore fun questions posed by businesses to win $$$",
+      "Explore fun questions posed by businesses to win $",
       "Earn Dubl-U-nes to win prizes",
       "Sign up for post event meet-ups to learn more",
       "Join our [DISCORD] to learn more and stay updated!"
@@ -59,7 +60,7 @@ const SECTION_CONTENT = [
     ]
   },
   {
-    title: "HOW DO I WIN $$?",
+    title: "HOW DO I WIN $?",
     items: [
       "Students may submit 1 (and only 1) answer to each business question, but may win multiple $$$ awards",
       "All student identity info and submission remain anonymous until prizes are awarded",
@@ -89,6 +90,7 @@ export default function S4YT() {
   /* ===== Elements ===== */
 
   const discordLogo = (
+    // INSERT DISCORD LINK HERE !!!
     <Link to="#">
       <img 
         src={DISCORD_LOGO_PATH} 
@@ -116,9 +118,32 @@ export default function S4YT() {
     }
   };
 
+  /**
+   * Sets the visible section to null, removing the content view (Mobile Only)
+   */
   const handleBackClick = () => {
     setVisibleSection(null);
   };
+
+  /**
+   * Injects the discord logo into the content with a link
+   * 
+   * @param {string} content - The content to inject the discord logo into
+   * @returns {ReactNode} The content with the discord logo injected
+   */
+  const injectDiscordPlug = (content) => {
+    if (typeof content === 'string' && content.includes('[DISCORD]')) {
+      const [before, after] = content.split('[DISCORD]');
+      return (
+        <>
+          {before}
+          {discordLogo}
+          {after}
+        </>
+      );
+    }
+    return content;
+  }
 
   /**
    * Handles the section button click event
@@ -130,11 +155,11 @@ export default function S4YT() {
     setVisibleSection(sectionNumber);
   };
   
-  /* ===== Component Render Components ===== */
+  /* ===== Component Render Functions ===== */
 
   /**
    * Renders the navigation buttons
-   * @param {boolean} isMobile - Whether to render mobile version
+   * @param {boolean} isMobile - Whether or not to render the mobile version
    */
   const renderNavButtons = (isMobile = false) => (
     <div className={isMobile ? s.s4ytInfobuttonsMobile : s.s4ytInfobuttonsDesktop}>
@@ -166,19 +191,8 @@ export default function S4YT() {
         <ul>
           {content.items.map((item, i) => {
 
-            /* === Inject Discord Logo Component with Link === */
-
-            let content = item;
-            if (typeof item === 'string' && item.includes('[DISCORD]')) {
-              const [before, after] = item.split('[DISCORD]');
-              content = (
-                <>
-                  {before}
-                  {discordLogo}
-                  {after}
-                </>
-              );
-            } 
+            /* === Inject Discord Logo Component on "[DISCORD]" === */
+            const content = injectDiscordPlug(item);
             
             return (
               <li key={`item-${visibleSection}-${i}`} className={s.listinfo}>
@@ -207,12 +221,12 @@ export default function S4YT() {
             <img
               src="/images/s4yt/logo_dollars.png"
               alt="S4YT Logo"
-              className={s.s4ytPaper}
+              className={s.paper}
             />  
             <img
               src="/images/s4yt/click-me.png"
               alt="Click Me"
-              className={s.s4ytClick}
+              className={s.click}
             />
           </div>
 
