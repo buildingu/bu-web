@@ -7,7 +7,7 @@ const Home = () => {
 
   // Here we use destructure sections to allow for easier styling for separating borders between sections. 
   // We could have used sections directly, but I found this easier to style.
-  const Blog = sections[0];
+  const Blog = sections[5];
   const Contribute = sections[1];
   const LetsTalkSection = sections[2];
   const Resources = sections[3];
