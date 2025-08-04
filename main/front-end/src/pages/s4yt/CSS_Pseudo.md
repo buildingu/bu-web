@@ -52,6 +52,7 @@ plus seperate spacing for Top and Bottom buttons as they are on the edges
 
 Contains the Info which is dynamic from react and changes from which nav button is active
 Structure:
+```html
 <div class="textInfo">
     <hgroup>
         <h3 class="textHeader"></h3>
@@ -63,3 +64,4 @@ Structure:
     </ul>
     <img class="infoImg" src="" alt=""> -> This is the White Palm Tree Image
 </div>
+```
