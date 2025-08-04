@@ -26,7 +26,7 @@ const LandingSection = () => {
               className={`${s.homeSbar} ${s.desktop}`}
             />
             <p className={`${s.homeSbar} ${s.desktop} ${s.homeSbarWord}`}>
-              <cite>Gobble, Gobble, Gobble, Gobble...</cite> <br />Mr. Turkey
+              <cite>Gobble, Gobble, Gobble, Gobble...</cite> <br /><p style={{ marginLeft: "10rem" }}>Mr. Turkey</p>
             </p>
           </div>
         </div>
