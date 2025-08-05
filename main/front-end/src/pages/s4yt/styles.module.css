@@ -1,16 +1,20 @@
 /* =========== Base and Layout =========== */
 
 /* 
-Big issue found, s4ytexample classes are seen as different and not applying the class. need to change class names to 
-apply them correctly. 
+Big issue found, s4ytexample classes are compiled weirdly and not applying the class. need to change class names to 
+apply them correctly, cutting out "s4yt" completely, this wont cause any issues as long as we are specifying the 
+class names correctly in the code with the module prefix.
 */
 
 /* Main container */
 main {
-    height: 100%;
+    height: 78%;
     width: 100%;
-    margin: 0;
-    padding: 110px 0 30px 60px;
+    /* !!! IMPORTANT: Remove These Margin Styles when Footer and Header are Added, these are for visualization assuming they are there !!! */
+    margin-top: 15vh;
+    margin-bottom: 2vh;
+    padding-left: 9vw;
+    padding-right: 12vw;
     display: flex;
     flex-direction: row;
     background-color: #68b436;
@@ -19,11 +23,11 @@ main {
     background-position: center;
     background-size: cover;
     justify-content: flex-start;
-    overflow: auto;
+    overflow:hidden;
 }
 
 /* Layout container */
-.leftRightContainer {
+.container {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -31,29 +35,26 @@ main {
     height: 100%;
 }
 
-.s4ytsection {
-    /* Intentionally left empty for future use */
-}
-
 /* =========== Left Section (Logo & Click Me) =========== */
 
-.s4ytLeftsec {
+.leftSec { 
     display: flex;
     height: auto;
     align-items: center;
 }
 
 .paper {
-    height: 50px !important;
-    width: auto !important;
-    max-width: 50px !important;  /* Prevents the image from being too wide */
-    object-fit: contain;        /* Ensures the image maintains its aspect ratio */
+    height: auto;
+    width: auto;
+    max-width: 470px;
+    object-fit: contain;
 }
 
-.click {
-    width: 150px;
-    height: 150px;
-    margin-left: -3em;
+.speechBub {
+    width: auto;
+    height: 205px;
+    margin-left: -6em;
+    margin-bottom: 6em;
 }
 
 /* =========== Right Section (Content & Navigation) =========== */
@@ -69,31 +70,35 @@ main {
 
 .navBtn {
     cursor: pointer;
-    margin: 15px 0 10px 10vw;
+    width: 270px;
+    height: auto;
+    margin-bottom: 20px;
 }
 
 /* Button hover states */
-.s4ytWhat:hover { content: url("/images/s4yt/btn_01-what-is-hover.png"); }
-.s4ytAmi:hover { content: url("/images/s4yt/btn_02-am-i-hover.png"); }
-.s4ytWhen:hover { content: url("/images/s4yt/btn_03-when-can-hover.png"); }
-.s4ytHowdo:hover { content: url("/images/s4yt/btn_04-how-do-i-hover.png"); }
-.s4ytWhatare:hover { content: url("/images/s4yt/btn_05-what-are-hover.png"); }
+.what:hover { content: url("/images/s4yt/btn_01-what-is-hover.png"); }
+.amI:hover { content: url("/images/s4yt/btn_02-am-i-hover.png"); }
+.when:hover { content: url("/images/s4yt/btn_03-when-can-hover.png"); } 
+.howDo:hover { content: url("/images/s4yt/btn_04-how-do-i-hover.png"); }
+.whatAre:hover { content: url("/images/s4yt/btn_05-what-are-hover.png"); }
 
 /* Desktop Navigation */
-.s4ytInfobuttonsDesktop {
+.navDesktop {
     display: flex;
     flex-direction: column;
-    margin: 8rem 0 0 30px;
-    width: 293px;
+    margin: 0rem 0 0 5rem;
+    width: 270px;
     z-index: 3;
 }
 
 /* Mobile Navigation (hidden by default) (idk didnt start mobile yet) */
-.s4ytInfobuttonsMobile {
+.navMobile {
     display: none;
 }
 
 /* =========== Content Sections =========== */
+
+/* === General === */
 
 .textInfo {
     position: relative;
@@ -102,40 +107,49 @@ main {
     color: #008dd2;
     width: 100%;
     max-width: 1200px;
-    margin-left: 0;
+    margin-left: 3vw;
+    padding-bottom: 2vh;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100%;
 }
 
+/* === Header === */
+
+/* Header Group Container */
 .textInfo hgroup {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     max-width: 1200px;
+    margin-left: 1vw;
+    margin-bottom: 2vh;
     height: auto;
-    margin-top: 50px;
 }
 
-.textInfo .textHeader {
+/* Header Text */
+.textHeader {
     font-family: var(--heading-font2);
-    font-size: 50px;
+    font-size: 37px;
     color: #008dd2;
     z-index: 3;
     position: relative;
     text-align: center;
 }
 
+/* Header Seperator Line */
 .textInfo hgroup div.line {
     position: relative;
-    width: 80%;
+    width: 95%;
     max-width: 1200px;
     height: 3px;
     z-index: 3;
     background-color: #008dd2;
 }
+
+/* === Body === */
 
 .textInfo .infoImg {
     position: absolute;
@@ -147,7 +161,7 @@ main {
     min-width: 800px;
     height: auto;
     z-index: 1;
-    margin: 0 auto;
+    margin-left: 3vw;
 }
 
 .textInfo ul {
@@ -158,8 +172,8 @@ main {
 }
 
 .textInfo ul .listinfo {
-    font-size: 30px;
-    margin: 0.5em 0 0.5em 10%;
+    font-size: 28px;
+    margin-left: 10%;
     z-index: 3;
     position: relative;
 }

@@ -27,13 +27,16 @@ const BUTTON_IMAGES = {
 };
 
 const DISCORD_LOGO_PATH = "/images/s4yt/logo-discord.png";
+const PAPER_LOGO_PATH = "/images/s4yt/logo_dollars.png";
+const SPEECH_BUBBLE_PATH = "/images/s4yt/click-me.png";
+const CONTENT_BG_PATH = "/images/s4yt/background_info.png";
 
 /* === Section Content === */
 
 /*
 * "[DISCORD]" is used to inject the discord logo into the content with a link
 * items is shown in bullet points as the main section content body
-* title is the main section header with the blue line seperator
+* title is the ALL CAPS main section header with the blue line seperator
 */
 const SECTION_CONTENT = [
   {
@@ -134,13 +137,7 @@ export default function S4YT() {
   const injectDiscordPlug = (content) => {
     if (typeof content === 'string' && content.includes('[DISCORD]')) {
       const [before, after] = content.split('[DISCORD]');
-      return (
-        <>
-          {before}
-          {discordLogo}
-          {after}
-        </>
-      );
+      return (<>{before}{discordLogo}{after}</>);
     }
     return content;
   }
@@ -162,14 +159,14 @@ export default function S4YT() {
    * @param {boolean} isMobile - Whether or not to render the mobile version
    */
   const renderNavButtons = (isMobile = false) => (
-    <div className={isMobile ? s.s4ytInfobuttonsMobile : s.s4ytInfobuttonsDesktop}>
+    <div className={isMobile ? s.navMobile : s.navDesktop}>
       {[1, 2, 3, 4, 5].map((sectionNum, index) => (
         <img
           key={sectionNum}
           src={getImageSource(index)}
           onClick={() => handleSectionClick(sectionNum)}
           alt={SECTION_CONTENT[index]?.title || `Section ${sectionNum}`}
-          className={[s.navBtn, visibleSection === sectionNum ? s.pressed : s[`s4yt${['What', 'Ami', 'When', 'Howdo', 'Whatare'][index]}`]].join(' ')}
+          className={[s.navBtn, visibleSection === sectionNum ? s.pressed : s[`${['what', 'amI', 'when', 'howDo', 'whatAre'][index]}`]].join(' ')}
         />
       ))}
     </div>
@@ -190,10 +187,8 @@ export default function S4YT() {
         </hgroup>
         <ul>
           {content.items.map((item, i) => {
-
             /* === Inject Discord Logo Component on "[DISCORD]" === */
             const content = injectDiscordPlug(item);
-            
             return (
               <li key={`item-${visibleSection}-${i}`} className={s.listinfo}>
                 {content}
@@ -203,7 +198,7 @@ export default function S4YT() {
         </ul>
         <img 
           className={s.infoImg} 
-          src="/images/s4yt/background_info.png" 
+          src={CONTENT_BG_PATH} 
           alt="Background Info" 
         />
       </div>
@@ -214,19 +209,19 @@ export default function S4YT() {
 
   return (
     <Layout>
-      <main className={s.s4ytsection}>
-        <div className={s.leftRightContainer}>
+      <main>
+        <div className={s.container}>
           {/* Left Section - Logo and Click Me */}
-          <div className={s.s4ytLeftsec}>
+          <div className={s.leftSec}>
             <img
-              src="/images/s4yt/logo_dollars.png"
+              src={PAPER_LOGO_PATH}
               alt="S4YT Logo"
               className={s.paper}
             />  
             <img
-              src="/images/s4yt/click-me.png"
+              src={SPEECH_BUBBLE_PATH}
               alt="Click Me"
-              className={s.click}
+              className={s.speechBub}
             />
           </div>
 

@@ -1,5 +1,7 @@
 # CSS Styles, Tags, and Elements Organized
 
+Note: Changing all Class Names to remove "s4yt" prefix and ensure they apply
+
 # Element Structure
 
 Top element is layout, containing
@@ -9,7 +11,7 @@ Top element is layout, containing
 
 ## Main
 
-The main Element of the page. Classed with s4ytsection. Currently Only contains 1 tag:
+The main Element of the page. Classed with page. Currently Only contains 1 tag:
 - Div, class: leftRightContainer
 
 ## leftRightContainer
