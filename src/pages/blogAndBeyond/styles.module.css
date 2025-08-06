@@ -3,8 +3,6 @@
   background-size: cover;
   background-position: center center;
   background-color: #008dd2;
-  min-height: 100vh;
-  overflow: hidden;
 }
 
 /* Header */
@@ -15,61 +13,60 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: var(--c-heading-w);
-  font-size: 2vw;
-  font-weight: bold;
-  padding: 0 2vw;
-  box-sizing: border-box;
+  padding: 0 1.5rem;
 }
 
 .container .header .logo1,
 .container .header .logo2,
 .container .header .logo3,
 .container .header .logo4,
-.container .header .logo5 {
-  position: absolute;
-  transform: translateY(-50%);
+.container .header .mole {
+  /* position: absolute; */
+  /* transform: translateY(-50%); */
   z-index: 1;
   max-width: 100%;
 }
 
-.container .header .logo1 {
+/* .container .header .logo1 {
   margin-left: 1vw;
   margin-top: 45vh;
   width: 20%;
   max-width: 100%;
   height: auto;
-}
+} */
 
 /* go back */
 .container .header .logo2 {
-  left: 82vw;
-  top: 8.5vh;
+  /* left: 82vw;
+  top: 8.5vh; */
   height: 11vh;
   width: auto;
 }
 
 /* sign up */
 .container .header .logo3 {
-  left: 91vw;
-  top: 8vh;
+  /* left: 91vw;
+  top: 8vh; */
   height: 16vh;
   width: auto;
 }
 
 /* we are */
 .container .header .logo4 {
-  left: 25vw;
-  top: 50%;
+  /* left: 25vw;
+  top: 50%; */
+  margin-left: 25%;
   height: 10.5vh;
   width: auto;
 }
 
 .container main {
-  padding-inline: 2rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2.5rem;
 }
 
-.container main .logo5 {
+.container main img.mole {
   position: absolute;
   right: 2rem;
   bottom: 32px;
@@ -77,23 +74,28 @@
   width: auto;
 }
 
+.container main .aside {
+  position: relative;
+  width: 35vw;
+}
+
 /* Trapezoid */
-.container main .trapezoid {
+.container main .aside .trapezoid {
   position: absolute;
-  bottom: 0;
-  left: 0%;
-  width:35vw;
+  top: 0;
+  left: 0;
+  width: 35vw;
   height: 0;
   border-top: 84.1vh solid #EF7F1A;
   border-right: 10vw solid transparent;
 }
 
 /* Side text */
-.sideTextSmall {
-  position: absolute;
+.container main .aside .sideTextSmall {
+  /* position: absolute; */
   font-size: 2vw;
-  top: 45vh;
-  left: 2vw;
+  /* top: 45vh; */
+  /* left: 2vw; */
   transform: translateY(-50%);
   color: white;
   padding: 0 2vw;
@@ -103,9 +105,9 @@
 
 .sideTextLarge {
   margin-top: 20px;
-  position: absolute;
-  top: 65vh;
-  left: 2vw;
+  /* position: absolute; */
+  /* top: 65vh; */
+  /* left: 2vw; */
   font-size: 3vw;
   transform: translateY(-50%);
   color: white;
@@ -114,7 +116,7 @@
   line-height: 0.9;
 }
 
-.container hr {
+.container .line {
   border: none;
   border-top: 0.2vw solid white;
   width: 25vw;
@@ -122,29 +124,25 @@
   margin-top: 0;
 }
 
-/* Add vertical white line behind the scrollbar */
-.scrollArea::before {
-  content: "";
-  position: absolute;
-  margin-left: 98.7%;
-  width: 2px;
-  background: white;
-  z-index: 0; /* Place the line behind the scrollbar */
+.container main .mainContent {
+  margin-top: 1.5rem;
 }
 
-/* Scrollable area adjustments */
-.container main :global(.scrollArea) {
-  position: absolute;
-  left: 40vw;
-  top: calc(20vh + 10px);
-  width: 40vw;
-  bottom: 2%;
-  border-radius: 15px;
+.container main .mainContent :global(.scrollArea) {
+  /* position: absolute; */
+  /* left: 40vw; */
+  /* top: calc(20vh + 10px); */
+  height: 100%;
+  width: 100%;
+  max-width: 900px;
 }
 
-/* Content blocks */
-.container main :global(.scrollArea) .content {
+.container main .mainContent :global(.scrollArea) .content {
   padding-bottom: 10px;
+}
+.container main .mainContent :global(.scrollArea) :global(.scrollbar) {
+  margin-top: 1.5rem;
+  height: calc(100% - 1.5rem - 1.5rem);
 }
 
 /* TODO: Change the whites to one of the varibles. */
@@ -211,8 +209,3 @@
   text-decoration: underline;
   cursor: pointer;
 }
-
-.scrollAreaFixedHeight {
-  height: 60vh; /* or 400px, or whatever works */
-}
-

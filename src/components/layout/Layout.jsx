@@ -9,8 +9,8 @@ import { Header as DefaultHeader, Footer } from "../partials";
  */
 const Layout = ({ Header = DefaultHeader, showFooter = true, children, className }) => {
   return (
-    <div className={className}>
-      <Header />
+    <div className={`layout${className ? " " + className : ""}`}>
+      <Header /> 
       {children}
       {showFooter && <Footer />}
     </div>

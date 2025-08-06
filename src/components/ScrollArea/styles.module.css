@@ -1,27 +1,20 @@
-:global(.scrollArea) {
+.scrollAreaWrapper {
+  position: relative;
+  display: flex;
   overflow: hidden;
 }
 
-.scrollAreaWrapper {
-  height: 75%;
-  position: relative;
-
-  display: flex;
-}
-
-.content {
-  will-change: transform;
-  transition: transform 0.1s;
+.scrollAreaWrapper .content {
+  transition: transform 0.1s linear;
   position: absolute;
   top: 0;
   left: 0;
   right: 40px;
   bottom: 0;
-  overflow: visible;
   padding-bottom: 16px; 
 }
 
-.scrollbar {
+.scrollAreaWrapper :global(.scrollbar) {
   position: absolute;
   top: 0;
   right: 0;
@@ -35,27 +28,25 @@
   border-radius: 0; 
 }
 
-.scrollbarTrack {
+.scrollAreaWrapper :global(.scrollbar) .scrollbarTrack {
   position: absolute;
   left: 50%;
   top: 0;
-  width: 2px;
+  width: 4px;
   height: 100%;
-  background: white;
+  background: #e4e4e4;
   border-radius: 0; 
   transform: translateX(-50%);
 }
 
-.thumb {
+.scrollAreaWrapper :global(.scrollbar) .thumb {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 24px;
-  height: 24px;
-  background: white;
+  width: 21px;
+  height: 40px;
+  background: var(--c-heading-w);
   border-radius: 32px;
   cursor: grab;
   pointer-events: auto;
-  border: none;
-  box-shadow: none;
 }

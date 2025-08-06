@@ -155,64 +155,68 @@ export default function Blog() {
 
   return (
     <main>
-      <img src="/images/mole.png" alt="mole" className={s.logo5} />
-
-      <ScrollArea className={`${s.content} ${s.scrollAreaFixedHeight}`}>
-        {data.blogs.map((item) => (
-          <div key={item.id} className={s.blogCard}>
-            <div className={s.blogHeader}>
-              <h2 className={s.blogTitle}>{item.title.toUpperCase()}</h2>
-              <span className={s.blogDate}>
-                {formatDate(item.datePublished)}
-              </span>
-            </div>
-            <p className={s.blogAuthor}>By {item.author}</p>
-            <p className={s.blogExcerpt}>
-              We do our best to do our part. We haul our compost bins to the
-              town recycling centre, we clear our email inboxes so they take up
-              less space, and we wash plastic containers before recycling them.
-              We understand that there are wildfires and melting ice and dying
-              animals, which is why we alter our […]
-            </p>
-            <a
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={s.readMore}
+      <aside className={s.aside}>
+        <div className={s.trapezoid}></div>
+        <div className={s.sideTextSmall}>
+          Archives
+          <div className={s.line} />
+        </div>
+        <br />
+        <div className={s.sideTextLarge}>
+          {[
+            "All",
+            "Academics",
+            "Climate Change",
+            "Finance",
+            "Growth",
+            "Technology",
+          ].map((cat) => (
+            <div
+              key={cat}
+              onClick={() => filterData(setData, cat)}
+              style={{
+                cursor: "pointer",
+                fontWeight: data.category === cat ? "bold" : "normal",
+                marginBottom: "0.5rem",
+              }}
             >
-              Read More
-            </a>
-          </div>
-        ))}
-      </ScrollArea>
+              {cat}
+            </div>
+          ))}
+        </div>
+      </aside>
 
-      <div className={s.trapezoid}></div>
-      <div className={s.sideTextSmall}>
-        Archives
-        <hr />
-      </div>
-      <br />
-      <div className={s.sideTextLarge}>
-        {[
-          "All",
-          "Academics",
-          "Climate Change",
-          "Finance",
-          "Growth",
-          "Technology",
-        ].map((cat) => (
-          <div
-            key={cat}
-            onClick={() => filterData(setData, cat)}
-            style={{
-              cursor: "pointer",
-              fontWeight: data.category === cat ? "bold" : "normal",
-              marginBottom: "0.5rem",
-            }}
-          >
-            {cat}
-          </div>
-        ))}
+      <div className={s.mainContent}>
+        <img src="/images/mole.png" alt="mole" className={s.mole} />
+
+        <ScrollArea className={s.content}>
+          {data.blogs.map((item) => (
+            <div key={item.id} className={s.blogCard}>
+              <div className={s.blogHeader}>
+                <h2 className={s.blogTitle}>{item.title.toUpperCase()}</h2>
+                <span className={s.blogDate}>
+                  {formatDate(item.datePublished)}
+                </span>
+              </div>
+              <p className={s.blogAuthor}>By {item.author}</p>
+              <p className={s.blogExcerpt}>
+                We do our best to do our part. We haul our compost bins to the
+                town recycling centre, we clear our email inboxes so they take up
+                less space, and we wash plastic containers before recycling them.
+                We understand that there are wildfires and melting ice and dying
+                animals, which is why we alter our […]
+              </p>
+              <a
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={s.readMore}
+              >
+                Read More
+              </a>
+            </div>
+          ))}
+        </ScrollArea>
       </div>
     </main>
   );
