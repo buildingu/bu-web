@@ -7,9 +7,9 @@ import { Header as DefaultHeader, Footer } from "../partials";
  * @param {boolean} [props.showFooter] - Render the footer or not.
  * @param {React.ReactNode} props.children - The children(your page) to render between header and footer.
  */
-const Layout = ({ Header = DefaultHeader, showFooter = true, children }) => {
+const Layout = ({ Header = DefaultHeader, showFooter = true, className, children }) => {
   return (
-    <div className="layout">
+    <div className={`layout${className ? " " + className : ""}`}>
       <Header />
       {children}
       {showFooter && <Footer />}
