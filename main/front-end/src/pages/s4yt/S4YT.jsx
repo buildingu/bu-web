@@ -26,6 +26,9 @@ const BUTTON_IMAGES = {
   ]
 };
 
+// Add Discord link here!
+const DISCORD_LINK = "https://youtube.com"
+
 const DISCORD_LOGO_PATH = "/images/s4yt/logo-discord.png";
 const PAPER_LOGO_PATH = "/images/s4yt/logo_dollars.png";
 const SPEECH_BUBBLE_PATH = "/images/s4yt/click-me.png";
@@ -94,14 +97,14 @@ export default function S4YT() {
 
   const discordLogo = (
     // INSERT DISCORD LINK HERE !!!
-    <Link to="#">
+    <a href={DISCORD_LINK} target="_blank" rel="noopener noreferrer">
       <img 
         src={DISCORD_LOGO_PATH} 
         width={20} 
         height={20} 
         alt="Discord" 
       />
-    </Link>
+    </a>
   );
 
   /* ===== Utility Functions ===== */
