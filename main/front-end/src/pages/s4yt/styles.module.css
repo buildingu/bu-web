@@ -8,7 +8,7 @@ class names correctly in the code with the module prefix.
 
 /* Main container */
 main {
-    height: 78%;
+    height: 78vh;
     width: 100%;
     /* !!! IMPORTANT: Remove These Margin Styles when Footer and Header are Added, these are for visualization assuming they are there !!! */
     margin-top: 15vh;
@@ -188,36 +188,75 @@ main {
 
 /* Large Desktops (up to 1600px) */
 @media (max-width: 1600px) {
-    .s4ytPaper { max-width: 300px; }
-    .s4ytClick { width: 100px; height: 100px; }
-    .s4ytInfobuttonsDesktop { width: 250px; }
+    .paper { max-width: 300px; }
+    .speechBub { width: auto; height: 100px; }
+    .navDesktop { width: 250px; }
     .textInfo .textHeader { font-size: 45px; }
     .textInfo ul .listinfo { font-size: 20px; }
+    .infoImg { max-width: 800px; min-width: 400px; }
+    /* Navigation Buttons */
+    .pressed,
+    .what,
+    .amI,
+    .when,
+    .howDo,
+    .whatAre {
+        width: auto;
+        height: 50px;
+        margin-bottom: 10px;
+        min-height: 0;
+    }
 }
 
 /* Medium Desktops (up to 1200px) */
 @media (max-width: 1200px) {
-    .s4ytPaper { max-width: 200px; }
-    .s4ytClick { width: 75px; height: 75px; }
-    .s4ytInfobuttonsDesktop { width: 200px; }
-    .textInfo .textHeader { font-size: 40px; }
+    .paper { max-width: 200px; }
+    .speechBub { width: auto; height: 90px; margin-left: -25px;}
+    .navDesktop { width: 200px; }
+    .textInfo .textHeader { font-size: 20px; }
     .textInfo ul .listinfo { font-size: 15px; }
+    .textInfo .infoImg { width: auto; max-width: 450px; min-width: 0; }
+    /* Navigation Buttons */
+    .pressed,
+    .what,
+    .amI,
+    .when,
+    .howDo,
+    .whatAre {
+        width: auto;
+        height: 50px;
+        margin-bottom: 10px;
+        min-height: 0;
+    }
 }
 
 /* Tablets (up to 1000px) */
 @media (max-width: 1000px) {
-    .textInfo .textHeader { font-size: 35px; }
+    .textInfo .textHeader { font-size: 1.5vw; }
     .textInfo ul .listinfo { font-size: 10px; }
+    .textInfo .infoImg { width: auto; max-width: 300px; min-width: 0; }
+    /* Navigation Buttons */
+    .pressed,
+    .what,
+    .amI,
+    .when,
+    .howDo,
+    .whatAre {
+        width: auto;
+        height: 35px;
+        margin-bottom: 10px;
+        min-height: 0;
+    }
 }
 
 /* Mobile Devices (up to 800px) */
 @media (max-width: 800px) {
-    .s4ytLeftsec { display: none; }
+    .leftSec { display: none; }
     
     /* Navigation */
-    .s4ytInfobuttonsDesktop { display: none !important; }
+    .navDesktop { display: none !important; }
     
-    .s4ytInfobuttonsMobile {
+    .navMobile {
         display: flex;
         flex-direction: column;
         margin: 4rem auto 0;
@@ -232,7 +271,7 @@ main {
         overflow-y: auto;
     }
     
-    .s4ytInfobuttonsMobile img {
+    .navMobile img {
         max-width: 100%;
         height: auto;
         object-fit: contain;
@@ -275,12 +314,12 @@ main {
     
     /* Navigation Buttons */
     .pressed,
-    .s4ytWhat,
-    .s4ytAmi,
-    .s4ytWhen,
-    .s4ytHowdo,
-    .s4ytWhatare {
-        width: 100%;
+    .what,
+    .amI,
+    .when,
+    .howDo,
+    .whatAre {
+        width: auto;
         height: 35px;
         margin-bottom: 8px;
         min-height: 0;
