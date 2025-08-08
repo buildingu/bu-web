@@ -15,20 +15,41 @@ TODO:
     /* Image Paths */
     --desktop-bg: url('/images/s4yt/background.png');
     --mobile-bg: url('/images/s4yt/background-mobile.png');
-    /* Main Size, Font, and Spacing Variables (Constants, declared here)*/
-    /* Heights */
-    --paper-logo-size: 663px;
-    --speech-bubble-ratio: 0.31; /* The Speech Bubble is a constant ratio of paper logo */
+
+    /* ========== Constant Variables ========== */
+
+    /* Images */
+    --paper-logo-height: 70vh;
+    --info-image-height: 60vh;
+    --speech-bubble-ratio: 0.3125; /* The Speech Bubble is a constant ratio of paper logo */
     --speech-bubble-margin-left-ratio: -0.12;
     --speech-bubble-margin-bottom-ratio: 0.1;
-    
 
-    /* Active Size, Font, Spacing, and Image Variables (Applied Variables, affected by Breakpoints and scaled from constants)*/
+    /* Font Sizes */
+    --header-font-size: 3.3rem;
+    --body-font-size: 2.5rem;
+    --more-info-font-size: ;
+
+    /* Buttons */
+    --button-width: 28.5vh;
+    --button-spacing: 2.2vh;
+
+    /* ========== Active Variables (Applied, scaled from constants in breakpoints) ========== */
+
+    /* Images */
     --active-bg: ;
+    --active-paper-logo-height: ;
+    --active-info-image-height: ;
+    --active-speech-bubble-size: calc(var(--active-paper-logo-height) * var(--speech-bubble-ratio));
+    
+    /* Font Sizes */
     --active-header-font-size: ;
     --active-body-font-size: ;
-    --active-paper-logo-size: ;
-    --active-speech-bubble-size: calc(var(--active-paper-logo-size) * var(--speech-bubble-ratio));
+    --active-more-info-font-size: ;
+
+    /* Buttons */
+    --active-button-width: ;
+    --active-button-spacing: ;
 
     /* Utility Variables */
     --mobile-display: ;
@@ -42,7 +63,7 @@ main {
     /* !!! IMPORTANT: Remove This Margin Style when Footer and Header components are done, these are for visualization assuming they are there !!! */
     margin-top: 14vh;
     padding-left: 9vw;
-    padding-right: 12vw;
+    padding-right: 9vw;
     display: flex;
     flex-direction: row;
     background-image: var(--active-bg);
@@ -72,15 +93,15 @@ main {
 
 .paper {
     width: auto;
-    height: var(--active-paper-logo-size);
+    height: var(--active-paper-logo-height);
     object-fit: contain;
 }
 
 .speechBub {
     width: auto;
     height: var(--active-speech-bubble-size);
-    margin-left: calc(var(--active-paper-logo-size) * var(--speech-bubble-margin-left-ratio));
-    margin-bottom: calc(var(--active-paper-logo-size) * var(--speech-bubble-margin-bottom-ratio));
+    margin-left: calc(var(--active-paper-logo-height) * var(--speech-bubble-margin-left-ratio));
+    margin-bottom: calc(var(--active-paper-logo-height) * var(--speech-bubble-margin-bottom-ratio));
     position: relative;
     z-index: 1; /* Ensure it stays above the paper */
 }
@@ -98,9 +119,9 @@ main {
 
 .navBtn {
     cursor: pointer;
-    width: 270px;
+    width: var(--active-button-width);
     height: auto;
-    margin-bottom: 20px;
+    margin-bottom: var(--active-button-spacing);
 }
 
 /* Button hover states */
@@ -114,7 +135,7 @@ main {
 .navDesktop {
     display: var(--desktop-display);
     flex-direction: column;
-    margin: 0rem 0 0 5rem;
+    margin: 0rem 0 0 3vw;
     width: 270px;
     z-index: 3;
 }
@@ -134,12 +155,10 @@ main {
     display: flex;
     color: #008dd2;
     width: 100%;
-    max-width: 1200px;
-    margin-left: 3vw;
-    padding-bottom: 2vh;
+    padding-bottom: 10vh;
+    padding-top: 15vh;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     height: 100%;
 }
 
@@ -160,18 +179,18 @@ main {
 /* Header Text */
 .textHeader {
     font-family: var(--heading-font2);
-    font-size: 2.3125rem; /* 37px */
+    font-size: var(--active-header-font-size); /* 37px */
     color: #008dd2;
     z-index: 3;
     position: relative;
     text-align: center;
+    padding-bottom: 1vh;
 }
 
 /* Header Seperator Line */
 .textInfo hgroup div.line {
     position: relative;
-    width: 95%;
-    max-width: 1200px;
+    width: 85%;
     height: 3px;
     z-index: 3;
     background-color: #008dd2;
@@ -183,11 +202,9 @@ main {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    max-width: 1200px;
-    min-width: 800px;
-    height: auto;
+    transform: translate(-50%, -60%);
+    width: auto;
+    height: var(--active-info-image-height);
     z-index: 1;
     margin-left: 3vw;
 }
@@ -200,10 +217,11 @@ main {
 }
 
 .textInfo ul .listinfo {
-    font-size: 1.75rem; /* 28px */
-    margin-left: 10%;
+    font-size: var(--active-body-font-size);
+    margin: 0.3em 0 0.5em 10%;
     z-index: 3;
     position: relative;
+    line-height: 0.9;
 }
 
 /* =========== Mobile Classes =========== */
@@ -224,90 +242,92 @@ To Do:
 /* Anything Larger */
 @media (min-width: 1600px) {
     :root {
+        /* Mobile-Desktop Control */
         --active-bg: var(--desktop-bg);
         --mobile-display: none;
         --desktop-display: flex;
 
-        --active-paper-logo-size: var(--paper-logo-size);
-        --active-speech-bubble-size: calc(var(--active-paper-logo-size) * var(--speech-bubble-ratio));
+        /* Font Sizes */
+        --active-header-font-size: var(--header-font-size);
+        --active-body-font-size: var(--body-font-size);
+
+        /* Images */
+        --active-paper-logo-height: var(--paper-logo-height);
+        --active-speech-bubble-size: calc(var(--active-paper-logo-height) * var(--speech-bubble-ratio));
+        --active-info-image-height: var(--info-image-height);
+
+        /* Navigation Buttons */
+        --active-button-width: var(--button-width);
+        --active-button-spacing: var(--button-spacing);
     }
 }
 
 /* Large Desktops (up to 1600px) */
 @media (max-width: 1600px) {
     :root {
+        /* Mobile-Desktop Control */
         --active-bg: var(--desktop-bg);
         --mobile-display: none;
         --desktop-display: flex;
 
-        --active-paper-logo-size: var(--paper-logo-size);
-        --active-speech-bubble-size: calc(var(--active-paper-logo-size) * var(--speech-bubble-ratio));
-    }
-    .navDesktop { width: 250px; }
-    .infoImg { max-width: 800px; min-width: 400px; }
-    /* Navigation Buttons */
-    .pressed,
-    .what,
-    .amI,
-    .when,
-    .howDo,
-    .whatAre {
-        width: auto;
-        height: 50px;
-        margin-bottom: 10px;
-        min-height: 0;
+        /* Font Sizes */
+        --active-header-font-size: var(--header-font-size);
+        --active-body-font-size: var(--body-font-size);
+
+        /* Images */
+        --active-paper-logo-height: var(--paper-logo-height);
+        --active-speech-bubble-size: calc(var(--active-paper-logo-height) * var(--speech-bubble-ratio));
+        --active-info-image-height: var(--info-image-height);
+
+        /* Navigation Buttons */
+        --active-button-width: var(--button-width);
+        --active-button-spacing: var(--button-spacing);
     }
 }
 
 /* Medium Desktops (up to 1200px) */
 @media (max-width: 1200px) {
     :root {
+        /* Mobile-Desktop Control */
         --active-bg: var(--desktop-bg);
         --mobile-display: none;
         --desktop-display: flex;
 
-        --active-paper-logo-size: calc(var(--paper-logo-size) * 0.8);
-        --active-speech-bubble-size: calc(var(--active-paper-logo-size) * var(--speech-bubble-ratio));
-    }
-    .navDesktop { width: 200px; }
-    .textInfo .infoImg { width: auto; max-width: 450px; min-width: 0; }
-    /* Navigation Buttons */
-    .pressed,
-    .what,
-    .amI,
-    .when,
-    .howDo,
-    .whatAre {
-        width: auto;
-        height: 50px;
-        margin-bottom: 10px;
-        min-height: 0;
+        /* Font Sizes */
+        --active-header-font-size: calc(var(--header-font-size) * 0.8);
+        --active-body-font-size: calc(var(--body-font-size) * 0.8);
+
+        /* Images */
+        --active-paper-logo-height: var(--paper-logo-height);
+        --active-speech-bubble-size: calc(var(--active-paper-logo-height) * var(--speech-bubble-ratio));
+        --active-info-image-height: var(--info-image-height);
+
+        /* Navigation Buttons */
+        --active-button-width: var(--button-width);
+        --active-button-spacing: var(--button-spacing);
     }
 }
 
 /* Tablets (up to 1000px) */
 @media (max-width: 1000px) {
     :root {
+        /* Mobile-Desktop Control */
         --active-bg: var(--desktop-bg);
         --mobile-display: none;
         --desktop-display: flex;
 
-        --active-paper-logo-size: calc(var(--paper-logo-size) * 0.6);
-        --active-speech-bubble-size: calc(var(--active-paper-logo-size) * var(--speech-bubble-ratio));
-    }
-    .textInfo .textHeader { font-size: 3rem; }
-    .textInfo .infoImg { width: auto; max-width: 300px; min-width: 0; }
-    /* Navigation Buttons */
-    .pressed,
-    .what,
-    .amI,
-    .when,
-    .howDo,
-    .whatAre {
-        width: auto;
-        height: 35px;
-        margin-bottom: 10px;
-        min-height: 0;
+        /* Font Sizes */
+        --active-header-font-size: calc(var(--header-font-size) * 0.6);
+        --active-body-font-size: calc(var(--body-font-size) * 0.6);
+
+        /* Images */
+        --active-paper-logo-height: var(--paper-logo-height);
+        --active-speech-bubble-size: calc(var(--active-paper-logo-height) * var(--speech-bubble-ratio));
+        --active-info-image-height: var(--info-image-height);
+
+        /* Navigation Buttons */
+        --active-button-width: var(--button-width);
+        --active-button-spacing: var(--button-spacing);
     }
 }
 

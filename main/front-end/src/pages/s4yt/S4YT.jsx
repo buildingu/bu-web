@@ -7,6 +7,12 @@ import { Link } from 'react-router-dom';
 
 /* ===== Constants and Assets ===== */
 
+/* === Links === */
+
+// Add links here!
+const DISCORD_LINK = "https://youtube.com"
+const S4YT_GAME_LINK = "https://youtube.com"
+
 /* === Image Paths === */
 
 const BUTTON_IMAGES = {
@@ -26,9 +32,6 @@ const BUTTON_IMAGES = {
   ]
 };
 
-// Add Discord link here!
-const DISCORD_LINK = "https://youtube.com"
-
 const DISCORD_LOGO_PATH = "/images/s4yt/logo-discord.png";
 const PAPER_LOGO_PATH = "/images/s4yt/logo_dollars.png";
 const SPEECH_BUBBLE_PATH = "/images/s4yt/click-me.png";
@@ -37,9 +40,9 @@ const CONTENT_BG_PATH = "/images/s4yt/background_info.png";
 /* === Section Content === */
 
 /*
-* "[DISCORD]" is used to inject the discord logo into the content with a link
-* items is shown in bullet points as the main section content body
-* title is the ALL CAPS main section header with the blue line seperator
+* - "[DISCORD]" is used to inject the discord logo into the content with a link.
+* - items: Shown in bullet points as the main section content body.
+* - title: The ALL CAPS main section header with the blue line seperator.
 */
 const SECTION_CONTENT = [
   {
@@ -97,12 +100,16 @@ export default function S4YT() {
 
   const discordLogo = (
     // INSERT DISCORD LINK HERE !!!
-    <a href={DISCORD_LINK} target="_blank" rel="noopener noreferrer">
+    <a href={DISCORD_LINK} target="_blank" rel="noopener noreferrer" style={{verticalAlign: 'middle'}}>
       <img 
         src={DISCORD_LOGO_PATH} 
-        width={20} 
-        height={20} 
-        alt="Discord" 
+        width={37} 
+        height={37} 
+        alt="Discord"
+        style={{
+          /* Keeps it centered in the text */
+          verticalAlign: 'middle',
+        }}
       />
     </a>
   );
@@ -183,7 +190,7 @@ export default function S4YT() {
     const content = SECTION_CONTENT[visibleSection - 1];
     
     return (
-      <div className={`${s.textInfo} ${s[`txt${visibleSection}`]}`}>
+      <div className={s.textInfo}>
         <hgroup>
           <h3 className={s.textHeader}>{content.title}</h3>
           <div className={s.line} />
@@ -215,7 +222,7 @@ export default function S4YT() {
       <main>
         <div className={s.container}>
           {/* Left Section - Logo and Click Me */}
-          <div className={s.leftSec}>
+          <a href={S4YT_GAME_LINK} target="_blank" rel="noopener noreferrer" className={s.leftSec}>
             <img
               src={PAPER_LOGO_PATH}
               alt="S4YT Logo"
@@ -226,7 +233,7 @@ export default function S4YT() {
               alt="Click Me"
               className={s.speechBub}
             />
-          </div>
+          </a>
 
           {/* Main Content Area */}
           <div className={s.contentContainer}>
