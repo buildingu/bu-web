@@ -100,16 +100,11 @@ export default function S4YT() {
 
   const discordLogo = (
     // INSERT DISCORD LINK HERE !!!
-    <a href={DISCORD_LINK} target="_blank" rel="noopener noreferrer" style={{verticalAlign: 'middle'}}>
+    <a href={DISCORD_LINK} target="_blank" rel="noopener noreferrer" className={s.discordLogo}>
       <img 
-        src={DISCORD_LOGO_PATH} 
-        width={37} 
-        height={37} 
+        src={DISCORD_LOGO_PATH}
+        className={s.discordLogo}
         alt="Discord"
-        style={{
-          /* Keeps it centered in the text */
-          verticalAlign: 'middle',
-        }}
       />
     </a>
   );

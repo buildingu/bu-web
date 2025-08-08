@@ -136,13 +136,8 @@ main {
     display: var(--desktop-display);
     flex-direction: column;
     margin: 0rem 0 0 3vw;
-    width: 270px;
+    width: var(--active-button-width);
     z-index: 3;
-}
-
-/* Mobile Navigation (hidden by default) */
-.navMobile {
-    display: none;
 }
 
 /* =========== Content Sections =========== */
@@ -190,8 +185,8 @@ main {
 /* Header Seperator Line */
 .textInfo hgroup div.line {
     position: relative;
-    width: 85%;
-    height: 3px;
+    width: calc(var(--active-header-font-size) * 13);
+    height: 4px;
     z-index: 3;
     background-color: #008dd2;
 }
@@ -213,15 +208,21 @@ main {
     padding: 0;
     margin: 0;
     z-index: 3;
-    width: 100%;
+    width: 80%;
 }
 
 .textInfo ul .listinfo {
     font-size: var(--active-body-font-size);
-    margin: 0.3em 0 0.5em 10%;
+    margin: 0.3em 0 0.5em 0;
     z-index: 3;
     position: relative;
     line-height: 0.9;
+}
+
+.discordLogo {
+    vertical-align: middle;
+    width: calc(var(--active-body-font-size) * 1.25);
+    height: auto;
 }
 
 /* =========== Mobile Classes =========== */
@@ -229,6 +230,22 @@ main {
 .mobileAddons {
     display: var(--mobile-display);
 }
+
+.navMobile {
+    display: var(--mobile-display);
+    flex-direction: column;
+    margin: 4rem auto 0;
+    width: 60%;
+    max-width: 250px;
+    position: absolute;
+    top: 15vh;
+    left: 0;
+    right: 0;
+    height: 60vh;
+    max-height: 450px;
+    overflow-y: auto;
+}
+
 /*
 To Do:
 .moreInfoBlock {
@@ -294,8 +311,8 @@ To Do:
         --desktop-display: flex;
 
         /* Font Sizes */
-        --active-header-font-size: calc(var(--header-font-size) * 0.8);
-        --active-body-font-size: calc(var(--body-font-size) * 0.8);
+        --active-header-font-size: calc(var(--header-font-size) * 0.6);
+        --active-body-font-size: calc(var(--body-font-size) * 0.6);
 
         /* Images */
         --active-paper-logo-height: var(--paper-logo-height);
@@ -306,6 +323,7 @@ To Do:
         --active-button-width: var(--button-width);
         --active-button-spacing: var(--button-spacing);
     }
+
 }
 
 /* Tablets (up to 1000px) */
@@ -343,24 +361,6 @@ To Do:
         padding-right: 0;
     }
     .leftSec { display: none; }
-    
-    /* Navigation */
-    .navDesktop { display: none !important; }
-    
-    .navMobile {
-        display: flex;
-        flex-direction: column;
-        margin: 4rem auto 0;
-        width: 60%;
-        max-width: 250px;
-        position: absolute;
-        top: 15vh;
-        left: 0;
-        right: 0;
-        height: 60vh;
-        max-height: 450px;
-        overflow-y: auto;
-    }
     
     .navMobile img {
         max-width: 100%;
