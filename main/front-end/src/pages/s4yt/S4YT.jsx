@@ -228,17 +228,25 @@ export default function S4YT() {
             />
           </div>
 
-          {/* Back Button - Only shown when a section is selected */}
-          {visibleSection && (
-            <button className={s.backButton} onClick={handleBackClick}>
-              Back
-            </button>
-          )}
-
           {/* Main Content Area */}
           <div className={s.contentContainer}>
             {/* Desktop Navigation */}
             {renderNavButtons()}
+            {/* Mobile Back Button and More Info Addon */}
+            {
+              <div className={s.mobileAddons}>
+                {/* More Info Button Only shown when no section is selected yet */}
+                {!visibleSection && (
+                  <div className={s.moreInfoBlock}>
+                    <p className={s.moreInfoText}>More Info</p>
+                  </div>
+                )}
+                {/* Always Shown (in mobile) */}
+                <button className={s.backButton} onClick={handleBackClick}>
+                  Back
+                </button>
+              </div>
+            }
 
             {/* Mobile Navigation - Only shown when no section is selected */}
             {!visibleSection && renderNavButtons(true)}

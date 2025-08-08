@@ -4,21 +4,48 @@
 Big issue found, s4ytexample classes are compiled weirdly and not applying the class. need to change class names to 
 apply them correctly, cutting out "s4yt" completely, this wont cause any issues as long as we are specifying the 
 class names correctly in the code with the module prefix.
+
+TODO:
+[] Set-up Variable System, Remove magic numbers
+[] Clean up Media Queries and Abstract them into variable declarations for one source of main css
+[] Add More Info Addon and Set up Styles for its element and parent elements
+
 */
+:root {
+    /* Image Paths */
+    --desktop-bg: url('/images/s4yt/background.png');
+    --mobile-bg: url('/images/s4yt/background-mobile.png');
+    /* Main Size, Font, and Spacing Variables (Constants, declared here)*/
+    /* Heights */
+    --paper-logo-size: 663px;
+    --speech-bubble-ratio: 0.31; /* The Speech Bubble is a constant ratio of paper logo */
+    --speech-bubble-margin-left-ratio: -0.12;
+    --speech-bubble-margin-bottom-ratio: 0.1;
+    
+
+    /* Active Size, Font, Spacing, and Image Variables (Applied Variables, affected by Breakpoints and scaled from constants)*/
+    --active-bg: ;
+    --active-header-font-size: ;
+    --active-body-font-size: ;
+    --active-paper-logo-size: ;
+    --active-speech-bubble-size: calc(var(--active-paper-logo-size) * var(--speech-bubble-ratio));
+
+    /* Utility Variables */
+    --mobile-display: ;
+    --desktop-display: ;
+}
 
 /* Main container */
 main {
     height: 78vh;
     width: 100%;
-    /* !!! IMPORTANT: Remove These Margin Styles when Footer and Header are Added, these are for visualization assuming they are there !!! */
-    margin-top: 15vh;
-    margin-bottom: 2vh;
+    /* !!! IMPORTANT: Remove This Margin Style when Footer and Header components are done, these are for visualization assuming they are there !!! */
+    margin-top: 14vh;
     padding-left: 9vw;
     padding-right: 12vw;
     display: flex;
     flex-direction: row;
-    background-color: #68b436;
-    background-image: url('/images/s4yt/background.png');
+    background-image: var(--active-bg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -38,23 +65,24 @@ main {
 /* =========== Left Section (Logo & Click Me) =========== */
 
 .leftSec { 
-    display: flex;
+    display: var(--desktop-display);
     height: auto;
     align-items: center;
 }
 
 .paper {
-    height: auto;
     width: auto;
-    max-width: 470px;
+    height: var(--active-paper-logo-size);
     object-fit: contain;
 }
 
 .speechBub {
     width: auto;
-    height: 205px;
-    margin-left: -6em;
-    margin-bottom: 6em;
+    height: var(--active-speech-bubble-size);
+    margin-left: calc(var(--active-paper-logo-size) * var(--speech-bubble-margin-left-ratio));
+    margin-bottom: calc(var(--active-paper-logo-size) * var(--speech-bubble-margin-bottom-ratio));
+    position: relative;
+    z-index: 1; /* Ensure it stays above the paper */
 }
 
 /* =========== Right Section (Content & Navigation) =========== */
@@ -84,14 +112,14 @@ main {
 
 /* Desktop Navigation */
 .navDesktop {
-    display: flex;
+    display: var(--desktop-display);
     flex-direction: column;
     margin: 0rem 0 0 5rem;
     width: 270px;
     z-index: 3;
 }
 
-/* Mobile Navigation (hidden by default) (idk didnt start mobile yet) */
+/* Mobile Navigation (hidden by default) */
 .navMobile {
     display: none;
 }
@@ -132,7 +160,7 @@ main {
 /* Header Text */
 .textHeader {
     font-family: var(--heading-font2);
-    font-size: 37px;
+    font-size: 2.3125rem; /* 37px */
     color: #008dd2;
     z-index: 3;
     position: relative;
@@ -172,27 +200,50 @@ main {
 }
 
 .textInfo ul .listinfo {
-    font-size: 28px;
+    font-size: 1.75rem; /* 28px */
     margin-left: 10%;
     z-index: 3;
     position: relative;
 }
 
-/* =========== Utility Classes =========== */
+/* =========== Mobile Classes =========== */
 
-.backButton {
-    display: none;
+.mobileAddons {
+    display: var(--mobile-display);
+}
+/*
+To Do:
+.moreInfoBlock {
 }
 
+.moreInfoText {
+    
+}
+*/
 /* =========== Responsive Styles =========== */
+/* Anything Larger */
+@media (min-width: 1600px) {
+    :root {
+        --active-bg: var(--desktop-bg);
+        --mobile-display: none;
+        --desktop-display: flex;
+
+        --active-paper-logo-size: var(--paper-logo-size);
+        --active-speech-bubble-size: calc(var(--active-paper-logo-size) * var(--speech-bubble-ratio));
+    }
+}
 
 /* Large Desktops (up to 1600px) */
 @media (max-width: 1600px) {
-    .paper { max-width: 300px; }
-    .speechBub { width: auto; height: 100px; }
+    :root {
+        --active-bg: var(--desktop-bg);
+        --mobile-display: none;
+        --desktop-display: flex;
+
+        --active-paper-logo-size: var(--paper-logo-size);
+        --active-speech-bubble-size: calc(var(--active-paper-logo-size) * var(--speech-bubble-ratio));
+    }
     .navDesktop { width: 250px; }
-    .textInfo .textHeader { font-size: 45px; }
-    .textInfo ul .listinfo { font-size: 20px; }
     .infoImg { max-width: 800px; min-width: 400px; }
     /* Navigation Buttons */
     .pressed,
@@ -210,11 +261,15 @@ main {
 
 /* Medium Desktops (up to 1200px) */
 @media (max-width: 1200px) {
-    .paper { max-width: 200px; }
-    .speechBub { width: auto; height: 90px; margin-left: -25px;}
+    :root {
+        --active-bg: var(--desktop-bg);
+        --mobile-display: none;
+        --desktop-display: flex;
+
+        --active-paper-logo-size: calc(var(--paper-logo-size) * 0.8);
+        --active-speech-bubble-size: calc(var(--active-paper-logo-size) * var(--speech-bubble-ratio));
+    }
     .navDesktop { width: 200px; }
-    .textInfo .textHeader { font-size: 20px; }
-    .textInfo ul .listinfo { font-size: 15px; }
     .textInfo .infoImg { width: auto; max-width: 450px; min-width: 0; }
     /* Navigation Buttons */
     .pressed,
@@ -232,8 +287,15 @@ main {
 
 /* Tablets (up to 1000px) */
 @media (max-width: 1000px) {
-    .textInfo .textHeader { font-size: 1.5vw; }
-    .textInfo ul .listinfo { font-size: 10px; }
+    :root {
+        --active-bg: var(--desktop-bg);
+        --mobile-display: none;
+        --desktop-display: flex;
+
+        --active-paper-logo-size: calc(var(--paper-logo-size) * 0.6);
+        --active-speech-bubble-size: calc(var(--active-paper-logo-size) * var(--speech-bubble-ratio));
+    }
+    .textInfo .textHeader { font-size: 3rem; }
     .textInfo .infoImg { width: auto; max-width: 300px; min-width: 0; }
     /* Navigation Buttons */
     .pressed,
@@ -251,6 +313,15 @@ main {
 
 /* Mobile Devices (up to 800px) */
 @media (max-width: 800px) {
+    :root {
+        --active-bg: var(--mobile-bg);
+        --mobile-display: block;
+        --desktop-display: none;
+    }
+    main {
+        padding-left: 0;
+        padding-right: 0;
+    }
     .leftSec { display: none; }
     
     /* Navigation */
@@ -280,19 +351,16 @@ main {
     /* Content Adjustments */
     .textInfo { justify-self: center; }
     .textHeader {
-        font-size: 20px;
-        margin: 0 0 0 10%;
+        font-size: 1.25rem; /* 20px */
+        margin: 0;
         text-align: center;
     }
     
-    .listinfo { font-size: 12px; }
+    .listinfo { font-size: 0.75rem; /* 12px */ }
     
     .infoImg {
         width: 1000px;
         height: auto;
-        position: fixed;
-        top: 5%;
-        left: -100px;
         z-index: -3;
     }
     
@@ -300,15 +368,16 @@ main {
     .backButton {
         display: block;
         position: fixed;
-        background-color: orange;
+        background-color: #ef7f1a;
         color: white;
         border: none;
         border-radius: 20%;
-        height: 70px;
-        width: 100px;
-        font-size: 18px;
-        top: 70%;
-        left: 70%;
+        height: 100px;
+        width: 170px;
+        font-size: 4rem;
+        font-weight: bold;
+        top: 20%;
+        left: 55%;
         z-index: 10;
     }
     
