@@ -1,20 +1,11 @@
 /* =========== Base and Layout =========== */
 
-/* 
-Big issue found, s4ytexample classes are compiled weirdly and not applying the class. need to change class names to 
-apply them correctly, cutting out "s4yt" completely, this wont cause any issues as long as we are specifying the 
-class names correctly in the code with the module prefix.
-
-TODO:
-[] Set-up Variable System, Remove magic numbers
-[] Clean up Media Queries and Abstract them into variable declarations for one source of main css
-[] Add More Info Addon and Set up Styles for its element and parent elements
-
-*/
 :root {
     /* Image Paths */
     --desktop-bg: url('/images/s4yt/background.png');
     --mobile-bg: url('/images/s4yt/background-mobile.png');
+    --desktop-infoImg: url('/images/s4yt/background-info.png');
+    --mobile-infoImg: url('/images/s4yt/background-info-mobile.png');
 
     /* ========== Constant Variables ========== */
 
@@ -38,6 +29,7 @@ TODO:
 
     /* Images */
     --active-bg: ;
+    --active-info-image: ;
     --active-paper-logo-height: ;
     --active-info-image-height: ;
     --active-speech-bubble-size: calc(var(--active-paper-logo-height) * var(--speech-bubble-ratio));
@@ -194,6 +186,7 @@ main {
 /* === Body === */
 
 .textInfo .infoImg {
+    src: var(--active-info-image);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -234,11 +227,11 @@ main {
 .navMobile {
     display: var(--mobile-display);
     flex-direction: column;
-    margin: 4rem auto 0;
+    margin: auto;
     width: 60%;
     max-width: 250px;
     position: absolute;
-    top: 15vh;
+    top: 37vh;
     left: 0;
     right: 0;
     height: 60vh;
@@ -246,15 +239,37 @@ main {
     overflow-y: auto;
 }
 
-/*
-To Do:
+/* Mobile Back Button */
+.backButton {
+    display: var(--mobile-display);
+    position: fixed;
+    background-color: #ef7f1a;
+    color: white;
+    border: none;
+    border-radius: 15%;
+    height: 12.5vh;
+    width: 20vh;
+    font-size: 2.5rem;
+    font-weight: bold;
+    top: 21%;
+    left: 57.5%;
+    z-index: 10;
+}
+
 .moreInfoBlock {
+    display: var(--mobile-display);
 }
 
 .moreInfoText {
-    
+    font-family: 'Night Zone', sans-serif;
+    position:absolute;
+    font-size: 3.1rem;
+    line-height: 1;
+    top: 28%;
+    left: 25%;
+    transform: translate(-50%, -50%);
 }
-*/
+
 /* =========== Responsive Styles =========== */
 /* Anything Larger */
 @media (min-width: 1600px) {
@@ -270,6 +285,7 @@ To Do:
 
         /* Images */
         --active-paper-logo-height: var(--paper-logo-height);
+        --active-info-image: var(--desktop-infoImg);
         --active-speech-bubble-size: calc(var(--active-paper-logo-height) * var(--speech-bubble-ratio));
         --active-info-image-height: var(--info-image-height);
 
@@ -293,6 +309,7 @@ To Do:
 
         /* Images */
         --active-paper-logo-height: var(--paper-logo-height);
+        --active-info-image: var(--desktop-infoImg);
         --active-speech-bubble-size: calc(var(--active-paper-logo-height) * var(--speech-bubble-ratio));
         --active-info-image-height: var(--info-image-height);
 
@@ -316,6 +333,7 @@ To Do:
 
         /* Images */
         --active-paper-logo-height: var(--paper-logo-height);
+        --active-info-image: var(--desktop-infoImg);
         --active-speech-bubble-size: calc(var(--active-paper-logo-height) * var(--speech-bubble-ratio));
         --active-info-image-height: var(--info-image-height);
 
@@ -340,6 +358,7 @@ To Do:
 
         /* Images */
         --active-paper-logo-height: var(--paper-logo-height);
+        --active-info-image: var(--desktop-infoimg);
         --active-speech-bubble-size: calc(var(--active-paper-logo-height) * var(--speech-bubble-ratio));
         --active-info-image-height: var(--info-image-height);
 
@@ -352,65 +371,31 @@ To Do:
 /* Mobile Devices (up to 800px) */
 @media (max-width: 800px) {
     :root {
+        /* Mobile-Desktop Control */
         --active-bg: var(--mobile-bg);
         --mobile-display: block;
         --desktop-display: none;
+
+        /* Font Sizes */
+        --active-header-font-size: calc(var(--header-font-size) * 0.65);
+        --active-body-font-size: calc(var(--body-font-size) * 0.65);
+
+        /* Images */
+        --active-info-image: var(--mobile-infoimg);
+        --active-info-image-height: calc(var(--info-image-height) * 0.9 );
+
+        /* Navigation Buttons */
+        --active-button-width: calc(var(--button-width) * 1.1);
+        --active-button-spacing: calc(var(--button-spacing) * 0.1);
     }
     main {
         padding-left: 0;
         padding-right: 0;
     }
-    .leftSec { display: none; }
-    
-    .navMobile img {
-        max-width: 100%;
-        height: auto;
-        object-fit: contain;
+    .contentContainer {
+        padding-top: 15vh;
     }
-    
-    /* Content Adjustments */
-    .textInfo { justify-self: center; }
-    .textHeader {
-        font-size: 1.25rem; /* 20px */
-        margin: 0;
-        text-align: center;
-    }
-    
-    .listinfo { font-size: 0.75rem; /* 12px */ }
-    
-    .infoImg {
-        width: 1000px;
-        height: auto;
-        z-index: -3;
-    }
-    
-    /* Mobile Back Button */
-    .backButton {
-        display: block;
-        position: fixed;
-        background-color: #ef7f1a;
-        color: white;
-        border: none;
-        border-radius: 20%;
-        height: 100px;
-        width: 170px;
-        font-size: 4rem;
-        font-weight: bold;
-        top: 20%;
-        left: 55%;
-        z-index: 10;
-    }
-    
-    /* Navigation Buttons */
-    .pressed,
-    .what,
-    .amI,
-    .when,
-    .howDo,
-    .whatAre {
-        width: auto;
-        height: 35px;
-        margin-bottom: 8px;
-        min-height: 0;
+    .textInfo ul .listinfo {
+        margin: 2px;
     }
 }

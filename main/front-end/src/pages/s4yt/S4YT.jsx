@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 // Add links here!
 const DISCORD_LINK = "https://youtube.com"
 const S4YT_GAME_LINK = "https://youtube.com"
+// switch to use react router dom link if need to send to a local page
 
 /* === Image Paths === */
 
@@ -35,7 +36,6 @@ const BUTTON_IMAGES = {
 const DISCORD_LOGO_PATH = "/images/s4yt/logo-discord.png";
 const PAPER_LOGO_PATH = "/images/s4yt/logo_dollars.png";
 const SPEECH_BUBBLE_PATH = "/images/s4yt/click-me.png";
-const CONTENT_BG_PATH = "/images/s4yt/background_info.png";
 
 /* === Section Content === */
 
@@ -99,7 +99,6 @@ export default function S4YT() {
   /* ===== Elements ===== */
 
   const discordLogo = (
-    // INSERT DISCORD LINK HERE !!!
     <a href={DISCORD_LINK} target="_blank" rel="noopener noreferrer" className={s.discordLogo}>
       <img 
         src={DISCORD_LOGO_PATH}
@@ -134,7 +133,7 @@ export default function S4YT() {
   };
 
   /**
-   * Injects the discord logo into the content with a link
+   * Injects the discord logo into the content with a link on '[DISCORD]'
    * 
    * @param {string} content - The content to inject the discord logo into
    * @returns {ReactNode} The content with the discord logo injected
@@ -148,7 +147,6 @@ export default function S4YT() {
   }
 
   /**
-   * Handles the section button click event
    * Sets the visible section to the clicked section number
    * 
    * @param {number} sectionNumber - The number of the section to display (1-5)
@@ -161,7 +159,7 @@ export default function S4YT() {
 
   /**
    * Renders the navigation buttons
-   * @param {boolean} isMobile - Whether or not to render the mobile version
+   * @param {boolean} isMobile - Whether or not to render the mobile version (class name difference)
    */
   const renderNavButtons = (isMobile = false) => (
     <div className={isMobile ? s.navMobile : s.navDesktop}>
@@ -203,12 +201,46 @@ export default function S4YT() {
         </ul>
         <img 
           className={s.infoImg} 
-          src={CONTENT_BG_PATH} 
           alt="Background Info" 
         />
       </div>
     );
   };
+
+  const renderLeftSec = () => {
+    return (
+      <a href={S4YT_GAME_LINK} target="_blank" rel="noopener noreferrer" className={s.leftSec}>
+      <img
+        src={PAPER_LOGO_PATH}
+        alt="S4YT Logo"
+        className={s.paper}
+      />  
+      <img
+        src={SPEECH_BUBBLE_PATH}
+        alt="Click Me"
+        className={s.speechBub}
+      />
+    </a>
+    );
+  }
+
+ const renderMobileAddons = () => {
+  return (
+    /* Class Name "mobileAddons" ensures this will only be rendered on mobile */
+    <div className={s.mobileAddons}>
+    {/* More Info Button Only shown when no section is selected yet */}
+    {!visibleSection && (
+      <div className={s.moreInfoBlock}>
+        <p className={s.moreInfoText}>More <br /> Info</p>
+      </div>
+    )}
+    {/* Always Shown (in mobile) (not sure what intended functionality is when no section is selected from mockup)*/}
+    <button className={s.backButton} onClick={handleBackClick}>
+      Back
+    </button>
+    </div>
+  );
+ }
   
   /* ===== Main Render ===== */
 
@@ -217,42 +249,15 @@ export default function S4YT() {
       <main>
         <div className={s.container}>
           {/* Left Section - Logo and Click Me */}
-          <a href={S4YT_GAME_LINK} target="_blank" rel="noopener noreferrer" className={s.leftSec}>
-            <img
-              src={PAPER_LOGO_PATH}
-              alt="S4YT Logo"
-              className={s.paper}
-            />  
-            <img
-              src={SPEECH_BUBBLE_PATH}
-              alt="Click Me"
-              className={s.speechBub}
-            />
-          </a>
-
+          {renderLeftSec()}
           {/* Main Content Area */}
           <div className={s.contentContainer}>
             {/* Desktop Navigation */}
             {renderNavButtons()}
-            {/* Mobile Back Button and More Info Addon */}
-            {
-              <div className={s.mobileAddons}>
-                {/* More Info Button Only shown when no section is selected yet */}
-                {!visibleSection && (
-                  <div className={s.moreInfoBlock}>
-                    <p className={s.moreInfoText}>More Info</p>
-                  </div>
-                )}
-                {/* Always Shown (in mobile) */}
-                <button className={s.backButton} onClick={handleBackClick}>
-                  Back
-                </button>
-              </div>
-            }
-
             {/* Mobile Navigation - Only shown when no section is selected */}
             {!visibleSection && renderNavButtons(true)}
-
+            {/* Mobile Back Button and More Info Addon */}
+            {renderMobileAddons()}
             {/* Section Content */}
             {renderSectionContent()}
           </div>
