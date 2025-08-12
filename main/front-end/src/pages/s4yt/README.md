@@ -1,4 +1,4 @@
-# CSS Styles, Tags, and Elements — Updated Documentation
+# CSS and JSX Page Structure Explained - Documentation
 
 > **Note:** All class names have been updated to remove the old `s4yt` prefix and reflect the current code structure, this prefix didn't even need to exist before because we are using css modules plus when I was using the old classes sometimes they wouldn't compile so better to just get rid of them
 
