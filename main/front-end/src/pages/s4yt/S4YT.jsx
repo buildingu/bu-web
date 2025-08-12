@@ -209,18 +209,22 @@ export default function S4YT() {
 
   const renderLeftSec = () => {
     return (
-      <a href={S4YT_GAME_LINK} target="_blank" rel="noopener noreferrer" className={s.leftSec}>
-      <img
-        src={PAPER_LOGO_PATH}
-        alt="S4YT Logo"
-        className={s.paper}
-      />  
-      <img
-        src={SPEECH_BUBBLE_PATH}
-        alt="Click Me"
-        className={s.speechBub}
-      />
-    </a>
+      <div className={s.leftSec}>
+      <a href={S4YT_GAME_LINK} target="_blank" rel="noopener noreferrer">
+        <img
+          src={PAPER_LOGO_PATH}
+          alt="S4YT Logo"
+          className={s.paper}
+        />
+      </a>
+      <a href={S4YT_GAME_LINK} target="_blank" rel="noopener noreferrer">
+        <img
+          src={SPEECH_BUBBLE_PATH}
+          alt="Click Me"
+          className={s.speechBub}
+        />
+      </a>
+      </div>
     );
   }
 
