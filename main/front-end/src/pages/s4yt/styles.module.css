@@ -57,7 +57,7 @@
     --button-width: 28.5vh;
     --button-spacing: 2.2vh;
 
-    --mobile-button-width: 31vh;
+    --mobile-button-width: 53vw;
     --mobile-button-spacing: 0.7vh;
 
     /* ===== Misc ===== */
@@ -65,10 +65,12 @@
     --discord-logo-ratio: 1.25;
     --discord-logo-height: calc(var(--body-font-size) * var(--discord-logo-ratio));
 
-    /* ===== Utility Variables ===== */
+    /* ===== Mobile-Desktop Control Variables (set to desktop defaults) ===== */
 
-    --mobile-display: ;
-    --desktop-display: ;
+    --mobile-display: none;
+    --desktop-display: flex;
+    --active-bg: var(--desktop-bg);
+    --active-info-image: var(--desktop-infoImg);
 }
 
 /* Main container */
@@ -278,8 +280,8 @@ main {
     color: white;
     border: none;
     border-radius: 15%;
-    height: 12.5vh;
-    width: 20vh;
+    height: 22vw;
+    width: 35vw;
     font-size: 2.5rem;
     font-weight: bold;
     top: 21%;
@@ -305,37 +307,9 @@ main {
    Responsive Breakpoints
 ========================= */
 
-/* Anything Larger */
-@media (min-width: 1600px) {
-    :root {
-        /* Mobile-Desktop Control */
-        --active-bg: var(--desktop-bg);
-        --active-info-image: var(--desktop-infoImg);
-        --mobile-display: none;
-        --desktop-display: flex;
-    }
-}
-
-/* Large Desktops (up to 1600px) */
-@media (max-width: 1600px) {
-    :root {
-        /* Mobile-Desktop Control */
-        --active-bg: var(--desktop-bg);
-        --mobile-display: none;
-        --desktop-display: flex;
-        --active-info-image: var(--desktop-infoImg);
-    }
-}
-
 /* Medium Desktops (up to 1200px) */
 @media (max-width: 1200px) {
     :root {
-        /* Mobile-Desktop Control */
-        --active-bg: var(--desktop-bg);
-        --mobile-display: none;
-        --desktop-display: flex;
-        --active-info-image: var(--desktop-infoImg);
-
         /* Font Sizes */
         --header-font-size: var(--smalldesk-header-font-size);
         --body-font-size: var(--smalldesk-body-font-size);
@@ -352,12 +326,6 @@ main {
 /* Tablets (up to 1000px) */
 @media (max-width: 1000px) {
     :root {
-        /* Mobile-Desktop Control */
-        --active-bg: var(--desktop-bg);
-        --mobile-display: none;
-        --desktop-display: flex;
-        --active-info-image: var(--desktop-infoImg);
-
         /* Font Sizes */
         --header-font-size: var(--tablet-header-font-size);
         --body-font-size: var(--tablet-body-font-size);
