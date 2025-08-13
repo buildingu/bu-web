@@ -74,21 +74,22 @@
 }
 
 /* Main container */
+/* TODO: */
 main {
-    height: 78vh;
+    /* height: 78vh; */
     width: 100%;
     /* !!! IMPORTANT: Remove This Margin Style when Footer and Header components are done, these are for visualization assuming they are there !!! */
-    margin-top: 14vh;
+    /* margin-top: 14vh; */
     padding-left: 9vw;
     padding-right: 9vw;
-    display: flex;
-    flex-direction: row;
+    /* display: flex; */
+    /* flex-direction: row; */
     background-image: var(--active-bg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    justify-content: flex-start;
-    overflow:hidden;
+    /* justify-content: flex-start; */
+    /* overflow: hidden; */
 }
 
 /* Layout container */
@@ -217,16 +218,24 @@ main {
 
 /* === Body === */
 
+/* TODO: */
 .textInfo .infoImg {
     content: var(--active-info-image);
     position: absolute;
-    top: 50%;
+    /* top: 50%;
     left: 50%;
     transform: translate(-50%, -60%);
     width: auto;
     height: var(--info-image-height);
     z-index: 1;
-    margin-left: 3vw;
+    margin-left: 3vw; */
+
+    top: 45%;
+    left: 54%;
+    transform: translate(-50%, -60%);
+    width: 135%;
+    height: var(--info-image-height);
+    z-index: 1;
 }
 
 .textInfo ul {
