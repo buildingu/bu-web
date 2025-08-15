@@ -60,8 +60,9 @@ Navigation is rendered in two layouts:
 - **`.navMobile`** — Mobile navigation container (vertical list in center of screen)
 
 ### Inside navigation:
-Five `<img>` elements, each with:
+Five `<button>` elements, each with:
 - The general `.navBtn` class
+- A `.pressed` class on currently selected sections
 - A section-specific class for hover states:
   - `.what` — "What" section
   - `.amI` — "Am I" section
@@ -113,6 +114,7 @@ Displays the **active section's title, bullet list, and image**.
 | `.navDesktop`     | Desktop nav container |
 | `.navMobile`      | Mobile nav container |
 | `.navBtn`         | Shared nav button styles |
+| `.pressed`        | Active section button style |
 | `.what`, `.amI`, `.when`, `.howDo`, `.whatAre` | Section-specific nav button hover styles |
 | `.textInfo`       | Section content container |
 | `.textHeader`     | Section title styling |

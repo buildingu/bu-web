@@ -16,23 +16,6 @@ const S4YT_GAME_LINK = "https://youtube.com"
 
 /* === Image Paths === */
 
-const BUTTON_IMAGES = {
-  normal: [
-    "/images/s4yt/btn_01-what-is-normal.png",
-    "/images/s4yt/btn_02-am-i-normal.png",
-    "/images/s4yt/btn_03-when-can-normal.png",
-    "/images/s4yt/btn_04-how-do-i-normal.png",
-    "/images/s4yt/btn_05-what-are-normal.png"
-  ],
-  pressed: [
-    "/images/s4yt/btn_01-what-is-pressed.png",
-    "/images/s4yt/btn_02-am-i-pressed.png",
-    "/images/s4yt/btn_03-when-can-pressed.png",
-    "/images/s4yt/btn_04-how-do-i-pressed.png",
-    "/images/s4yt/btn_05-what-are-pressed.png"
-  ]
-};
-
 const DISCORD_LOGO_PATH = "/images/s4yt/logo-discord.png";
 const PAPER_LOGO_PATH = "/images/s4yt/logo_dollars.png";
 const SPEECH_BUBBLE_PATH = "/images/s4yt/click-me.png";
@@ -111,18 +94,19 @@ export default function S4YT() {
   /* ===== Utility Functions ===== */
 
   /**
-   * Determines which button image to display based on the current visible section
-   * Returns the pressed state image if the button's section is active, otherwise returns the normal state image
+   * Gets all The navigation Classes from the general class to the specific state to control imaging in CSS
    * 
    * @param {number} index - The zero-based index of the button (0-4)
-   * @returns {string} The image source path for the button's current state
+   * @returns {string} All the Classes Applied to the button joined by " "
    */
-  const getImageSource = (index) => {
+  const getNavBtnClasses = (index) => {
+    const buttonTypes = ['what', 'amI', 'when', 'howDo', 'whatAre'];
+    const buttonType = buttonTypes[index];
+    let classes = [s.navBtn, s[buttonType]];
     if (visibleSection === index + 1) {
-      return BUTTON_IMAGES.pressed[index];
-    } else {
-      return BUTTON_IMAGES.normal[index];
+      classes.push(s.pressed);
     }
+    return classes.join(' ');
   };
 
   /**
@@ -164,13 +148,13 @@ export default function S4YT() {
   const renderNavButtons = (isMobile = false) => (
     <div className={isMobile ? s.navMobile : s.navDesktop}>
       {[1, 2, 3, 4, 5].map((sectionNum, index) => (
-        <img
+          <button
           key={sectionNum}
-          src={getImageSource(index)}
           onClick={() => handleSectionClick(sectionNum)}
           alt={SECTION_CONTENT[index]?.title || `Section ${sectionNum}`}
-          className={[s.navBtn, visibleSection === sectionNum ? s.pressed : s[`${['what', 'amI', 'when', 'howDo', 'whatAre'][index]}`]].join(' ')}
-        />
+          className={getNavBtnClasses(index)}
+         >
+         </button>
       ))}
     </div>
   );
@@ -250,8 +234,7 @@ export default function S4YT() {
 
   return (
     <Layout>
-      <main>
-        <div className={s.container}>
+      <main className={s.container}>
           {/* Left Section - Logo and Click Me */}
           {renderLeftSec()}
           {/* Main Content Area */}
@@ -265,7 +248,6 @@ export default function S4YT() {
             {/* Section Content */}
             {renderSectionContent()}
           </div>
-        </div>
       </main>
     </Layout>
   );

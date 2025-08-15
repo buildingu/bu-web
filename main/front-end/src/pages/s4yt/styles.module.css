@@ -2,6 +2,12 @@
    Base & Variables
 ================================ */
 
+/* Todo: 
+    [] Adjust Navigation Button, Info Image, and Paper Logo to scale responsively up to mobile
+    [] Keep Sizes not overflowing at all viewpoints so there isn't scroll
+    [] Clean up Variable use
+*/
+
 :root {
     /* ========== Image Paths ========== */
     /* Backgrounds and Visuals */
@@ -10,12 +16,27 @@
     --desktop-infoImg: url('/images/s4yt/background-info.png');
     --mobile-infoImg: url('/images/s4yt/background-info-mobile.png');
 
-    /* Hover Navigation Buttons */
+    /* === Navigation Buttons === */
+
+    --what-normal: url("/images/s4yt/btn_01-what-is-normal.png");
     --whatHover: url("/images/s4yt/btn_01-what-is-hover.png");
+    --what-pressed: url("/images/s4yt/btn_01-what-is-pressed.png");
+
+    --amI-normal: url("/images/s4yt/btn_02-am-i-normal.png");
     --amIHover: url("/images/s4yt/btn_02-am-i-hover.png");
+    --amI-pressed: url("/images/s4yt/btn_02-am-i-pressed.png");
+
+    --when-normal: url("/images/s4yt/btn_03-when-can-normal.png");
     --whenHover: url("/images/s4yt/btn_03-when-can-hover.png"); 
+    --when-pressed: url("/images/s4yt/btn_03-when-can-pressed.png");
+
+    --howDo-normal: url("/images/s4yt/btn_04-how-do-i-normal.png");
     --howDoHover: url("/images/s4yt/btn_04-how-do-i-hover.png");
+    --howDo-pressed: url("/images/s4yt/btn_04-how-do-i-pressed.png");
+
+    --whatAre-normal: url("/images/s4yt/btn_05-what-are-normal.png");
     --whatAreHover: url("/images/s4yt/btn_05-what-are-hover.png");
+    --whatAre-pressed: url("/images/s4yt/btn_05-what-are-pressed.png");
 
     /* ========== Variables ========== */
 
@@ -39,30 +60,38 @@
     /* ===== Font Sizes ===== */
     
     /* Default Values (Desktop) */
-    --header-font-size: 4.2vh;
-    --body-font-size: 3vh;
+    --header-font-size: 1.5625rem;
+    --header-font-size-clamp: clamp(1.5625rem, 0.5434782608695652rem + 1.6304347826086956vw, 2.5rem);
+    --body-font-size: 1.25rem;
+    --body-font-size-clamp: clamp(1.25rem, 0.4347826086956521rem + 1.3043478260869565vw, 2rem);
     /* Breakpoints (reapplied to defaults) */
-    --smalldesk-header-font-size: 3.5vh;
-    --smalldesk-body-font-size: 2.8vh;
+    --mediumdesk-header-font-size: 28px;
+    --mediumdesk-body-font-size: 20px;
+    
+    --smalldesk-header-font-size: 30px;
+    --smalldesk-body-font-size: 26px;
 
-    --tablet-header-font-size: 3vh;
-    --tablet-body-font-size: 2.5vh;
+    --tablet-header-font-size: 27px;
+    --tablet-body-font-size: 24px;
 
-    --mobile-header-font-size: 4vh;
-    --mobile-body-font-size: 2.9vh;
-    --more-info-font-size: 5.5vh;
+    --mobile-header-font-size: 23px;
+    --mobile-body-font-size: 20px;
+    --more-info-font-size: 40px;
 
     /* ===== Buttons ===== */
-
-    --button-width: 28.5vh;
+    /* Default Values (Desktop) */
+    --button-width: 200px;
+    --button-width-clamp: clamp(200px, 10.869565217391305vw, 12.5rem);
+    --button-height: calc(120/363 * var(--button-width)); /* Image Aspect Ratio */
     --button-spacing: 2.2vh;
 
+    /* Breakpoints (reapplied to defaults) */
     --mobile-button-width: 53vw;
     --mobile-button-spacing: 0.7vh;
 
     /* ===== Misc ===== */
 
-    --discord-logo-ratio: 1.25;
+    --discord-logo-ratio: 1.1;
     --discord-logo-height: calc(var(--body-font-size) * var(--discord-logo-ratio));
 
     /* ===== Mobile-Desktop Control Variables (set to desktop defaults) ===== */
@@ -74,31 +103,23 @@
 }
 
 /* Main container */
-/* TODO: */
-main {
-    /* height: 78vh; */
-    width: 100%;
-    /* !!! IMPORTANT: Remove This Margin Style when Footer and Header components are done, these are for visualization assuming they are there !!! */
-    /* margin-top: 14vh; */
+.container {
     padding-left: 9vw;
     padding-right: 9vw;
-    /* display: flex; */
-    /* flex-direction: row; */
     background-image: var(--active-bg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    /* justify-content: flex-start; */
-    /* overflow: hidden; */
-}
-
-/* Layout container */
-.container {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 100%;
-    height: 100%;
+}
+/* HEADER AND FOOTER VISUALIZATION STYLES !!! REMOVE ON COMPLETION !!! */
+header {
+    height: 16vh;
+    background-color: var(--c-orange);
+}
+footer {
+    height: 6vh;
+    background-color: var(--c-magenta);
 }
 
 /* ================================
@@ -143,16 +164,37 @@ main {
 .navBtn {
     cursor: pointer;
     width: var(--button-width);
-    height: auto;
+    width: var(--button-width-clamp);
+    height: var(--button-height);
     margin-bottom: var(--button-spacing);
+
+    /* Background image properties */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
 }
 
+/* Button normal states */
+.what { background-image: var(--what-normal); }
+.amI { background-image: var(--amI-normal); }
+.when { background-image: var(--when-normal); }
+.howDo { background-image: var(--howDo-normal); }
+.whatAre { background-image: var(--whatAre-normal); }
+
 /* Button hover states */
-.what:hover { content: url("/images/s4yt/btn_01-what-is-hover.png"); }
-.amI:hover { content: url("/images/s4yt/btn_02-am-i-hover.png"); }
-.when:hover { content: url("/images/s4yt/btn_03-when-can-hover.png"); } 
-.howDo:hover { content: url("/images/s4yt/btn_04-how-do-i-hover.png"); }
-.whatAre:hover { content: url("/images/s4yt/btn_05-what-are-hover.png"); }
+.what:hover { background-image: var(--whatHover); }
+.amI:hover { background-image: var(--amIHover); }
+.when:hover { background-image: var(--whenHover); } 
+.howDo:hover { background-image: var(--howDoHover); }
+.whatAre:hover { background-image: var(--whatAreHover); }
+
+/* Button pressed states */
+.what.pressed { background-image: var(--what-pressed); }
+.amI.pressed { background-image: var(--amI-pressed); }
+.when.pressed { background-image: var(--when-pressed); }
+.howDo.pressed { background-image: var(--howDo-pressed); }
+.whatAre.pressed { background-image: var(--whatAre-pressed); }
 
 /* Desktop Navigation */
 .navDesktop {
@@ -188,9 +230,8 @@ main {
 .textInfo hgroup {
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: center;
     width: 100%;
-    margin-left: 5vw;
     margin-bottom: 2vh;
     height: auto;
 }
@@ -199,21 +240,22 @@ main {
 .textHeader {
     font-family: var(--heading-font2);
     font-size: var(--header-font-size);
+    font-size: var(--header-font-size-clamp);
     text-align: center;
     color: #008dd2;
     z-index: 3;
     position: relative;
     padding-bottom: 1vh;
-    margin-left: -5vw;
+    width: 100%;
 }
 
 /* Header Seperator Line */
 .textInfo hgroup div.line {
-    position: relative;
-    width: calc(var(--header-font-size) * 13);
+    width: 85%;
     height: 3px;
     z-index: 3;
     background-color: #008dd2;
+    margin-left: 0;
 }
 
 /* === Body === */
@@ -232,25 +274,26 @@ main {
 
     top: 45%;
     left: 54%;
-    transform: translate(-50%, -60%);
-    width: 135%;
+    transform: translate(-50%, -55%);
+    width: auto;
     height: var(--info-image-height);
     z-index: 1;
 }
 
 .textInfo ul {
     padding: 0;
-    margin: 0;
+    margin-left: 1.5vw;
     z-index: 3;
-    width: 80%;
+    width: 89%;
 }
 
 .textInfo ul .listinfo {
     font-size: var(--body-font-size);
-    margin: 0.3em 0 0.5em 0;
+    font-size: var(--body-font-size-clamp);
+    margin: 0;
     z-index: 3;
     position: relative;
-    line-height: 0.8;
+    line-height: 1;
 }
 
 .discordLogo {
@@ -278,7 +321,6 @@ main {
     right: 0;
     height: 60vh;
     max-height: 450px;
-    overflow-y: auto;
 }
 
 /* Mobile Back Button */
@@ -315,14 +357,22 @@ main {
 /* =========================
    Responsive Breakpoints
 ========================= */
+@media (max-width: 1400px) {
+    :root {
+        /* Font Sizes */
+        /* --header-font-size: var(--mediumdesk-header-font-size);
+        --body-font-size: var(--mediumdesk-body-font-size);
+        --discord-logo-height: calc(var(--body-font-size) * var(--discord-logo-ratio)); */
+    }
+}
 
 /* Medium Desktops (up to 1200px) */
 @media (max-width: 1200px) {
     :root {
         /* Font Sizes */
-        --header-font-size: var(--smalldesk-header-font-size);
+        /* --header-font-size: var(--smalldesk-header-font-size);
         --body-font-size: var(--smalldesk-body-font-size);
-        --discord-logo-height: calc(var(--body-font-size) * var(--discord-logo-ratio));
+        --discord-logo-height: calc(var(--body-font-size) * var(--discord-logo-ratio)); */
 
         /* images */
         --paper-logo-maxheight: var(--smalldesk-paper-logo-maxheight);
@@ -336,9 +386,9 @@ main {
 @media (max-width: 1000px) {
     :root {
         /* Font Sizes */
-        --header-font-size: var(--tablet-header-font-size);
+        /* --header-font-size: var(--tablet-header-font-size);
         --body-font-size: var(--tablet-body-font-size);
-        --discord-logo-height: calc(var(--body-font-size) * var(--discord-logo-ratio));
+        --discord-logo-height: calc(var(--body-font-size) * var(--discord-logo-ratio)); */
     }
 }
 
