@@ -28,7 +28,8 @@
   }
 
   .homeDesktopSidebar {
-    float: left;
+    /* TODO: Delete */
+    /* float: left; */
     background-color: #fafafa;
     display: flex;
     width: 100%;
