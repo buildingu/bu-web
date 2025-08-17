@@ -56,37 +56,37 @@ const Header = () => {
             className={s.headerButton}
             onClick={() => scrollToSection("resourcesSection")}
           >
-            <img src={resource} alt="resource" />
+            <img src={resource} alt="resource" className={s.navButtonImg} />
           </button>
           <button
             className={s.headerButton}
             onClick={() => scrollToSection("contributeSection")}
           >
-            <img src={contribute} alt="contribute" />
+            <img src={contribute} alt="contribute" className={s.navButtonImg} />
           </button>
           <button
             className={s.headerButton}
             onClick={() => scrollToSection("s4ytSection")}
           >
-            <img src={dollar} alt="dollar" className={s.dollarIMG} />
+            <img src={dollar} alt="dollar" className={s.navButtonImg} />
           </button>
           <button
             className={s.headerButton}
             onClick={() => scrollToSection("blogSection")}
           >
-            <img src={blog} alt="blog" />
+            <img src={blog} alt="blog" className={s.navButtonImg} />
           </button>
           <button
             className={s.headerButton}
             onClick={() => scrollToSection("talkSection")}
           >
-            <img src={talk} alt="talk" />
+            <img src={talk} alt="talk" className={s.navButtonImg} />
           </button>
           <button
             className={s.headerButton}
             onClick={() => scrollToSection("signupSection")}
           >
-            <img src={signup} alt="signup" />
+            <img src={signup} alt="signup" className={s.navButtonImg} />
           </button>
         </div>
 

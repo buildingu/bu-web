@@ -4,269 +4,432 @@
   background-color: #68b436;
   width: 100%;
   background-image: url(../../../../assets/images/homepage/bg_mobile.png);
-  overflow: hidden; 
+  overflow: hidden;
   position: relative;
+  min-height: 400px;
 }
 
-/* Desktop Styles */
-@media only screen and (min-width: 769px) {
-  .talkSection {
-    min-height: 75vh;
-    height: auto; 
-  }
+a {
+  text-decoration: none;
+}
 
+.talkBulletRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
+  transition: margin-left 0.3s ease;
+}
+.talkCircle {
+  width: clamp(30px, 3vw, 45px);
+  height: clamp(30px, 3vw, 45px);
+  border-radius: 50%;
+  background: #e5097f;
+  display: inline-block;
+  margin-right: clamp(0.8rem, 1.5vw, 1.5rem);
+  flex-shrink: 0;
+}
+.talkBulletText {
+  font-size: clamp(1.2rem, 2.5vw, 2.5rem);
+  color: #fff;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+.talkDesktop {
+  display: none;
+}
+.talkMobile {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: fit-content;
+}
+.talkPhoneBar {
+  width: 100%;
+  min-height: 60px;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #ef7f1a;
+  padding: clamp(0.3rem, 2vw, 0.8rem);
+  box-sizing: border-box;
+}
+.talkBarLogo {
+  height: clamp(40px, 10vw, 60px);
+  width: auto;
+  max-width: 90%;
+}
+.talkPhoneContent {
+  background-color: #68b436;
+  background-image: url(../../../../assets/images/homepage/bg_mobile.png);
+  padding: clamp(0.8rem, 3vw, 1.5rem) clamp(0.5rem, 3vw, 1rem);
+  box-sizing: border-box;
+  min-height: fit-content;
+  padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+.talkBlue {
+  display: flex;
+  justify-content: center;
+  margin-bottom: clamp(0.8rem, 3vw, 1.5rem);
+}
+.talkBluePhoto {
+  width: min(65vw, 300px);
+  height: auto;
+  max-width: 100%;
+}
+.talkGreen {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  gap: clamp(0.3rem, 1.5vw, 0.8rem);
+  padding-bottom: clamp(0.5rem, 2vw, 1rem);
+}
+.talkGreenOptions {
+  height: clamp(35px, 7vw, 50px);
+  width: auto;
+  max-width: 100%;
+}
+@media screen and (min-width: 769px) {
+  .talkSection {
+    min-height: 300px;
+    height: fit-content;
+  }
   .talkDesktop {
     display: flex;
     flex-direction: column;
     position: relative;
-    padding: 0rem 1rem;
+    padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 3vw, 2rem);
     box-sizing: border-box;
   }
-
   .talkMobile {
     display: none;
   }
-
+  .talkTitle {
+    z-index: 3;
+    margin-bottom: clamp(1rem, 2vw, 2rem);
+  }
   .talkTitleText {
-    font-size: clamp(3rem, 7vh, 6rem); 
+    font-size: clamp(2.5rem, 5vw, 5rem);
     margin: 0;
     padding: 0;
-    margin-left: clamp(1rem, 2vw, 3rem);
+    margin-left: clamp(1rem, 3vw, 3rem);
     font-family: "coolvetica", "coolvetica", serif;
     color: #fafafa;
   }
-
   .talkTitleLine {
-    width: min(50vw, 800px); 
-    margin-left: clamp(2rem, 10vw, 8rem);
+    width: min(60vw, 700px);
+    margin-left: clamp(2rem, 6vw, 6rem);
     border: 0.25rem solid #fafafa;
     color: #fafafa;
     opacity: 100%;
+    z-index: 4;
+    position: relative;
   }
-
-  .talkTitle {
-    z-index: 3;
-    margin-bottom: 2rem;
-  }
-
   .talkContents {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    margin-right: clamp(1rem, 5vw, 4rem);
+    margin-right: clamp(1rem, 4vw, 4rem);
     z-index: 3;
-    gap: 2rem;
-    flex-wrap: wrap; 
+    gap: clamp(0.8rem, 2vw, 2rem);
   }
-
   .talkDog {
-    width: clamp(200px, 30vw, 400px);
-    height: auto; 
+    width: clamp(180px, 22vw, 300px);
+    height: auto;
     flex-shrink: 0;
   }
-
   .talkBulletWrapper {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
+    gap: clamp(0.3rem, 1vw, 0.8rem);
     flex: 1;
-    min-width: 300px;
+    min-width: 250px;
+    margin-left: 10rem;
   }
-
-  .talkBulletWrapper img:nth-child(1) {
+  .talkBulletRow:nth-child(1) {
     margin-left: 0;
   }
-
-  .talkBulletWrapper img:nth-child(2) {
-    margin-left: clamp(1rem, 7vw, 5rem);
+  .talkBulletRow:nth-child(2) {
+    margin-left: 12%;
   }
-
-  .talkBulletWrapper img:nth-child(3) {
-    margin-left: clamp(2rem, 14vw, 10rem);
+  .talkBulletRow:nth-child(3) {
+    margin-left: 24%;
   }
-
-  .talkBulletWrapper img:nth-child(4) {
-    margin-left: clamp(3rem, 21vw, 15rem);
+  .talkBulletRow:nth-child(4) {
+    margin-left: 36%;
   }
-
-  .talkBullets {
-    height: clamp(3rem, 7.5vh, 5rem);
-    width: auto;
+  .talkBulletRow:nth-child(5) {
+    margin-left: 48%;
   }
-
   .talkLogo {
+    display: block;
     position: relative;
-    top: -5vh;
-    right: 2rem;
-    height: clamp(8rem, 25vh, 15rem);
+    top: clamp(-15px, -2vw, -30px);
+    right: clamp(1rem, 2vw, 2rem);
+    height: clamp(100px, 15vw, 160px);
     width: auto;
     z-index: 4;
     flex-shrink: 0;
   }
-
   .talkBg {
-    border-bottom: 75vh solid #008dd2;
-    border-left: 0px solid transparent;
-    border-right: min(50vh, 300px) solid transparent;
-    width: min(50vw, 600px);
+    background-color: #008dd2;
+    width: 50%;
     position: absolute;
     z-index: 2;
-    min-height: 100%;
+    height: 100%;
     top: 0;
     left: 0;
-  }
-
-  @media screen and (max-width: 1024px) {
-    .talkBg {
-      border-right: none !important;
-      width: 100%;
-      min-height: 87%;
-      top: -50%;
-
-    }
+    clip-path: polygon(0 0, 60% 0, 100% 100%, 0 100%);
   }
 }
-
-/* Tablet and smaller desktop adjustments */
-@media only screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .talkSection {
+    min-height: 280px;
+  }
   .talkContents {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
-
   .talkBulletWrapper {
-    align-items: center;
-    margin-top: 2rem;
+    display: block;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    min-width: 250px;
+    margin-left: 5rem;
   }
-
-  .talkBulletWrapper img:nth-child(1),
-  .talkBulletWrapper img:nth-child(2),
-  .talkBulletWrapper img:nth-child(3),
-  .talkBulletWrapper img:nth-child(4) {
+  .talkBulletRow {
+    margin-left: 0 !important;
+  }
+  .talkLogo {
+    display: none;
+  }
+  .talkBg {
+    border-right: none !important;
+    width: 100%;
+    min-height: 90%;
+    top: -40%;
+    z-index: 2;
+    height: 70%;
+    clip-path: none;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .talkSection {
+    min-height: 320px;
+    height: fit-content;
+  }
+  .talkTitleText {
+    font-size: clamp(3rem, 4vw, 5rem);
+  }
+  .talkBulletText {
+    font-size: clamp(1.5rem, 2.5vw, 2.8rem);
+  }
+  .talkCircle {
+    width: clamp(35px, 3.5vw, 50px);
+    height: clamp(35px, 3.5vw, 50px);
+  }
+  .talkDog {
+    width: clamp(200px, 30vw, 400px);
+  }
+  .talkLogo {
+    display: block;
+    height: clamp(120px, 12vw, 180px);
+    position: relative;
+    top: clamp(-15px, -2vw, -30px);
+    right: clamp(1rem, 2vw, 2rem);
+    width: auto;
+    z-index: 4;
+    flex-shrink: 0;
+  }
+  .talkBulletRow:nth-child(1) {
     margin-left: 0;
   }
-
-  .talkLogo {
-    position: relative;
-    top: 0;
-    right: 0;
-    margin-top: 2rem;
+  .talkBulletRow:nth-child(2) {
+    margin-left: 15%;
+  }
+  .talkBulletRow:nth-child(3) {
+    margin-left: 30%;
+  }
+  .talkBulletRow:nth-child(4) {
+    margin-left: 45%;
+  }
+  .talkBulletRow:nth-child(5) {
+    margin-left: 60%;
   }
 }
-
-/* Mobile Styles */
-@media only screen and (max-width: 769px) {
+@media screen and (min-width: 1441px) {
   .talkSection {
-    min-height: auto;
+    min-height: 380px;
+    height: fit-content;
   }
-
   .talkDesktop {
-    display: none; 
+    padding: clamp(2rem, 2.5vw, 3.5rem) clamp(2rem, 2vw, 4rem);
   }
-
-  .talkMobile {
-    display: flex; 
-    flex-direction: column;
-    width: 100%;
+  .talkTitleText {
+    font-size: clamp(4rem, 3.5vw, 6rem);
+    margin-left: clamp(2rem, 2vw, 4rem);
   }
-
-  .talkPhoneBar {
-    width: 100%;
-    min-height: 12vh;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background-color: #ef7f1a;
-    padding: 1rem;
-    box-sizing: border-box;
+  .talkTitleLine {
+    width: min(65vw, 800px);
+    margin-left: clamp(2rem, 6vw, 6rem);
+    border: 0.25rem solid #fafafa;
+    color: #fafafa;
+    opacity: 100%;
+    z-index: 4;
+    position: relative;
   }
-
-  .talkBarLogo {
-    height: clamp(6rem, 13.5vh, 8rem);
-    width: auto;
-    max-width: 90%;
+  .talkBulletText {
+    font-size: clamp(2rem, 2.5vw, 3.5rem);
   }
-
-  .talkPhoneContent {
-    background-color: #68b436;
-    background-image: url(../../../../assets/images/homepage/bg_mobile.png);
-    padding: 2rem 1rem;
-    box-sizing: border-box;
-    min-height: fit-content;
-    margin-bottom: 5rem;
+  .talkCircle {
+    width: clamp(40px, 3vw, 60px);
+    height: clamp(40px, 3vw, 60px);
+    margin-right: clamp(1.5rem, 1.5vw, 2.5rem);
   }
-
-  .talkBlue {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2rem;
+  .talkDog {
+    width: clamp(250px, 30vw, 450px);
   }
-
-  .talkBluePhoto {
-    width: min(65vw, 300px);
-    height: auto;
-    max-width: 100%;
-  }
-
-  .talkGreen {
-    display: grid;
-    grid-template-columns: 1fr;
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    gap: 1rem;
-    padding-bottom: 2rem;
-  }
-
-  .talkGreenOptions {
-    height: clamp(3rem, 5vh, 4rem);
-    width: auto;
-    max-width: 100%;
-  }
-
   .talkLogo {
-    display: none; 
+    display: block;
+    height: clamp(140px, 10vw, 220px);
+    top: clamp(-20px, -1.5vw, -40px);
+    position: relative;
+    right: clamp(1rem, 2vw, 2rem);
+    width: auto;
+    z-index: 4;
+    flex-shrink: 0;
+  }
+  .talkBg {
+    background-color: #008dd2;
+    width: 50%;
+    position: absolute;
+    z-index: 2;
+    height: 100%;
+    top: 0;
+    left: 0;
+    clip-path: polygon(0 0, 60% 0, 100% 100%, 0 100%);
+  }
+  .talkContents {
+    gap: clamp(1.5rem, 2vw, 3rem);
+    margin-right: clamp(2rem, 3vw, 6rem);
+  }
+  .talkBulletRow:nth-child(1) {
+    margin-left: 0;
+  }
+  .talkBulletRow:nth-child(2) {
+    margin-left: 18%;
+  }
+  .talkBulletRow:nth-child(3) {
+    margin-left: 36%;
+  }
+  .talkBulletRow:nth-child(4) {
+    margin-left: 54%;
+  }
+  .talkBulletRow:nth-child(5) {
+    margin-left: 72%;
   }
 }
-
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 1901px) {
+  .talkSection {
+    min-height: 400px;
+    height: fit-content;
+  }
+  .talkTitleText {
+    font-size: 6rem;
+    margin-left: 0;
+  }
+  .talkTitleLine {
+    width: 800px;
+    margin-left: 8rem;
+    border: 0.25rem solid #fafafa;
+    color: #fafafa;
+    opacity: 100%;
+    z-index: 4;
+    position: relative;
+  }
+  .talkBulletText {
+    font-size: 3.5rem;
+  }
+  .talkCircle {
+    width: 50px;
+    height: 50px;
+    margin-right: 2rem;
+  }
+  .talkDog {
+    width: clamp(250px, 22vw, 450px);
+  }
   .talkLogo {
-    margin-bottom: 10rem;
+    display: block;
+    height: 220px;
+    top: -40px;
+    position: relative;
+    right: clamp(1rem, 2vw, 2rem);
+    width: auto;
+    z-index: 4;
+    flex-shrink: 0;
   }
-
-
+  .talkBg {
+    background-color: #008dd2;
+    width: 40%;
+    position: absolute;
+    z-index: 2;
+    height: 100%;
+    top: 0;
+    left: 0;
+    clip-path: polygon(0 0, 60% 0, 100% 100%, 0% 100%);
+  }
+  .talkBulletRow:nth-child(1) {
+    margin-left: 0;
+  }
+  .talkBulletRow:nth-child(2) {
+    margin-left: 20%;
+  }
+  .talkBulletRow:nth-child(3) {
+    margin-left: 40%;
+  }
+  .talkBulletRow:nth-child(4) {
+    margin-left: 60%;
+  }
+  .talkBulletRow:nth-child(5) {
+    margin-left: 80%;
+  }
 }
-
-/* Extra small screens */
-@media only screen and (max-width: 480px) {
+@media screen and (max-width: 480px) {
+  .talkSection {
+    min-height: 300px;
+  }
   .talkPhoneBar {
-    padding: 0.5rem;
+    padding: 0.3rem;
+    min-height: 50px;
   }
-
   .talkBarLogo {
-    height: clamp(4rem, 10vh, 6rem);
+    height: clamp(35px, 9vw, 50px);
   }
-
   .talkPhoneContent {
-    padding: 1rem 0.5rem;
-    margin-bottom: 10rem;
+    padding: clamp(0.4rem, 2.5vw, 0.8rem);
+    padding-bottom: clamp(1rem, 4vw, 2rem);
   }
-
   .talkBluePhoto {
     width: min(80vw, 250px);
   }
-
   .talkGreen {
     width: 95%;
     padding: 0 2.5%;
   }
-
   .talkGreenOptions {
-    height: clamp(2.5rem, 4vh, 3.5rem);
+    height: clamp(30px, 6vw, 45px);
   }
+}
+.talkSection * {
+  transition: font-size 0.3s ease, width 0.3s ease, height 0.3s ease,
+    margin 0.3s ease, padding 0.3s ease;
 }

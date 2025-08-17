@@ -19,14 +19,16 @@ const LandingSection = () => {
               src={logo}
               alt="BuildingU Logo"
               className={`${s.upbar} ${s.homeSbar}`}
+              style={{marginTop: "auto", width: "100%", maxWidth: "350px"}}
             />
             <img
               src={peacock}
               alt="Mr. Turkey"
               className={`${s.homeSbar} ${s.desktop}`}
+              style={{ width: "100%", maxWidth: "250px", marginBottom: "0" }}
             />
-            <p className={`${s.homeSbar} ${s.desktop} ${s.homeSbarWord}`}>
-              <cite>Gobble, Gobble, Gobble, Gobble...</cite> <br /><p style={{ marginLeft: "10rem" }}>Mr. Turkey</p>
+            <p className={`${s.homeSbar} ${s.desktop} ${s.homeSbarWord}`} style={{ marginBottom: "2rem"}}>
+              <cite style={{fontWeight: "bold"}}>Gobble, Gobble, Gobble, Gobble...</cite> <br /><p style={{ marginLeft: "10rem", fontWeight: "bold"}}>Mr. Turkey</p>
             </p>
           </div>
         </div>
@@ -34,12 +36,8 @@ const LandingSection = () => {
         <div className={s.separateTop}></div>
 
         <div className={s.landingContent}>
-          <div className={s.homeLeftSec}>
-            <img
-              src={line}
-              alt="Line"
-              className={s.homeSectionLine}
-            />
+          <div className={s.homeLeftSec} style={{ display: "flex", justifyContent: "center" , width: "73%"}}>
+            <div className={s.homeSectionLine} aria-hidden="true" />
             <h1 className={s.homeSectionText}>
               We need to write here a little explanation of what building u is.
             </h1>

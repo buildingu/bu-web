@@ -65,7 +65,6 @@
     flex-direction: row;
     margin-right: 5vw;
     z-index: 3;
-    transform: translate(20%);
   }
 
   .conButtons {

@@ -26,10 +26,38 @@ const LetsTalkSection = () => {
         <div className={s.talkContents}>
           <img src={dogImage} alt="dog" className={s.talkDog} />
           <div className={s.talkBulletWrapper}>
-            <img src={aboutUsIcon} alt="About Us" className={s.talkBullets} />
-            <img src={internshipIcon} alt="Our Internship" className={s.talkBullets} />
-            <img src={connectIcon} alt="Connect" className={s.talkBullets} />
-            <img src={partnerIcon} alt="Partner" className={s.talkBullets} />
+            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+              <li style={{ marginLeft: 0 }}>
+                <a href="#about-us" className={s.talkBulletRow}>
+                  <span className={s.talkCircle}></span>
+                  <span className={s.talkBulletText}>About Us</span>
+                </a>
+              </li>
+              <li style={{ marginLeft: "8%" }}>
+                <a href="#our-crew" className={s.talkBulletRow}>
+                  <span className={s.talkCircle}></span>
+                  <span className={s.talkBulletText}>Our Crew</span>
+                </a>
+              </li>
+              <li style={{ marginLeft: "16%" }}>
+                <a href="#our-internship" className={s.talkBulletRow}>
+                  <span className={s.talkCircle}></span>
+                  <span className={s.talkBulletText}>Our Internship</span>
+                </a>
+              </li>
+              <li style={{ marginLeft: "24%" }}>
+                <a href="#connect" className={s.talkBulletRow}>
+                  <span className={s.talkCircle}></span>
+                  <span className={s.talkBulletText}>Connect With us</span>
+                </a>
+              </li>
+              <li style={{ marginLeft: "32%" }}>
+                <a href="#partner" className={s.talkBulletRow}>
+                  <span className={s.talkCircle}></span>
+                  <span className={s.talkBulletText}>Partner With us</span>
+                </a>
+              </li>
+            </ul>
           </div>
           <img src={logoImage} alt="Let's Talk Logo" className={s.talkLogo} />
         </div>
