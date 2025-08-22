@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { mockData } from "./mock_data";
 import ScrollArea from "../../components/ScrollArea/ScrollArea";
 
 // import beyondImage from "/images/beyond.png";
@@ -15,120 +16,8 @@ function formatDate(dateStr) {
   return new Date(dateStr).toLocaleDateString("en-US", options);
 }
 
-const mockData = [
-  {
-    id: "ffb90f25-e305-4eea-a305-6a670e6d9175",
-    title: "Understanding Quantum Computing",
-    author: "Alice Johnson",
-    categories: "Technology, Science",
-    tags: "Quantum, Computing, Future",
-    comments: "12",
-    datePublished: "2024-09-15",
-    link: "https://www.google.com",
-  },
-  {
-    id: "d14024da-2318-4c9c-a511-67c2a22074e6",
-    title: "The Rise of AI",
-    author: "Bob Smith",
-    categories: "Technology, AI",
-    tags: "AI, Machine Learning",
-    comments: "25",
-    datePublished: "2024-09-18",
-    link: "https://www.youtube.com/",
-  },
-  {
-    id: "3bd1aee6-9d46-436b-82a0-31a311441aa1",
-    title: "Exploring the Universe",
-    author: "Carol Davis",
-    categories: "academics, Science",
-    tags: "Space, Exploration",
-    comments: "8",
-    datePublished: "2024-09-20",
-    link: "https://github.com/",
-  },
-  {
-    id: "c0152066-06c9-4dde-84b1-f5b1ef440768",
-    title: "Healthy Eating Habits",
-    author: "David Wilson",
-    categories: "growth, Lifestyle",
-    tags: "Nutrition, Wellness",
-    comments: "15",
-    datePublished: "2024-09-12",
-    link: "https://building-u.com/",
-  },
-  {
-    id: "3b28abd8-aaec-45e1-a666-d01af6f7ec2c",
-    title: "The Future of Renewable Energy",
-    author: "Emma Brown",
-    categories: "climate change, Energy",
-    tags: "Renewable, Sustainability",
-    comments: "5",
-    datePublished: "2024-09-22",
-    link: "https://www.instagram.com/",
-  },
-  {
-    id: "3b28abd8-aaec-45e1-a666-d01af6f7ec26",
-    title: "The Future of Renewable Energy",
-    author: "Emma Brown",
-    categories: "climate change, Energy",
-    tags: "Renewable, Sustainability",
-    comments: "5",
-    datePublished: "2024-09-22",
-    link: "https://www.instagram.com/",
-  },
-    {
-    id: "3b28abd8-aaec-45e1-a666-d01af6f7ec25",
-    title: "The Future of Renewable Energy",
-    author: "Emma Brown",
-    categories: "climate change, Energy",
-    tags: "Renewable, Sustainability",
-    comments: "5",
-    datePublished: "2024-09-22",
-    link: "https://www.instagram.com/",
-  },
-    {
-    id: "3b28abd8-aaec-45e1-a666-d01af6f7ec29",
-    title: "The Future of Renewable Energy",
-    author: "Emma Brown",
-    categories: "climate change, Energy",
-    tags: "Renewable, Sustainability",
-    comments: "5",
-    datePublished: "2024-09-22",
-    link: "https://www.instagram.com/",
-  },
-    {
-    id: "3b28abd8-aaec-45e1-a666-d01af6f7ec23",
-    title: "The Future of Renewable Energy",
-    author: "Emma Brown",
-    categories: "climate change, Energy",
-    tags: "Renewable, Sustainability",
-    comments: "5",
-    datePublished: "2024-09-22",
-    link: "https://www.instagram.com/",
-  },
-    {
-    id: "3b28abd8-aaec-45e1-a666-d01af6f7ec22",
-    title: "The Future of Renewable Energy",
-    author: "Emma Brown",
-    categories: "climate change, Energy",
-    tags: "Renewable, Sustainability",
-    comments: "5",
-    datePublished: "2024-09-22",
-    link: "https://www.instagram.com/",
-  },
-    {
-    id: "3b28abd8-aaec-45e1-a666-d01af6f7ec21",
-    title: "The Future of Renewable Energy",
-    author: "Emma Brown",
-    categories: "climate change, Energy",
-    tags: "Renewable, Sustainability",
-    comments: "5",
-    datePublished: "2024-09-22",
-    link: "https://www.instagram.com/",
-  },
-];
+export default function Blog({ setIsExpanded }) {
 
-export default function Blog() {
   const filterData = (setData, category) => {
     console.log("category", category);
 
@@ -138,9 +27,9 @@ export default function Blog() {
         category === "All"
           ? mockData
           : mockData.filter((item) => {
-              console.log("item", item, item.categories.toLowerCase().includes(category.toLowerCase()));
-              return item.categories.toLowerCase().includes(category.toLowerCase());
-            }),
+            console.log("item", item, item.categories.toLowerCase().includes(category.toLowerCase()));
+            return item.categories.toLowerCase().includes(category.toLowerCase());
+          }),
     }));
   };
 
@@ -150,19 +39,20 @@ export default function Blog() {
     if (typeof window !== "undefined") {
       console.log("data.blogs", data.blogs);
     }
-    
+
   }, [data.blogs]);
 
   return (
     <main className={s.main}>
       <aside className={s.aside}>
         <div className={s.trapezoid}></div>
-        <div className={s.sideTextSmall}>
-          Archives
-          <div className={s.line} />
-        </div>
-        <br />
-        <div className={s.sideTextLarge}>
+        <img
+          src="/images/downtou-logo.png"
+          alt="down to u logo"
+          className={s.logo1}
+        />
+        <ul className={s.categoryList}>
+          <li className={s.sideTextSmall}>Archives</li>
           {[
             "All",
             "Academics",
@@ -171,19 +61,15 @@ export default function Blog() {
             "Growth",
             "Technology",
           ].map((cat) => (
-            <div
+            <li
               key={cat}
               onClick={() => filterData(setData, cat)}
-              style={{
-                cursor: "pointer",
-                fontWeight: data.category === cat ? "bold" : "normal",
-                marginBottom: "0.5rem",
-              }}
+              className={`${s.categoryItem} ${data.category === cat ? s.active : ""}`}
             >
               {cat}
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </aside>
 
       <div className={s.mainContent}>
@@ -197,18 +83,22 @@ export default function Blog() {
                 </span>
               </div>
               <p className={s.blogAuthor}>By {item.author}</p>
-              <p className={s.blogExcerpt}>
+
+              <p className={`${s.blogExcerpt}  ${s.collapsed}`}>
                 We do our best to do our part. We haul our compost bins to the
                 town recycling centre, we clear our email inboxes so they take
                 up less space, and we wash plastic containers before recycling
                 them. We understand that there are wildfires and melting ice and
-                dying animals, which is why we alter our […]
+                dying animals, which is why we alter our daily habits in hopes of making a difference, however small. We bike instead of drive when we can, choose reusable over disposable, and support companies with sustainable practices. These changes may seem insignificant on their own, but together, they are part of a collective effort to slow the damage and protect the only home we have.
+
               </p>
               <a
-                href={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#"
                 className={s.readMore}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsExpanded(item.id);
+                }}
               >
                 Read More
               </a>
@@ -220,6 +110,6 @@ export default function Blog() {
       <div className={s.moleContainer}>
         <img src="/images/mole.png" alt="mole" className={s.mole} />
       </div>
-    </main>
+    </main >
   );
 }

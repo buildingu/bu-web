@@ -2,6 +2,7 @@
   position: relative;
   display: flex;
   overflow: hidden;
+  width: 100%;
 }
 
 .scrollAreaWrapper .content {
@@ -11,13 +12,15 @@
   left: 0;
   right: 40px;
   bottom: 0;
-  padding-bottom: 16px; 
+  padding-bottom: 16px;
+/* width: 100%; */
 }
 
 .scrollAreaWrapper :global(.scrollbar) {
   position: absolute;
   top: 0;
   right: 0;
+  left: auto;
   width: 24px; 
   height: 97%;
   background: transparent;
@@ -49,8 +52,4 @@
   border-radius: 32px;
   cursor: grab;
   pointer-events: auto;
-}
-
-.readMore {
-  
 }

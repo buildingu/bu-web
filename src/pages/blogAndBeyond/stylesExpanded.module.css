@@ -22,21 +22,6 @@
   flex: 1; /* takes remaining space */
 }
 
-.moleContainer {
-  display: flex;
-  justify-content: end; 
-  align-items: flex-end;   
-  padding-bottom: 2%;   
-  padding-right: 1.5%; 
-}
-
-.mole {
-  max-width: 60%;
-  height: auto;
-transform: translate(-3vw, -13vh);
-}
-
-
 /* Header */
 .header {
   background-color: var(--c-magenta);
@@ -45,30 +30,31 @@ transform: translate(-3vw, -13vh);
   display: flex;
   align-items: center;
   justify-content: center;
-    position: relative; 
+  position: relative; 
   padding: 0 2vw;
   box-sizing: border-box;
 }
 
 .header > div {
   position: absolute;
-  right: 3%;
+  right: 5%;
   display: flex;
   align-items: center;
   gap: 10%;
 }
 
 /* go back & sign up*/
-.logo2, .logo3 {
+.logo2, .logo3{
   height: 11vh;
   width: auto;
 }
 
+
 /* we are */
 .logo4 {
-  height: 10.5vh;
+  height: 8vh;
   width: auto;
-  transform: translateX(-65%);
+  transform: translateX(-26vw);
 }
 
 .aside {
@@ -81,22 +67,22 @@ transform: translate(-3vw, -13vh);
 /* Trapezoid */
 .trapezoid {
   position: absolute;
-  width:35vw;
-  border-top: 84.1vh solid #EF7F1A;
+  width:25vw;
+  border-top: 84.1vh solid #6fbe3b;
   border-right: 10vw solid transparent;
   z-index: 1;
 }
 
 .logo1 {
-  width: max(21vw, 30vh); /* pick the larger dimension */
+  width: max(10vw, 25vh); /* pick the larger dimension */
   height: auto;
-  transform: translate(5vw, -13vh);
+  transform: translate(3vw, -13vh);
   z-index: 1;
 }
 
 .categoryList {
   top: 65vh;
-  font-size: 3vw;
+  font-size: 2.5vw;
   transform: translateY(-70%);
   color: white;
   padding: 0 2vw;
@@ -116,24 +102,6 @@ transform: translate(-3vw, -13vh);
   border-bottom: 4px solid white;
 }
 
-
-/* Scrollable area adjustments */
-.container main :global(.scrollArea) {
-  position: absolute;
-  left: 40vw;
-  top: 20vh;
-  height: 80%;
-  width: 40vw;
-  bottom: 2%;
-  border-radius: 15px;
-  z-index: 1;
-}
-
-/* Content blocks */
-.container main :global(.scrollArea) .content {
-  padding-bottom: 10px;
-}
-
 .blogCard {
   background-color: white;
   border-radius: 12px;
@@ -141,6 +109,7 @@ transform: translate(-3vw, -13vh);
   margin-bottom: 24px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   font-family: 'Inter', sans-serif;
+  width: 100%;
 }
 
 .blogHeader {
@@ -204,3 +173,9 @@ transform: translate(-3vw, -13vh);
   max-height: 9999px;
 }
 
+.mole2 {
+  position: absolute;
+  bottom: 2.5vw;
+  left: 2vw;
+  z-index: 10;
+}

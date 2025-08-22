@@ -1,5 +1,5 @@
  import React, { forwardRef, useRef, useLayoutEffect, useEffect } from "react";
- import s from "./styles.module.css";
+ import s from "./stylesExpanded.module.css";
 
  // Simple debounce helper
  function debounce(func, delay = 200) {

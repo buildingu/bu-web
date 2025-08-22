@@ -1,40 +1,34 @@
+import { useState } from "react";
 import { Layout } from "../../components/layout";
 import Blog from "./Blog";
-
+import BlogExpanded from "./BlogExpanded";
+import { Header as HeaderDefault } from "./Header";
+import { Header as HeaderExpanded } from "./HeaderExpanded";
+import MobileBlog from "./mobile";
 import s from "./styles.module.css";
+import { IsMobile } from "./useIsMobile";
 
-const Header = () => {
-  return (
-    <header className={s.header}>
-      {/* Move to the trapezoid thing. */}
-      {/* <img
-        src="/images/downtou-logo.png"
-        alt="down to u logo"
-        className={s.logo1}
-      /> */}
-      <img
-        src="/images/weare-logo.png"
-        alt="we are a building-u blog"
-        className={s.logo4}
-      />
-      <div>
-        <img
-          src="/images/btn_go-back.png"
-          alt="blog and beyond"
-          className={s.logo2}
-        />
-        <img src="/images/btn_06-signup.png" alt="sign in" className={s.logo3} />
-      </div>
-    </header>
-  )
-}
+export default function BlogAndBeyond() {
+  const isMobile = IsMobile();
+  const [expandedId, setExpandedId] = useState(null);
 
-const BlogAndBeyond = () => {
+  if (isMobile) return <MobileBlog />;
+
+  const HeaderComponent = expandedId
+    ? () => <HeaderExpanded setExpandedId={setExpandedId} />
+    : HeaderDefault;
+
   return (
-    <Layout className={s.container} Header={Header} showFooter={false}>
-      <Blog />
+    <Layout
+      className={s.container}
+      Header={HeaderComponent}
+      showFooter={false}
+    >
+      {expandedId ? (
+        <BlogExpanded expandedId={expandedId} setExpandedId={setExpandedId} />
+      ) : (
+        <Blog setIsExpanded={setExpandedId} />
+      )}
     </Layout>
   );
-};
-
-export default BlogAndBeyond;
+}
