@@ -43,7 +43,7 @@ export default function Blog({ setIsExpanded }) {
   }, [data.blogs]);
 
   return (
-    <main className={s.main}>
+    <main>
       <aside className={s.aside}>
         <div className={s.trapezoid}></div>
         <img
@@ -84,7 +84,7 @@ export default function Blog({ setIsExpanded }) {
               </div>
               <p className={s.blogAuthor}>By {item.author}</p>
 
-              <p className={`${s.blogExcerpt}  ${s.collapsed}`}>
+              <p className={`${s.blogExcerpt} ${s.collapsed}`}>
                 We do our best to do our part. We haul our compost bins to the
                 town recycling centre, we clear our email inboxes so they take
                 up less space, and we wash plastic containers before recycling
@@ -105,10 +105,10 @@ export default function Blog({ setIsExpanded }) {
             </div>
           ))}
         </ScrollArea>
-      </div>
 
-      <div className={s.moleContainer}>
-        <img src="/images/mole.png" alt="mole" className={s.mole} />
+        <div className={s.moleContainer}>
+          <img src="/images/mole.png" alt="mole" className={s.mole} />
+        </div>
       </div>
     </main >
   );

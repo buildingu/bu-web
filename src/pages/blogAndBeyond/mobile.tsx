@@ -1,6 +1,6 @@
 import { useState } from "react"
-import "./mobile.css"
 import ScrollArea from "./scroll-area"
+import "./mobile.css"
 
 type ViewState = "blog02" | "blog03" | "blog04"
 
@@ -198,7 +198,7 @@ export default function BlogBeyond() {
         )}
       </main>
 
-      {/* Footer */}
+      {/* Footer TODO: This is in the components folder. */}
       <footer className="footer">
         <span className="footer-text">Powered by</span>
         {[1, 2, 3, 4, 5].map((i) => (

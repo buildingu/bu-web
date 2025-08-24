@@ -1,4 +1,4 @@
- import React, { forwardRef, useRef, useLayoutEffect, useEffect } from "react";
+ import { forwardRef, useRef, useLayoutEffect, useEffect } from "react";
  import s from "./styles.module.css";
 
  // Simple debounce helper
@@ -184,20 +184,20 @@
            if (typeof ref === "function") ref(node);
            else if (ref) ref.current = node;
          }}
-         className={`${s?.scrollAreaWrapper ?? ""} scrollArea`}
+         className={`${s.scrollAreaWrapper} scrollArea`}
        >
          <div
            tabIndex={0}
            ref={contentRef}
-           className={`${s?.content ?? ""} content ${className}`}
+           className={`${s.content} content ${className}`}
            {...props}
          >
            {children}
          </div>
 
-         <div ref={scrollbarRef} className={`${s?.scrollbar ?? ""} scrollbar`}>
-           <div className={`${s?.scrollbarTrack ?? ""} scrollbarTrack`} />
-           <button ref={thumbRef} className={`${s?.thumb ?? ""} thumb`} />
+         <div ref={scrollbarRef} className={`${s.scrollbar} scrollbar`}>
+           <div className={`${s.scrollbarTrack} scrollbarTrack`} />
+           <button ref={thumbRef} className={`${s.thumb} thumb`} />
          </div>
        </div>
      );

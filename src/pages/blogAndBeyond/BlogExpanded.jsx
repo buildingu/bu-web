@@ -30,7 +30,7 @@ export default function BlogExpanded({ expandedId, setExpandedId }) {
     }, [data.blogs]);
 
     return (
-        <main className={s.main}>
+        <main>
             <aside className={s.aside}>
                 <div className={s.trapezoid}></div>
                 <img

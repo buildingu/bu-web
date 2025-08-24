@@ -8,6 +8,7 @@ interface ScrollAreaProps {
   className?: string
 }
 
+// TODO: Don't use this, use the one in the components folder. If you find that some this here works better, put some of in the actual scrollArea.
 export default function ScrollArea({ children, className = "" }: ScrollAreaProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
