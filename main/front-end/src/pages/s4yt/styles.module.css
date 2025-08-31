@@ -43,10 +43,9 @@
     /* ===== Images ===== */
 
     /* Default Values (Desktop) and ratios */
-    --paper-logo-height: 70vh;
-    --paper-logo-maxheight: 70vh;
+    --paper-logo-height: min(70vh, 35vw);
 
-    --info-image-height: 60vh;
+    --info-image-width: clamp(150px, 660px, 120%);
 
     --speech-bubble-ratio: 0.3125; /* The Speech Bubble is a constant ratio of paper logo */
     --speech-bubble-height: calc(var(--paper-logo-height) * var(--speech-bubble-ratio));
@@ -54,44 +53,33 @@
     --speech-bubble-margin-bottom-ratio: 0.1;
 
     /* Breakpoints (reapplied to defaults) */
-    --smalldesk-paper-logo-maxheight: 370px;
-
-    --mobile-info-image-height: 58vh;
+    --mobile-info-image-width: min(100vw, 63vh);
     /* ===== Font Sizes ===== */
     
-    /* Default Values (Desktop) */
-    --header-font-size: 1.5625rem;
-    --header-font-size-clamp: clamp(1.5625rem, 0.5434782608695652rem + 1.6304347826086956vw, 2.5rem);
-    --body-font-size: 1.25rem;
-    --body-font-size-clamp: clamp(1.25rem, 0.4347826086956521rem + 1.3043478260869565vw, 2rem);
-    /* Breakpoints (reapplied to defaults) */
-    --mediumdesk-header-font-size: 28px;
-    --mediumdesk-body-font-size: 20px;
-    
-    --smalldesk-header-font-size: 30px;
-    --smalldesk-body-font-size: 26px;
-
-    --tablet-header-font-size: 27px;
-    --tablet-body-font-size: 24px;
-
+    /* Desktop */
+    --header-font-size: 2.5rem;
+    /* Fluid via container width (no vw/vh). Max kept at desktop size to preserve full-screen appearance. */
+    --header-font-size-clamp: clamp(1.1rem, 2.5cqw, 2.5rem);
+    --body-font-size: 1.9rem;
+    --body-font-size-clamp: clamp(0.9rem, 1.9cqw, 1.9rem);
+    /* Mobile */
     --mobile-header-font-size: 23px;
     --mobile-body-font-size: 20px;
-    --more-info-font-size: 40px;
+    --more-info-font-size: clamp(15px, calc(10vw + 2vh), 40px);    /* ===== Buttons ===== */
+    /* Desktop */
+    --button-width: min(200px, 15vw);
+    --button-height: auto;
+    --button-aspect-ratio: 363/120;
+    --button-spacing: clamp(8px, 2vh, 20px);
 
-    /* ===== Buttons ===== */
-    /* Default Values (Desktop) */
-    --button-width: 200px;
-    --button-width-clamp: clamp(200px, 10.869565217391305vw, 12.5rem);
-    --button-height: calc(120/363 * var(--button-width)); /* Image Aspect Ratio */
-    --button-spacing: 2.2vh;
-
-    /* Breakpoints (reapplied to defaults) */
-    --mobile-button-width: 53vw;
+    /* Mobile */
+    --mobile-button-width: min(53vw, 30vh);
     --mobile-button-spacing: 0.7vh;
+    --mobile-back-btn-width: min(22vw, 15vh);
 
     /* ===== Misc ===== */
 
-    --discord-logo-ratio: 1.1;
+    --discord-logo-ratio: 1.2;
     --discord-logo-height: calc(var(--body-font-size) * var(--discord-logo-ratio));
 
     /* ===== Mobile-Desktop Control Variables (set to desktop defaults) ===== */
@@ -110,9 +98,13 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    /* Enable container query units to drive fluid typography */
+    container-type: inline-size;
 }
-/* HEADER AND FOOTER VISUALIZATION STYLES !!! REMOVE ON COMPLETION !!! */
+
+/* HEADER AND FOOTER VISUALIZATION STYLES !!!!! REMOVE ON COMPLETION !!! */
 header {
     height: 16vh;
     background-color: var(--c-orange);
@@ -130,12 +122,12 @@ footer {
     display: var(--desktop-display);
     height: auto;
     align-items: center;
+    margin-right: 3vw;
 }
 
 .paper {
     width: auto;
     height: var(--paper-logo-height);
-    max-height: var(--paper-logo-maxheight);
     object-fit: contain;
 }
 
@@ -163,11 +155,11 @@ footer {
 
 .navBtn {
     cursor: pointer;
+    aspect-ratio: var(--button-aspect-ratio);
     width: var(--button-width);
-    width: var(--button-width-clamp);
     height: var(--button-height);
     margin-bottom: var(--button-spacing);
-
+    
     /* Background image properties */
     background-size: contain;
     background-position: center;
@@ -200,8 +192,8 @@ footer {
 .navDesktop {
     display: var(--desktop-display);
     flex-direction: column;
-    margin: 0rem 0 0 3vw;
     width: var(--button-width);
+    max-width: 100%;
     z-index: 3;
 }
 
@@ -216,12 +208,12 @@ footer {
     z-index: 2;
     display: flex;
     color: #008dd2;
-    width: 31vw;
+    width: 100%;
     padding-bottom: 10vh;
     padding-top: 15vh;
     flex-direction: column;
     align-items: center;
-    height: 100%;
+    height: 100%
 }
 
 /* === Header === */
@@ -264,20 +256,11 @@ footer {
 .textInfo .infoImg {
     content: var(--active-info-image);
     position: absolute;
-    /* top: 50%;
-    left: 50%;
-    transform: translate(-50%, -60%);
-    width: auto;
-    height: var(--info-image-height);
-    z-index: 1;
-    margin-left: 3vw; */
-
     top: 45%;
     left: 54%;
     transform: translate(-50%, -55%);
-    width: auto;
-    height: var(--info-image-height);
-    z-index: 1;
+    width: var(--info-image-width);
+    height: auto;
 }
 
 .textInfo ul {
@@ -331,9 +314,10 @@ footer {
     color: white;
     border: none;
     border-radius: 15%;
-    height: 22vw;
-    width: 35vw;
-    font-size: 2.5rem;
+    aspect-ratio: 35/22;
+    height: var(--mobile-back-btn-width);
+    width: auto;
+    font-size: calc(var(--mobile-back-btn-width) * 0.4);
     font-weight: bold;
     top: 21%;
     left: 57.5%;
@@ -375,9 +359,6 @@ footer {
         --discord-logo-height: calc(var(--body-font-size) * var(--discord-logo-ratio)); */
 
         /* images */
-        --paper-logo-maxheight: var(--smalldesk-paper-logo-maxheight);
-        --paper-logo-height: min(70vh, var(--paper-logo-maxheight));
-        --speech-bubble-height: calc(var(--paper-logo-height) * var(--speech-bubble-ratio));
     }
 
 }
@@ -392,8 +373,8 @@ footer {
     }
 }
 
-/* Mobile Devices (up to 800px) */
-@media (max-width: 800px) {
+/* Mobile Devices (up to 445px) */
+@media (max-width: 445px) {
     :root {
         /* Mobile-Desktop Control */
         --active-bg: var(--mobile-bg);
@@ -401,13 +382,8 @@ footer {
         --desktop-display: none;
         --active-info-image: var(--mobile-infoImg);
 
-        /* Font Sizes */
-        --header-font-size: var(--mobile-header-font-size);
-        --body-font-size: var(--mobile-body-font-size);
-        --discord-logo-height: calc(var(--body-font-size) * var(--discord-logo-ratio));
-
         /* Images */
-        --info-image-height: var(--mobile-info-image-height);
+        --info-image-width: var(--mobile-info-image-width);
 
         /* Buttons */
         --button-width: var(--mobile-button-width);
@@ -424,8 +400,8 @@ footer {
         padding-right: 0;
     }
     .textInfo {
-        width: 95%;
-        margin-left: 0;
+        width: 100%;
+        margin: auto;
     }
     .contentContainer {
         justify-content: center;

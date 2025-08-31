@@ -184,7 +184,7 @@ export default function S4YT() {
           })}
         </ul>
         <img 
-          className={s.infoImg} 
+          className={s.infoImg}
           alt="Background Info" 
         />
       </div>
@@ -196,6 +196,8 @@ export default function S4YT() {
       <div className={s.leftSec}>
       <a href={S4YT_GAME_LINK} target="_blank" rel="noopener noreferrer">
         <img
+          width="718"
+          height="1013"
           src={PAPER_LOGO_PATH}
           alt="S4YT Logo"
           className={s.paper}
@@ -203,6 +205,8 @@ export default function S4YT() {
       </a>
       <a href={S4YT_GAME_LINK} target="_blank" rel="noopener noreferrer">
         <img
+          width="387"
+          height="315"
           src={SPEECH_BUBBLE_PATH}
           alt="Click Me"
           className={s.speechBub}

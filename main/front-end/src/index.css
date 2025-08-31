@@ -96,6 +96,7 @@ body {
   font-family: var(--para-font1);
   font-weight: 400;
   color: var(--c-para-w);
+  width: 100%
 }
 
 .layout {
