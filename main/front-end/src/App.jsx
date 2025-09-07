@@ -19,6 +19,7 @@ import { Contribute } from "./pages/contribute";
 import { LetsTalk } from "./pages/letsTalk";
 import { Resources } from "./pages/resources";
 import { S4YT } from "./pages/s4yt";
+import { Profile } from "./pages/profile";
 import { Error404, Error500 } from "./pages/errors";
 
 import { Blog as AdminBlog } from "./adminPanel/pages/blog";
@@ -75,6 +76,10 @@ export const routes = [
       //   path: "support",
       //   element: <Support />
       // },
+      {
+        path: "profile",
+        element: <Profile />
+      },
       {
         path: "error-404",
         element: <Error404 />
