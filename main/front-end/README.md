@@ -268,7 +268,7 @@ $ npm install <package>
 ```
 `installing a package` for the front-end only:
 ```
-$ npm install <package> --workspace web
+$ npm install <package> --workspace front
 ```
 
 ### Your Page and Branch
