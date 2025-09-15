@@ -253,13 +253,14 @@ First thing to get out of the way is technically the project is a [monorepo](htt
 ### Steps
 1. To first get started, install all the packages listed in the `package.json` by doing an `npm ci`. You might be wondering what `ci` is and why we're not using `npm install`. `ci` means Continuous Integration; people use this command in build pipelines to ensure consistency. Unlike `npm install`, which can update your dependencies and potentially cause issues, `npm ci` installs the exact package versions that are listed in the `package-lock.json`. So, we're using it to be safe, I like everyone having the same thing installed and `npm ci` does that.
 2. While still in the main branch, create a file called `.env.development` at the base of the project(the same level as package.json, so the base of the `main` directory). We need this file because our SSR server depends on certain environment variables, like `NODE_ENV` to determine the environment mode. For development, we'll use .env.development. So, there is an `example.env.development` file to show you what variables to set. Just copy and paste the contents in the `example.env.development` and put that in the `.env.development` you created. The variable `PORT=`, after the equals, set it to 3000 and there you go!
-3. Now you'll have to create your team's branch. Since we are working by pages, you'll create your `branch by page`, for example, `page/home`. When you create your branch, make sure you're on your branch. Then run the dev command to start the development environment.
+3. Now you'll have to create your branch. Since we are working by pages, you'll create your `branch by page`, for example, `page/home`. We also have to make the branch **from the current develop branch**, so you're have to switch to that branch first, "git checkout develop", and then make your branch. When you create your branch, make sure you're on your branch. Then run the dev command to start the development environment.
 
 ```
 $ npm ci
 ```
-Running the front-end in development mode:
+Running the front-end in development mode (you'll have to switch to the main directory first since the project is in that):
 ```
+$ cd main
 $ npm run dev:front
 ```
 `installing a package` (you most likely don't have to do this), installing globally (both front-end and back-end):
