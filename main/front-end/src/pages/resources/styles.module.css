@@ -1,2 +1,1012 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* general page wrapper */
 .container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: #0f9dd9;
+}
+
+/* top nav bar — single row, no wrapping */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #33a13c;
+  height: 10rem;
+  min-height: 6rem;
+  padding: 0 1.5rem;
+  z-index: 1000;
+  position: relative;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  overflow: hidden;
+}
+
+.logo {
+  width: clamp(5rem, 10vw, 15rem);
+  height: auto;
+  flex-shrink: 0;
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+  flex: 1;
+  margin-left: 0.75rem;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  gap: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.menu li {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.menu a,
+.menu button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: clamp(0.7rem, 3vw, 3rem);
+  font-weight: bold;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  padding: 0.5rem 0.35rem;
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.2;
+}
+
+.menu button:hover,
+.menu a:hover {
+  background-color: rgb(149, 211, 128);
+}
+
+/* favorites nav button and its notification badge */
+.favsNavBtn {
+  position: relative;
+  gap: 0.35rem;
+}
+
+.favBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ea0f81;
+  color: white;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  min-width: 1.3em;
+  height: 1.3em;
+  padding: 0 0.3em;
+  line-height: 1;
+  margin-left: 0.2em;
+  vertical-align: middle;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* lizard mascot and resources logo */
+.lizardImgDynamic {
+  width: clamp(12rem, 22vw, 22rem);
+  position: relative;
+  display: block;
+  bottom: 0;
+}
+
+.characterWrapper {
+  position: absolute;
+  bottom: 3.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+
+.resourcesLogoSmall {
+  width: clamp(10rem, 17vw, 17.5rem);
+  height: auto;
+  margin-bottom: 3rem;
+}
+
+/* decorative pink triangle on the landing page */
+.pinkTrapezoid {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: clamp(18rem, 35vw, 37.5rem);
+  height: 100%;
+  background-color: #ea0f81;
+  z-index: 2;
+  clip-path: polygon(0% 0%, 50% 0%, 100% 100%, 0% 100%);
+}
+
+/* landing page layout and background */
+.landingPage {
+  position: relative;
+  background-color: #0f9dd9;
+  background-image: url("/assets/homepage/bg_desktop.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  width: 100%;
+  min-height: 82.5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5vw;
+}
+
+/* vertical stack of category tab buttons */
+.tabContainer {
+  position: absolute;
+  left: clamp(10rem, 32vw, 34rem);
+  top: 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.tab {
+  background: rgb(58, 174, 0);
+  color: white;
+  border: none;
+  padding: 0.9rem 1.5rem;
+  border-radius: 0.625rem;
+  font-size: clamp(0.9rem, 1.6vw, 1.75rem);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(10rem, 14vw, 15rem);
+}
+
+.activeTab,
+.tab:hover {
+  background: #ef7f1a;
+}
+
+/* orange info box and chocolate image on the landing page */
+.infoBoxContainer {
+  position: absolute;
+  right: clamp(2rem, 8vw, 9rem);
+  top: 17rem;
+  z-index: 10;
+}
+
+.orangeBox {
+  position: relative;
+  background: #ef7f1a;
+  width: clamp(25rem, 55vw, 60rem);
+  min-height: 45rem;
+  border-radius: 0.625rem;
+  padding: 2.5rem 4.5rem;
+  color: white;
+  bottom: 15rem;
+  font-size: clamp(1rem, 2vw, 1.875rem);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.chocolateImg {
+  position: absolute;
+  top: 2rem;
+  right: -10rem;
+  transform: translateY(-50%);
+  width: clamp(8rem, 14vw, 16rem);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.takeMeBtn {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: #5497fc;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 1.25rem;
+  font-weight: bold;
+  font-size: clamp(0.8rem, 1.1vw, 1.125rem);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.takeMeBtn:hover {
+  background-color: #33a13c;
+  transform: scale(1.05);
+}
+
+/* header row inside the program detail card (fav + fullscreen buttons) */
+.detailsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  gap: 0.75rem;
+}
+
+.favButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.favIcon {
+  width: 8rem;
+  height: 8rem;
+  object-fit: contain;
+}
+
+.fullscreenButton {
+  background-color: #ea0f81;
+  color: white;
+  border: none;
+  padding: 0;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-size: 1.25rem;
+  line-height: 1;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.fullscreenButton:hover {
+  background-color: #e04395;
+}
+
+/* sticky expand button at the top of the sidebar */
+.sidebarFullscreenBtn {
+  position: sticky;
+  top: 0;
+  align-self: flex-end;
+  margin: 0.6rem 0.6rem 0 0;
+  background-color: #ea0f81;
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-size: 3rem;
+  line-height: 1;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.sidebarFullscreenBtn:hover {
+  background-color: #e04395;
+}
+
+/* two-column layout: sidebar on the left, detail panel on the right */
+.content {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+
+.sidebar {
+  width: 25%;
+  min-width: 18rem;
+  background: #008dd2;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.sidebar.fullscreenView {
+  position: fixed;
+  top: 10rem;
+  left: 0;
+  width: 80%;
+  height: calc(100vh - 10rem);
+  z-index: 900;
+}
+
+.mainContent {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 2.5rem;
+  position: relative;
+  background-image: url("/assets/homepage/bg_desktop.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #0f9dd9;
+}
+
+/* search field at the top of the sidebar */
+.searchWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0.75rem 0.75rem 0.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: 0.6rem;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+
+.searchWrapper:focus-within {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.searchIcon {
+  padding: 0 0.5rem 0 0.75rem;
+  font-size: 0.95rem;
+  opacity: 0.8;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.searchInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: clamp(0.82rem, 1.1vw, 1rem);
+  padding: 0.6rem 0.5rem 0.6rem 0;
+  font-family: inherit;
+}
+
+.searchInput::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.searchClear {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0 0.65rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s;
+}
+
+.searchClear:hover {
+  color: white;
+}
+
+.noResults {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: clamp(0.8rem, 1vw, 0.95rem);
+  font-style: italic;
+  padding: 0.75rem 1.25rem;
+  margin: 0;
+}
+
+/* white card that shows the selected program content */
+.programDetails {
+  font-size: clamp(0.875rem, 1.4vw, 1.5rem);
+  position: relative;
+  background: white;
+  padding: 2rem 2.5rem;
+  border-radius: 0.9rem;
+  width: 72%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.progTitle {
+  font-size: clamp(1rem, 1.6vw, 1.6rem);
+  margin: 0 0 0.5rem;
+}
+
+.progContent p {
+  margin: 0.25rem 0;
+  line-height: 1.6;
+}
+
+/* row of full-size icon chips shown below the program title */
+.iconBar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 10px 0 14px;
+}
+
+/* full chip with colored background and label text (used in detail panel) */
+.iconChip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 1rem;
+  border-radius: 8px;
+  padding: 5px 13px 5px 8px;
+  font-weight: 500;
+  line-height: 1.4;
+  cursor: default;
+  transition: filter 0.15s;
+}
+
+.iconChip:hover {
+  filter: brightness(1.08);
+}
+
+/* icon-only variant used in the sidebar list items */
+.iconChipSmall {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: default;
+  opacity: 0.9;
+}
+
+.iconChipSmall:hover {
+  opacity: 1;
+}
+
+/* small row of icons sitting beneath the program title in the sidebar */
+.sidebarIconRow {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 4px;
+}
+
+/* tooltip that appears on hover for both chip variants */
+.iconTooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 5px 10px;
+  border-radius: 6px;
+  pointer-events: none;
+  z-index: 9999;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.22);
+  animation: tooltipFadeIn 0.15s ease;
+}
+
+.iconTooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #1a1a1a;
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.progItemText {
+  font-weight: 600;
+  flex: 1;
+  text-align: left;
+}
+
+/* individual program button in the sidebar list */
+.programItem {
+  cursor: pointer;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition:
+    background 0.15s,
+    border-left 0.15s;
+  text-align: left;
+  width: 100%;
+  background: transparent;
+  color: white;
+  border: none;
+  border-left: 4px solid transparent;
+  font-family: inherit;
+  font-size: clamp(0.8rem, 1.5vw, 1.5rem);
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.programItem:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.programItem.active {
+  background-color: #ef7f1a;
+  font-weight: bold;
+  border-left: 4px solid white;
+}
+
+/* fullscreen overrides — hide sidebar, expand detail to fill screen */
+.sidebarHidden .sidebar {
+  display: none;
+}
+
+.sidebarHidden .mainContent {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+}
+
+.fullscreenActive {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw !important;
+  height: 100vh;
+  z-index: 9999;
+  background: white;
+  padding: 2.5rem;
+  overflow-y: auto;
+  border-radius: 0;
+}
+
+/* scroll-to-top button at the bottom of the detail panel */
+.backToTopBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 1.25rem 0 0.5rem;
+  background: none;
+  border: 2px solid #ccc;
+  border-radius: 2rem;
+  padding: 0.4rem 1.1rem;
+  font-size: clamp(0.82rem, 1vw, 1rem);
+  color: #555;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    color 0.15s,
+    background 0.15s;
+}
+
+.backToTopBtn:hover {
+  border-color: #008dd2;
+  color: #008dd2;
+  background: #008dd210;
+}
+
+/* reviews section at the bottom of the detail panel */
+.reviewsSection {
+  margin-top: 1.75rem;
+  border-top: 2px solid #e5e7eb;
+  padding-top: 1.25rem;
+}
+
+.reviewsHeaderRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.875rem;
+  flex-wrap: wrap;
+}
+
+.reviewsHeading {
+  font-size: clamp(1rem, 1.3vw, 1.4rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.reviewAvgRow {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.reviewAvgText {
+  font-size: clamp(0.85rem, 1.05vw, 1.05rem);
+  color: #666;
+  margin-left: 0.25rem;
+}
+
+.writeReviewBtn {
+  margin-left: auto;
+  background: none;
+  border: 2px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0.4rem 1rem;
+  font-size: clamp(0.85rem, 1.05vw, 1.05rem);
+  cursor: pointer;
+  color: #222;
+}
+
+.writeReviewBtn:hover {
+  border-color: #888;
+}
+
+/* review form box shown when writing a new review */
+.reviewFormBox {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.625rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.reviewFormLabel {
+  font-size: clamp(0.85rem, 1.05vw, 1.05rem);
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: #1a1a1a;
+  display: block;
+}
+
+.reviewRatingLabel {
+  font-size: clamp(0.8rem, 1vw, 1rem);
+  color: #555;
+  align-self: center;
+  margin-left: 0.25rem;
+}
+
+.reviewInput {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: clamp(0.85rem, 1.05vw, 1.05rem);
+  border: 1.5px solid #d1d5db;
+  border-radius: 0.45rem;
+  background: #fff;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+  font-family: inherit;
+}
+
+.reviewTextarea {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: clamp(0.85rem, 1.05vw, 1.05rem);
+  border: 1.5px solid #d1d5db;
+  border-radius: 0.45rem;
+  background: #fff;
+  color: #1a1a1a;
+  resize: vertical;
+  font-family: inherit;
+  margin-bottom: 0.75rem;
+}
+
+.reviewFormActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.reviewSubmitBtn {
+  padding: 0.45rem 1.25rem;
+  font-size: clamp(0.85rem, 1.05vw, 1.05rem);
+  border-radius: 0.5rem;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.reviewCancelBtn {
+  padding: 0.45rem 1rem;
+  font-size: clamp(0.85rem, 1.05vw, 1.05rem);
+  border-radius: 0.5rem;
+  border: 1.5px solid #ccc;
+  background: none;
+  cursor: pointer;
+  color: #555;
+}
+
+.emptyReviews {
+  font-size: clamp(0.85rem, 1.05vw, 1.05rem);
+  color: #888;
+  font-style: italic;
+}
+
+/* individual review card */
+.reviewItem {
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.reviewItem + .reviewItem {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 0.75rem;
+}
+
+.reviewItemHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.reviewAuthor {
+  font-weight: 600;
+  font-size: clamp(0.875rem, 1.1vw, 1.1rem);
+  color: #1a1a1a;
+}
+
+.reviewDate {
+  font-size: clamp(0.75rem, 0.9vw, 0.9rem);
+  color: #888;
+  margin-left: auto;
+}
+
+.reviewText {
+  font-size: clamp(0.85rem, 1.05vw, 1.05rem);
+  color: #444;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* small x button to remove a review */
+.deleteReviewBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: #ccc;
+  padding: 0 0.25rem;
+  margin-left: 0.25rem;
+  border-radius: 4px;
+  transition:
+    color 0.15s,
+    background 0.15s;
+  flex-shrink: 0;
+}
+
+.deleteReviewBtn:hover {
+  color: #e24b4a;
+  background: #e24b4a14;
+}
+
+/* spacer at the bottom of the sidebar list */
+.sidebarLegend {
+  margin-top: auto;
+  padding: 0.75rem;
+}
+
+/* individual item in the favorites modal */
+.favItem {
+  background: white;
+  color: #333;
+  margin: 0.625rem 0;
+  padding: 0.9rem;
+  border-radius: 0.625rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: clamp(0.85rem, 1.05vw, 1.05rem);
+}
+
+/* full-screen overlay for the favorites modal */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 5000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  background: #ef7f1a;
+  padding: 2.5rem;
+  border-radius: 1.25rem;
+  width: 80%;
+  max-width: 37.5rem;
+  max-height: 80vh;
+  overflow-y: auto;
+  color: white;
+  position: relative;
+  font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+}
+
+.closeFavorites {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.75rem;
+  cursor: pointer;
+  color: white;
+  line-height: 1;
+}
+
+.allResources ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.allResources li {
+  margin: 0.625rem 0;
+  font-size: clamp(0.9rem, 1.4vw, 1.5rem);
+}
+.allResources a {
+  color: white;
+  text-decoration: underline;
+}
+
+/* pink background for education and challenge pages */
+.pinkPage {
+  background-color: #ea0f81;
+}
+
+/* orange navbar style and toggle button */
+.orangeNavbar {
+  background-color: #ef7f1a !important;
+}
+
+.navToggleBtn {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid white;
+  padding: 0.5rem 1rem;
+  border-radius: 1.875rem;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: clamp(0.65rem, 0.85vw, 0.9rem);
+  margin-left: 0.75rem;
+  transition: 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.navToggleBtn:hover {
+  background-color: white;
+  color: #333;
+}
+
+.orangeNavbar .menu a:hover,
+.orangeNavbar .menu button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* small star rating badge on sidebar list items */
+.miniRating {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 0.75rem;
+  background: #ef9f2722;
+  border: 1px solid #ef9f2744;
+  border-radius: 5px;
+  padding: 1px 6px;
+  color: #ba7517;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* responsive adjustments for medium screens */
+@media (max-width: 1100px) {
+  .tabContainer {
+    left: 2.5rem;
+  }
+  .infoBoxContainer {
+    right: 2.5rem;
+  }
+  .orangeBox {
+    width: clamp(16rem, 55vw, 30rem);
+  }
+}
+
+/* responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .navbar {
+    height: auto;
+    min-height: auto;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 1rem;
+  }
+  .logo {
+    width: 9rem;
+    margin-bottom: 0.75rem;
+  }
+  .menu {
+    margin-left: 0;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .menu li {
+    flex: 1 0 45%;
+  }
+  .menu a,
+  .menu button {
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+    padding: 0.75rem 0.5rem;
+    white-space: normal;
+  }
+  .tabContainer,
+  .infoBoxContainer {
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    transform: none;
+    width: 100%;
+    padding: 1.25rem;
+  }
+  .tab {
+    width: 90%;
+  }
+  .orangeBox {
+    width: 95%;
+    height: auto;
+    min-height: 21rem;
+    margin-bottom: 3rem;
+  }
+  .content {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    height: 18rem;
+  }
+  .programDetails {
+    width: 100%;
+    padding: 1.25rem;
+  }
+  .allResources {
+    position: relative;
+    top: 1.25rem;
+    left: 0;
+    width: 95%;
+    padding: 0.625rem;
+  }
 }
