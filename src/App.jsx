@@ -1,4 +1,4 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useRoutes } from "react-router-dom";
 
 import HistoryProvider from "./utils/History";
 
@@ -28,6 +28,9 @@ export const routes = [
     children: [
       {
         index: true,
+        element: <Navigate to="/home" replace />,
+      },
+      {
         path: "home",
         element: <Home />,
       },
@@ -77,10 +80,8 @@ export const routes = [
         element: <Error500 />,
       },
       {
-        ...(typeof window !== "undefined" && {
-          path: "*",
-          element: <Navigate to="/error-404" replace />,
-        }),
+        path: "*",
+        element: <Navigate to="/error-404" replace />,
       },
 
       {
@@ -90,8 +91,12 @@ export const routes = [
             path: "blog",
             element: <AdminBlog />,
           },
-        ]
+        ],
       },
     ],
   },
 ];
+
+export default function App() {
+  return useRoutes(routes);
+}
